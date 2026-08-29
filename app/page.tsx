@@ -66,12 +66,15 @@ export default function Home() {
       <header className="sticky top-0 z-40 border-b border-rule/80 bg-white/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
           <a href="#top" className="flex items-center gap-2.5">
-            <span
+            <Image
+              src="/mark.png"
+              alt=""
               aria-hidden
-              className="grid h-8 w-8 place-items-center rounded-[7px] bg-ink font-mono text-[15px] font-medium text-gold"
-            >
-              N
-            </span>
+              width={128}
+              height={128}
+              priority
+              className="h-8 w-8 rounded-[7px]"
+            />
             <span className="text-[17px] font-semibold tracking-[-0.02em]">
               NumeraSheets
             </span>
