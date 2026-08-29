@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  /* Shop identity: the icon's ink navy, its warm paper, its gold. */
+  --color-ink: #1b2333;
+  --color-ink-deep: #121a2b;
+  --color-ink-soft: #333a48;
+  --color-paper: #faf7f1;
+  --color-gold: #d99c2b;
+  --color-slate: #6b7280;
+  --color-rule: #e3e6eb;
+  --color-cool: #f4f6f8;
+
+  --font-sans: var(--font-archivo), "Segoe UI", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "Cascadia Mono", monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Fluid display type — no media queries needed for the headings. */
+.t-display {
+  font-size: clamp(2.1rem, 1.15rem + 4.2vw, 4.25rem);
+  line-height: 1.02;
+  letter-spacing: -0.033em;
+  font-weight: 700;
+}
+
+.t-section {
+  font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.024em;
+  font-weight: 700;
+}
+
+.t-lede {
+  font-size: clamp(1.02rem, 0.94rem + 0.42vw, 1.28rem);
+  line-height: 1.55;
+}
+
+/* The eyebrow/label voice of the whole site: mono, spaced, small. */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Native disclosure marker replaced by our own in the FAQ. */
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary {
+  list-style: none;
+}
