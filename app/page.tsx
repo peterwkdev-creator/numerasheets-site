@@ -236,8 +236,8 @@ export default function Home() {
                 <h2 className="t-section mt-3">Eight workbooks</h2>
               </div>
               <p className="max-w-md text-[15px] leading-relaxed text-ink-soft">
-                Every one of them is delivered instantly and priced between
-                six and nine dollars.
+                Every one of them is delivered instantly, and none of them
+                costs more than $8.50.
               </p>
             </div>
 
@@ -271,7 +271,7 @@ export default function Home() {
                           {p.name}
                         </h3>
                         <span className="shrink-0 font-mono text-[15px] font-medium">
-                          ${p.price}
+                          ${p.price.toFixed(2)}
                         </span>
                       </div>
 
