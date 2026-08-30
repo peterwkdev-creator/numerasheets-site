@@ -1,10 +1,30 @@
-export const SHOP_URL = "https://numerasheets.etsy.com";
+const ETSY_SHOP = "https://numerasheets.etsy.com";
+const PAYHIP_SHOP = "https://payhip.com/numerasheets";
 
-/** Every outbound link goes through the trackable shop subdomain. */
-export const listingUrl = (id: string) => `${SHOP_URL}/listing/${id}`;
+/**
+ * Which shop the buy buttons point at. One switch, everything follows.
+ *
+ * "etsy"   — conversions feed Etsy's organic ranking, and the trackable
+ *            subdomain returns 4% of the fee through Share & Save.
+ * "payhip" — better margin, and the storefront is ours rather than rented.
+ *
+ * Currently "payhip" for a blunt reason: Etsy Payments is still pending
+ * Payoneer's identity check, so Etsy literally cannot receive an order.
+ * Sending a buyer there today converts to nothing. Flip this back once Etsy
+ * clears — the ranking it earns is worth more than the margin it costs.
+ */
+export const BUY_ON: "etsy" | "payhip" = "payhip";
+
+export const SHOP_URL = BUY_ON === "payhip" ? PAYHIP_SHOP : ETSY_SHOP;
+
+/** Named in the copy, so the page never claims the wrong shop. */
+export const SHOP_NAME = BUY_ON === "payhip" ? "Payhip" : "Etsy";
 
 export type Product = {
+  /** Etsy listing id. */
   id: string;
+  /** Payhip product slug, the bit after /b/. */
+  payhip: string;
   name: string;
   /** What the workbook works out on its own — the reason it costs money. */
   does: string;
@@ -16,9 +36,16 @@ export type Product = {
   tags: string[];
 };
 
+/** The only place a product URL is built, so no link can miss the switch. */
+export const listingUrl = (p: Product) =>
+  BUY_ON === "payhip"
+    ? `https://payhip.com/b/${p.payhip}`
+    : `${ETSY_SHOP}/listing/${p.id}`;
+
 export const products: Product[] = [
   {
     id: "4564974686",
+    payhip: "J5gqs",
     name: "Invoice & Expense Tracker",
     does: "Marks an invoice overdue the moment its due date passes, and nets expenses off the money that actually came in.",
     standout: "Status column",
@@ -29,6 +56,7 @@ export const products: Product[] = [
   },
   {
     id: "4564987897",
+    payhip: "dkuM9",
     name: "Rental Property Tracker",
     does: "Reads each month's rent against what was paid and calls it Paid, Partial, Due or Late without you deciding.",
     standout: "Per-property yield",
@@ -39,6 +67,7 @@ export const products: Product[] = [
   },
   {
     id: "4565000823",
+    payhip: "mR8aG",
     name: "Seller Bookkeeping Spreadsheet",
     does: "Takes marketplace fees, shipping and cost of goods off each order, so profit is the number you actually keep.",
     standout: "Fee-by-fee breakdown",
@@ -49,6 +78,7 @@ export const products: Product[] = [
   },
   {
     id: "4565059738",
+    payhip: "MPD82",
     name: "Social Media Content Calendar",
     does: "Counts down to each post's date, flags what is overdue, and ranks your content pillars by engagement rate.",
     standout: "Four-state flag",
@@ -59,6 +89,7 @@ export const products: Product[] = [
   },
   {
     id: "4565079805",
+    payhip: "j6huB",
     name: "Debt Payoff Tracker",
     does: "Projects snowball and avalanche side by side, month by month, to the date each debt finally clears.",
     standout: "120-month projection",
@@ -69,6 +100,7 @@ export const products: Product[] = [
   },
   {
     id: "4565130836",
+    payhip: "yAZjb",
     name: "Wedding Planner Spreadsheet",
     does: "Dates every checklist task backwards from your wedding day — move the date and all 22 deadlines move with it.",
     standout: "Self-dating checklist",
@@ -79,6 +111,7 @@ export const products: Product[] = [
   },
   {
     id: "4565142164",
+    payhip: "aDNb7",
     name: "Small Business Bookkeeping",
     does: "Files every entry into the right quarter from its date, and applies your own deductible percentage per category.",
     standout: "Quarter from date",
@@ -89,6 +122,7 @@ export const products: Product[] = [
   },
   {
     id: "4565150287",
+    payhip: "XwMps",
     name: "Homeschool Planner & Records",
     does: "Counts a day with four subjects as one school day, and tracks days and hours against both of your targets.",
     standout: "Days and hours at once",
@@ -106,7 +140,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How do I get the files?",
-    a: "Etsy delivers them the moment the payment clears — there is nothing to wait for and nobody to message. You download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence.",
+    a: "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. You download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence.",
   },
   {
     q: "Are there macros, add-ins or a subscription?",
@@ -114,7 +148,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do the screenshots show the real file?",
-    a: "Yes, and that is deliberate. Every listing image is a render of the actual workbook after it recalculated — not a mockup, not an AI image. What you see in the pictures is what opens on your machine.",
+    a: "Yes, and that is deliberate. Every product image is a render of the actual workbook after it recalculated — not a mockup, not an AI image. What you see in the pictures is what opens on your machine.",
   },
   {
     q: "What if I run out of rows?",
@@ -122,6 +156,6 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I get a refund?",
-    a: "Because the files are delivered instantly and cannot be returned, all sales are final. That is why every listing shows real screenshots of the working file, and why each download ships with a worked example — so you know what you are buying before you buy it.",
+    a: "Because the files are delivered instantly and cannot be returned, all sales are final. That is why every product page shows real screenshots of the working file, and why each download ships with a worked example — so you know what you are buying before you buy it.",
   },
 ];

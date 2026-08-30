@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { faqs, listingUrl, products, SHOP_URL } from "@/lib/products";
+import { faqs, listingUrl, products, SHOP_NAME, SHOP_URL } from "@/lib/products";
 
 const differences = [
   {
@@ -10,7 +10,7 @@ const differences = [
   {
     n: "02",
     h: "Real screenshots, never mockups",
-    p: "Every picture on every listing is a render of the actual workbook after it recalculated. Nothing is drawn, staged or generated. What is in the images is what opens on your machine.",
+    p: "Every picture on every product page is a render of the actual workbook after it recalculated. Nothing is drawn, staged or generated. What is in the images is what opens on your machine.",
   },
   {
     n: "03",
@@ -20,7 +20,7 @@ const differences = [
 ];
 
 const steps = [
-  { n: "1", h: "Buy on Etsy", p: "Checkout happens on Etsy, with their buyer protection. No account to create here." },
+  { n: "1", h: `Buy on ${SHOP_NAME}`, p: `Checkout is handled by ${SHOP_NAME}. No account to create with me, and nothing to wait for.` },
   { n: "2", h: "Download instantly", p: "The files are released the moment payment clears. Nothing to wait for, nobody to message." },
   { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets. Set a couple of cells and it runs." },
 ];
@@ -32,11 +32,11 @@ const SITE_URL = "https://numerasheets.vercel.app";
  *
  * Google splits product markup in two: "merchant listings" for pages where the
  * customer can buy from you, and "product snippets" for pages where they
- * can't. Nobody buys here — every card leaves for Etsy — so an Offer with a
+ * can't. Nobody buys here — every card leaves for the shop — so an Offer with a
  * price and InStock availability on this page would assert something untrue.
  *
  * ItemList was no better: a host carousel has to link to detail pages on the
- * same site (ours are on etsy.com), and Product isn't one of the types
+ * same site (ours are on the shop's domain), and Product isn't one of the types
  * carousels support (Course list, Movie, Recipe, Restaurant). It produced no
  * rich result at all.
  *
@@ -55,7 +55,7 @@ export default function Home() {
         url: SITE_URL,
         logo: `${SITE_URL}/mark.png`,
         description:
-          "Excel and Google Sheets templates that calculate, flag and total on their own. Sold as instant downloads on Etsy.",
+          "Excel and Google Sheets templates that calculate, flag and total on their own. Sold as instant downloads.",
         sameAs: [SHOP_URL, "https://www.pinterest.com/numerasheets/"],
       },
       {
@@ -175,7 +175,7 @@ export default function Home() {
                 href={SHOP_URL}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
-                Browse the shop on Etsy
+                Browse the shop
                 <span aria-hidden>→</span>
               </a>
               <a
@@ -236,8 +236,8 @@ export default function Home() {
                 <h2 className="t-section mt-3">Eight workbooks</h2>
               </div>
               <p className="max-w-md text-[15px] leading-relaxed text-ink-soft">
-                Every one of them is sold on Etsy, delivered instantly, and
-                priced between six and nine dollars.
+                Every one of them is delivered instantly and priced between
+                six and nine dollars.
               </p>
             </div>
 
@@ -245,7 +245,7 @@ export default function Home() {
               {products.map((p) => (
                 <li key={p.id}>
                   <a
-                    href={listingUrl(p.id)}
+                    href={listingUrl(p)}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
                   >
                     <span
@@ -303,7 +303,7 @@ export default function Home() {
                         className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium"
                         style={{ color: p.accent }}
                       >
-                        View on Etsy
+                        View product
                         <span
                           aria-hidden
                           className="transition-transform duration-200 group-hover:translate-x-1"
@@ -387,7 +387,7 @@ export default function Home() {
         <section className="bg-ink py-20 text-paper sm:py-24">
           <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
             <h2 className="t-section mx-auto max-w-2xl text-balance">
-              Everything is on Etsy, and everything downloads immediately.
+              Every one of them downloads the moment you pay.
             </h2>
             <p className="t-lede mx-auto mt-5 max-w-xl text-paper/70">
               Buyer protection, instant delivery, and no account to create with
@@ -409,10 +409,10 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-[13.5px] text-slate sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>
             © {new Date().getFullYear()} NumeraSheets. Templates are sold and
-            delivered through Etsy.
+            delivered through {SHOP_NAME}.
           </p>
           <a className="transition-colors hover:text-ink" href={SHOP_URL}>
-            numerasheets.etsy.com
+            {SHOP_URL.replace("https://", "")}
           </a>
         </div>
       </footer>
