@@ -25,27 +25,48 @@ const steps = [
   { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets. Set a couple of cells and it runs." },
 ];
 
+const SITE_URL = "https://numerasheets.vercel.app";
+
+/**
+ * Organization + WebSite, and deliberately NOT Product/Offer.
+ *
+ * Google splits product markup in two: "merchant listings" for pages where the
+ * customer can buy from you, and "product snippets" for pages where they
+ * can't. Nobody buys here — every card leaves for Etsy — so an Offer with a
+ * price and InStock availability on this page would assert something untrue.
+ *
+ * ItemList was no better: a host carousel has to link to detail pages on the
+ * same site (ours are on etsy.com), and Product isn't one of the types
+ * carousels support (Course list, Movie, Recipe, Restaurant). It produced no
+ * rich result at all.
+ *
+ * What is left is what is actually true and actually useful: who this brand is
+ * and where else it lives, which is what entity understanding and AI answers
+ * feed on.
+ */
 export default function Home() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "NumeraSheets spreadsheet templates",
-    itemListElement: products.map((p, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Product",
-        name: p.name,
-        description: p.does,
-        url: listingUrl(p.id),
-        offers: {
-          "@type": "Offer",
-          price: p.price.toFixed(2),
-          priceCurrency: "USD",
-          availability: "https://schema.org/InStock",
-        },
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "NumeraSheets",
+        url: SITE_URL,
+        logo: `${SITE_URL}/mark.png`,
+        description:
+          "Excel and Google Sheets templates that calculate, flag and total on their own. Sold as instant downloads on Etsy.",
+        sameAs: [SHOP_URL, "https://www.pinterest.com/numerasheets/"],
       },
-    })),
+      {
+        "@type": "WebSite",
+        "@id": `${SITE_URL}/#website`,
+        url: SITE_URL,
+        name: "NumeraSheets",
+        publisher: { "@id": `${SITE_URL}/#organization` },
+        inLanguage: "en-US",
+      },
+    ],
   };
 
   return (
