@@ -52,6 +52,11 @@ export const metadata: Metadata = {
     description,
   },
   alternates: { canonical: siteUrl },
+  // Proves to Pinterest that we own this domain, so Pins linking here are
+  // attributed to the NumeraSheets account and report per-Pin analytics.
+  verification: {
+    other: { "p:domain_verify": "c5a980820f5face6bc6c73e484bb766a" },
+  },
 };
 
 export default function RootLayout({
