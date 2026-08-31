@@ -8,12 +8,16 @@ const PAYHIP_SHOP = "https://payhip.com/numerasheets";
  *            subdomain returns 4% of the fee through Share & Save.
  * "payhip" — better margin, and the storefront is ours rather than rented.
  *
- * Currently "payhip" for a blunt reason: Etsy Payments is still pending
- * Payoneer's identity check, so Etsy literally cannot receive an order.
- * Sending a buyer there today converts to nothing. Flip this back once Etsy
- * clears — the ranking it earns is worth more than the margin it costs.
+ * "etsy" since 31/08/2026. Payoneer cleared its identity check, so Etsy
+ * Payments can finally take an order — and a conversion there earns organic
+ * ranking, which is worth more than the margin Payhip saves. Payhip stays
+ * live and is one line away if Etsy ever stops being able to receive.
  */
-export const BUY_ON: "etsy" | "payhip" = "payhip";
+// O `as` nao e decoracao: com anotacao simples, o TypeScript estreita o const
+// pelo inicializador e toda comparacao com o OUTRO valor vira erro
+// ("no overlap"). Ou seja, o interruptor so compilava na direcao em que ja
+// estava. A assercao mantem o tipo largo e deixa virar nos dois sentidos.
+export const BUY_ON = "etsy" as "etsy" | "payhip";
 
 export const SHOP_URL = BUY_ON === "payhip" ? PAYHIP_SHOP : ETSY_SHOP;
 
@@ -46,9 +50,9 @@ export const products: Product[] = [
   {
     id: "4564974686",
     payhip: "J5gqs",
-    name: "Invoice & Expense Tracker",
-    does: "Marks an invoice overdue the moment its due date passes, and nets expenses off the money that actually came in.",
-    standout: "Status column",
+    name: "Invoice Tracker & Generator",
+    does: "Marks an invoice overdue the moment its due date passes, then builds the printable invoice out of the row you already logged.",
+    standout: "Create Invoice tab",
     price: 6.5,
     accent: "#D99C2B",
     shot: "/shots/invoice.png",
@@ -130,6 +134,17 @@ export const products: Product[] = [
     accent: "#1D6A73",
     shot: "/shots/homeschool.png",
     tags: ["Homeschool", "Records"],
+  },
+  {
+    id: "4565972670",
+    payhip: "8EN4G",
+    name: "Assignment Tracker",
+    does: "Divides by the weight that has actually been graded, so a final you have not sat yet never counts as a zero.",
+    standout: "What you need on the final",
+    price: 3,
+    accent: "#6B4FA0",
+    shot: "/shots/assignment.png",
+    tags: ["Students", "Grades"],
   },
 ];
 
