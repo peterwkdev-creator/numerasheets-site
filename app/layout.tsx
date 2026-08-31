@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -66,7 +67,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Sem isto o projeto nao reporta visita nenhuma, e a medicao de
+            trafego do site fica cega -- era o caso ate 31/08/2026. */}
+        <Analytics />
+      </body>
     </html>
   );
 }
