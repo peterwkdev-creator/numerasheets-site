@@ -7,6 +7,7 @@ import {
   products,
   SHOP_NAME,
   SHOP_URL,
+  SITE_URL,
   SpreadsheetCountWord,
 } from "@/lib/products";
 
@@ -34,7 +35,6 @@ const steps = [
   { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets — or, for the Notion template, press Duplicate. Set a couple of cells and it runs." },
 ];
 
-const SITE_URL = "https://numerasheets.vercel.app";
 
 /**
  * Organization + WebSite, and deliberately NOT Product/Offer.

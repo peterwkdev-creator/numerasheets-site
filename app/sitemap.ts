@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/products";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://numerasheets.vercel.app",
+      url: SITE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,

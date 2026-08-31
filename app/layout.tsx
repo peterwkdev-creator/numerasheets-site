@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_URL } from "@/lib/products";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -16,13 +17,12 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
 });
 
-const siteUrl = "https://numerasheets.vercel.app";
 const title = "NumeraSheets — spreadsheet templates that do the math for you";
 const description =
   "Nine Excel and Google Sheets workbooks that calculate, flag and total on their own, plus a Notion template that does the same. Instant download, no macros, no subscription.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: title,
     template: "%s — NumeraSheets",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description,
-    url: siteUrl,
+    url: SITE_URL,
     siteName: "NumeraSheets",
     type: "website",
     locale: "en_US",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title,
     description,
   },
-  alternates: { canonical: siteUrl },
+  alternates: { canonical: SITE_URL },
   // Proves to Pinterest that we own this domain, so Pins linking here are
   // attributed to the NumeraSheets account and report per-Pin analytics.
   verification: {

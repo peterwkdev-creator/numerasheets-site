@@ -1,3 +1,13 @@
+/**
+ * Endereco canonico do site. Estava escrito a mao em quatro arquivos
+ * (layout, page, robots, sitemap) -- trocar de dominio exigia acertar os
+ * quatro, e esquecer um deixa canonical, OpenGraph ou sitemap apontando para
+ * o lugar errado sem quebrar build nenhum. Uma constante so.
+ *
+ * Apex, nao www: o www redireciona para ca com 308.
+ */
+export const SITE_URL = "https://numerasheets.com";
+
 const ETSY_SHOP = "https://numerasheets.etsy.com";
 const PAYHIP_SHOP = "https://payhip.com/numerasheets";
 

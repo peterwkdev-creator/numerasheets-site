@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
 
+import { SITE_URL } from "@/lib/products";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://numerasheets.vercel.app/sitemap.xml",
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
