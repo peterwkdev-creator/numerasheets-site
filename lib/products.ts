@@ -146,16 +146,54 @@ export const products: Product[] = [
     shot: "/shots/assignment.png",
     tags: ["Students", "Grades"],
   },
+  {
+    id: "4566082074",
+    payhip: "VbQw2",
+    name: "Assignment Tracker for Notion",
+    does: "The same weighted-grade maths as the spreadsheet, built as three connected Notion databases you duplicate in one click.",
+    standout: "Notion, not a file",
+    price: 7.5,
+    accent: "#4B3A7A",
+    shot: "/shots/notion.png",
+    tags: ["Students", "Notion"],
+  },
 ];
+
+/**
+ * Tamanho do catalogo por extenso, derivado do array.
+ *
+ * Estava escrito a mao em quatro lugares e ficou dizendo "eight" com nove
+ * produtos na lista o tempo todo em que o nono esteve no ar. Derivar mata a
+ * classe inteira de erro: acrescentar um produto acerta a copy sozinho.
+ */
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six",
+  "seven", "eight", "nine", "ten", "eleven", "twelve",
+];
+
+export const productCountWord =
+  NUMBER_WORDS[products.length] ?? String(products.length);
+
+/** A mesma palavra com inicial maiuscula, para inicio de frase e titulo. */
+export const ProductCountWord =
+  productCountWord.charAt(0).toUpperCase() + productCountWord.slice(1);
+
+/** Quantos sao planilhas, para a copy nao prometer .xlsx pelo catalogo todo. */
+const spreadsheets = products.filter((p) => !p.tags.includes("Notion"));
+
+export const SpreadsheetCountWord = (() => {
+  const w = NUMBER_WORDS[spreadsheets.length] ?? String(spreadsheets.length);
+  return w.charAt(0).toUpperCase() + w.slice(1);
+})();
 
 export const faqs: { q: string; a: string }[] = [
   {
     q: "Do I need Microsoft Excel?",
-    a: "No. Every workbook is a plain .xlsx that opens in Excel, and imports into Google Sheets through File → Import → Upload with the formulas, dropdowns and named ranges intact. Excel for Mac works too. Apple Numbers opens the files but is unreliable with named ranges, so use Excel or Sheets.",
+    a: "No. Every spreadsheet here is a plain .xlsx that opens in Excel, and imports into Google Sheets through File → Import → Upload with the formulas, dropdowns and named ranges intact. Excel for Mac works too. Apple Numbers opens the files but is unreliable with named ranges, so use Excel or Sheets. The one exception is Assignment Tracker for Notion, which is not a file at all — it is a Notion template you duplicate, and a free Notion account is enough.",
   },
   {
     q: "How do I get the files?",
-    a: "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. You download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence.",
+    a: "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. For the spreadsheets you download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence. For the Notion template you download a one-page PDF with your duplication link.",
   },
   {
     q: "Are there macros, add-ins or a subscription?",
@@ -163,11 +201,11 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Do the screenshots show the real file?",
-    a: "Yes, and that is deliberate. Every product image is a render of the actual workbook after it recalculated — not a mockup, not an AI image. What you see in the pictures is what opens on your machine.",
+    a: "Yes, and that is deliberate. Every product image is a render of the real thing after it calculated — the actual workbook, or the actual published Notion page. Not a mockup, not an AI image. What you see in the pictures is what opens on your machine.",
   },
   {
     q: "What if I run out of rows?",
-    a: "You are unlikely to. The entry sheets ship with thousands of pre-formatted rows and the dashboard totals reach well past them. If you do get there, copy the last formatted row and paste it down; the formulas adjust themselves.",
+    a: "You are unlikely to. The entry sheets ship with thousands of pre-formatted rows and the dashboard totals reach well past them. If you do get there, copy the last formatted row and paste it down; the formulas adjust themselves. In Notion the question does not arise — you add rows for as long as you need them.",
   },
   {
     q: "Can I get a refund?",

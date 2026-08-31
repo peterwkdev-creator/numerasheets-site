@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 const siteUrl = "https://numerasheets.vercel.app";
 const title = "NumeraSheets — spreadsheet templates that do the math for you";
 const description =
-  "Eight Excel and Google Sheets workbooks that calculate, flag and total on their own. Instant download, no macros, no subscription.";
+  "Nine Excel and Google Sheets workbooks that calculate, flag and total on their own, plus a Notion template that does the same. Instant download, no macros, no subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
     "wedding planner spreadsheet",
     "debt payoff tracker",
     "homeschool planner",
+    "notion template",
+    "assignment tracker",
   ],
   authors: [{ name: "NumeraSheets" }],
   openGraph: {

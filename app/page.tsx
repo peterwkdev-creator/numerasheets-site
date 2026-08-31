@@ -1,5 +1,14 @@
 import Image from "next/image";
-import { faqs, listingUrl, products, SHOP_NAME, SHOP_URL } from "@/lib/products";
+import {
+  faqs,
+  listingUrl,
+  ProductCountWord,
+  productCountWord,
+  products,
+  SHOP_NAME,
+  SHOP_URL,
+  SpreadsheetCountWord,
+} from "@/lib/products";
 
 const differences = [
   {
@@ -10,19 +19,19 @@ const differences = [
   {
     n: "02",
     h: "Real screenshots, never mockups",
-    p: "Every picture on every product page is a render of the actual workbook after it recalculated. Nothing is drawn, staged or generated. What is in the images is what opens on your machine.",
+    p: "Every picture on every product page is a render of the real thing after it calculated — the actual workbook, or the actual published Notion page. Nothing is drawn, staged or generated.",
   },
   {
     n: "03",
     h: "A guide, not a mystery",
-    p: "Each download carries a Start Here PDF, the empty workbook, and a worked example filled with made-up data — so you can see the file working before you type anything into it.",
+    p: "Every download carries a Start Here PDF. The spreadsheets add the empty workbook and a worked example filled with made-up data; the Notion template arrives already filled with one — so you see it working before you type anything.",
   },
 ];
 
 const steps = [
   { n: "1", h: `Buy on ${SHOP_NAME}`, p: `Checkout is handled by ${SHOP_NAME}. No account to create with me, and nothing to wait for.` },
   { n: "2", h: "Download instantly", p: "The files are released the moment payment clears. Nothing to wait for, nobody to message." },
-  { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets. Set a couple of cells and it runs." },
+  { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets — or, for the Notion template, press Duplicate. Set a couple of cells and it runs." },
 ];
 
 const SITE_URL = "https://numerasheets.vercel.app";
@@ -147,9 +156,10 @@ export default function Home() {
             </h1>
 
             <p className="t-lede mt-6 max-w-2xl text-paper/72">
-              Eight Excel and Google Sheets workbooks that calculate, flag and
-              total on their own. You type what happened; the file works out
-              what it means.
+              {SpreadsheetCountWord} Excel and Google Sheets workbooks that
+              calculate, flag and total on their own, plus one Notion template
+              that does the same. You type what happened; it works out what it
+              means.
             </p>
 
             {/* Formula bar: what these templates actually contain. */}
@@ -182,7 +192,7 @@ export default function Home() {
                 href="#templates"
                 className="inline-flex items-center justify-center rounded-full border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
               >
-                See all eight
+                See all {productCountWord}
               </a>
             </div>
           </div>
@@ -192,7 +202,7 @@ export default function Home() {
             <ul className="mx-auto grid max-w-6xl grid-cols-2 gap-y-4 px-5 py-5 text-[13px] text-paper/62 sm:px-8 lg:grid-cols-4">
               {[
                 "Instant download",
-                "Excel + Google Sheets",
+                "Excel, Sheets + Notion",
                 "No macros, no sign-up",
                 "Buy once, keep forever",
               ].map((t) => (
@@ -233,7 +243,7 @@ export default function Home() {
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
               <div>
                 <p className="t-label text-slate">The catalogue</p>
-                <h2 className="t-section mt-3">Eight workbooks</h2>
+                <h2 className="t-section mt-3">{ProductCountWord} templates</h2>
               </div>
               <p className="max-w-md text-[15px] leading-relaxed text-ink-soft">
                 Every one of them is delivered instantly, and none of them
@@ -257,7 +267,7 @@ export default function Home() {
                     <div className="relative aspect-square overflow-hidden bg-cool">
                       <Image
                         src={p.shot}
-                        alt={`${p.name} — screenshot of the actual workbook`}
+                        alt={`${p.name} — screenshot of the real thing`}
                         width={900}
                         height={900}
                         sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 90vw"
