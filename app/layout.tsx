@@ -59,6 +59,10 @@ export const metadata: Metadata = {
   // attributed to the NumeraSheets account and report per-Pin analytics.
   verification: {
     other: { "p:domain_verify": "c5a980820f5face6bc6c73e484bb766a" },
+    // Token publico do Search Console: aparece no HTML para qualquer visitante,
+    // entao versiona-lo nao expoe nada. Nao remover depois de verificado -- o
+    // Google reconfere periodicamente e a propriedade cai se a tag sumir.
+    google: "lqhciSQPtUNdh3d7rm58pBCr5Y2p2KmjFgfIl1mKoRA",
   },
 };
 
