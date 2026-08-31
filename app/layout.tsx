@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL } from "@/lib/products";
+import { SITE_URL, SpreadsheetCountWord } from "@/lib/products";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -18,8 +18,14 @@ const plexMono = IBM_Plex_Mono({
 });
 
 const title = "NumeraSheets — spreadsheet templates that do the math for you";
+// A contagem sai de `products`, nao escrita a mao. O corpo da pagina ja usava
+// os helpers derivados enquanto esta description cravava "Nine" -- as duas
+// estavam certas em 31/08/2026 por coincidencia, e divergiriam sozinhas assim
+// que um produto entrasse no catalogo.
 const description =
-  "Nine Excel and Google Sheets workbooks that calculate, flag and total on their own, plus a Notion template that does the same. Instant download, no macros, no subscription.";
+  `${SpreadsheetCountWord} Excel and Google Sheets workbooks that calculate, ` +
+  "flag and total on their own, plus a Notion template that does the same. " +
+  "Instant download, no macros, no subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
