@@ -6,10 +6,10 @@ import heroSheet from "@/lib/previews/debt-hero.json";
 import {
   faqs,
   hoverShot,
-  listingUrl,
   ProductCountWord,
   productCountWord,
   products,
+  productUrl,
   SHOP_NAME,
   SHOP_URL,
   SITE_URL,
@@ -271,8 +271,18 @@ export default function Home() {
             <ul className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {products.map((p, i) => (
                 <Reveal as="li" key={p.id} delay={(i % 3) * 90}>
+                  {/*
+                    O cartao aponta para a NOSSA pagina do produto, nao direto
+                    para a loja. O rotulo ja dizia "View product", e a pagina
+                    de produto e literalmente isso -- ate 01/09/2026 ela nao
+                    existia e o link tinha de pular para a loja.
+                    Custa um clique a mais antes da loja e paga em dois: as
+                    paginas deixam de ser orfas (sitemap sozinho nao basta), e
+                    quem chega a loja chega decidido -- e conversao e fator
+                    documentado de ranqueamento na Etsy.
+                  */}
                   <a
-                    href={listingUrl(p)}
+                    href={productUrl(p)}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
                   >
                     <span

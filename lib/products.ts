@@ -39,6 +39,18 @@ export type Product = {
   id: string;
   /** Payhip product slug, the bit after /b/. */
   payhip: string;
+  /**
+   * Route segment of this product's own page: /templates/<slug>.
+   * Carries the measured search term, because the slug is the part of the
+   * URL a search engine reads.
+   */
+  slug: string;
+  /**
+   * The exact term this product's page targets, measured in Etsy Marketplace
+   * Insights (`Etsy/PRICING-AUDIT.md`) -- not a guess. Kept on the product so
+   * the page copy and the listing can never drift onto different terms.
+   */
+  term: string;
   name: string;
   /** What the workbook works out on its own — the reason it costs money. */
   does: string;
@@ -64,10 +76,15 @@ export const listingUrl = (p: Product) =>
     ? `https://payhip.com/b/${p.payhip}`
     : `${ETSY_SHOP}/listing/${p.id}`;
 
+/** The product's own page on this site. Built in one place, like listingUrl. */
+export const productUrl = (p: Product) => `${SITE_URL}/templates/${p.slug}`;
+
 export const products: Product[] = [
   {
     id: "4564974686",
     payhip: "J5gqs",
+    slug: "invoice-tracker-spreadsheet",
+    term: "invoice tracker",
     name: "Invoice Tracker & Generator",
     does: "Marks an invoice overdue the moment its due date passes, then builds the printable invoice out of the row you already logged.",
     standout: "Create Invoice tab",
@@ -79,6 +96,8 @@ export const products: Product[] = [
   {
     id: "4564987897",
     payhip: "dkuM9",
+    slug: "rental-property-spreadsheet",
+    term: "rental property spreadsheet",
     name: "Rental Property Tracker",
     does: "Reads each month's rent against what was paid and calls it Paid, Partial, Due or Late without you deciding.",
     standout: "Per-property yield",
@@ -90,6 +109,8 @@ export const products: Product[] = [
   {
     id: "4565000823",
     payhip: "mR8aG",
+    slug: "etsy-seller-spreadsheet",
+    term: "etsy seller spreadsheet",
     name: "Seller Bookkeeping Spreadsheet",
     does: "Takes marketplace fees, shipping and cost of goods off each order, so profit is the number you actually keep.",
     standout: "Fee-by-fee breakdown",
@@ -101,6 +122,8 @@ export const products: Product[] = [
   {
     id: "4565059738",
     payhip: "MPD82",
+    slug: "social-media-content-calendar",
+    term: "social media content calendar",
     name: "Social Media Content Calendar",
     does: "Counts down to each post's date, flags what is overdue, and ranks your content pillars by engagement rate.",
     standout: "Four-state flag",
@@ -112,6 +135,8 @@ export const products: Product[] = [
   {
     id: "4565079805",
     payhip: "j6huB",
+    slug: "debt-payoff-tracker",
+    term: "debt payoff tracker",
     name: "Debt Payoff Tracker",
     does: "Projects snowball and avalanche side by side, month by month, to the date each debt finally clears.",
     standout: "120-month projection",
@@ -123,6 +148,8 @@ export const products: Product[] = [
   {
     id: "4565130836",
     payhip: "yAZjb",
+    slug: "wedding-planner-spreadsheet",
+    term: "wedding planner spreadsheet",
     name: "Wedding Planner Spreadsheet",
     does: "Dates every checklist task backwards from your wedding day — move the date and all 22 deadlines move with it.",
     standout: "Self-dating checklist",
@@ -134,6 +161,8 @@ export const products: Product[] = [
   {
     id: "4565142164",
     payhip: "aDNb7",
+    slug: "small-business-bookkeeping-spreadsheet",
+    term: "small business bookkeeping",
     name: "Small Business Bookkeeping",
     does: "Files every entry into the right quarter from its date, and applies your own deductible percentage per category.",
     standout: "Quarter from date",
@@ -145,6 +174,8 @@ export const products: Product[] = [
   {
     id: "4565150287",
     payhip: "XwMps",
+    slug: "homeschool-planner-spreadsheet",
+    term: "homeschool planner",
     name: "Homeschool Planner & Records",
     does: "Counts a day with four subjects as one school day, and tracks days and hours against both of your targets.",
     standout: "Days and hours at once",
@@ -156,6 +187,8 @@ export const products: Product[] = [
   {
     id: "4565972670",
     payhip: "8EN4G",
+    slug: "assignment-tracker-spreadsheet",
+    term: "assignment tracker",
     name: "Assignment Tracker",
     does: "Divides by the weight that has actually been graded, so a final you have not sat yet never counts as a zero.",
     standout: "What you need on the final",
@@ -167,6 +200,8 @@ export const products: Product[] = [
   {
     id: "4566082074",
     payhip: "VbQw2",
+    slug: "assignment-tracker-notion-template",
+    term: "notion assignment tracker",
     name: "Assignment Tracker for Notion",
     does: "The same weighted-grade maths as the spreadsheet, built as three connected Notion databases you duplicate in one click.",
     standout: "Notion, not a file",
