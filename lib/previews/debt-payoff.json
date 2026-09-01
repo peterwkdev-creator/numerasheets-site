@@ -1,0 +1,621 @@
+{
+ "product": "debt-payoff-tracker",
+ "sheet": "Dashboard",
+ "range": "B2:F24",
+ "generated": "2026-08-31",
+ "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
+ "cols": [
+  {
+   "letter": "B",
+   "width": 26.0
+  },
+  {
+   "letter": "C",
+   "width": 13.0
+  },
+  {
+   "letter": "D",
+   "width": 14.0
+  },
+  {
+   "letter": "E",
+   "width": 16.0
+  },
+  {
+   "letter": "F",
+   "width": 9.0
+  }
+ ],
+ "rows": [
+  {
+   "n": 2,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Debt Payoff Tracker",
+     "b": true,
+     "sz": 16.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "cells": [
+    {
+     "col": "B",
+     "v": "EXAMPLE FILE - five made-up debts, so you can see how it looks. Use the other file for your own.",
+     "sz": 10.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "cells": [
+    {
+     "col": "B",
+     "v": "TOTAL DEBT",
+     "span": 2,
+     "b": true,
+     "sz": 10.0
+    },
+    {
+     "col": "D",
+     "v": "MONTHLY PAYMENT",
+     "span": 3,
+     "b": true,
+     "sz": 10.0
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "cells": [
+    {
+     "col": "B",
+     "v": "$34,530",
+     "span": 2,
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "$1,020",
+     "span": 3,
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Which strategy wins on your numbers",
+     "b": true,
+     "sz": 12.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Strategy",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "Months",
+     "b": true
+    },
+    {
+     "col": "D",
+     "v": "Debt-free",
+     "b": true
+    },
+    {
+     "col": "E",
+     "v": "Interest paid",
+     "b": true
+    },
+    {
+     "col": "F",
+     "v": "Total paid",
+     "b": true
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Snowball"
+    },
+    {
+     "col": "C",
+     "v": "42",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "Jan 2030"
+    },
+    {
+     "col": "E",
+     "v": "$8,050.84",
+     "num": true
+    },
+    {
+     "col": "F",
+     "v": "$42,580.84",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Avalanche"
+    },
+    {
+     "col": "C",
+     "v": "41",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "Dec 2029"
+    },
+    {
+     "col": "E",
+     "v": "$6,746.53",
+     "num": true
+    },
+    {
+     "col": "F",
+     "v": "$41,276.53",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Avalanche costs less. Snowball clears your first debt sooner - pick the one you will actually stick to.",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Snowball payoff order",
+     "b": true,
+     "sz": 12.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Avalanche payoff order",
+     "b": true,
+     "sz": 12.0
+    },
+    {
+     "col": "F",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Debt",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "Cleared",
+     "b": true
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Debt",
+     "b": true
+    },
+    {
+     "col": "F",
+     "v": "Cleared",
+     "b": true
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Store Card"
+    },
+    {
+     "col": "C",
+     "v": "Nov 2026"
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Credit Card A"
+    },
+    {
+     "col": "F",
+     "v": "Sep 2028"
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Credit Card B"
+    },
+    {
+     "col": "C",
+     "v": "Aug 2027"
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Credit Card B"
+    },
+    {
+     "col": "F",
+     "v": "Dec 2028"
+    }
+   ]
+  },
+  {
+   "n": 22,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Car Loan"
+    },
+    {
+     "col": "C",
+     "v": "May 2028"
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Store Card"
+    },
+    {
+     "col": "F",
+     "v": "Dec 2028"
+    }
+   ]
+  },
+  {
+   "n": 23,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Credit Card A"
+    },
+    {
+     "col": "C",
+     "v": "Apr 2029"
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Car Loan"
+    },
+    {
+     "col": "F",
+     "v": "Feb 2029"
+    }
+   ]
+  },
+  {
+   "n": 24,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Student Loan"
+    },
+    {
+     "col": "C",
+     "v": "Jan 2030"
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "Student Loan"
+    },
+    {
+     "col": "F",
+     "v": "Dec 2029"
+    }
+   ]
+  }
+ ]
+}

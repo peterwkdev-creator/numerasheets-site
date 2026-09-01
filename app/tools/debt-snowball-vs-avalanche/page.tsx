@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Calculator from "./Calculator";
+import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
+import preview from "@/lib/previews/debt-payoff.json";
 import { SITE_URL, listingUrl, products } from "@/lib/products";
 
 const title = "Debt snowball vs avalanche calculator";
@@ -116,6 +118,21 @@ export default function Page() {
               acting on them.
             </p>
           </div>
+        </section>
+
+        <section className="mt-20 border-t border-rule pt-12">
+          <p className="text-[12px] uppercase tracking-[0.09em] text-slate">
+            The spreadsheet, live
+          </p>
+          <h2 className="t-section mt-3 max-w-2xl text-balance text-[1.75rem]">
+            This is the file, not a picture of it.
+          </h2>
+          <p className="mt-4 max-w-2xl text-[15.5px] leading-relaxed text-ink-soft">
+            The dashboard below is the example workbook after it calculated —
+            the same five debts you can edit above, worked out by the file
+            itself. Scroll it, select the numbers, check the arithmetic.
+          </p>
+          <SheetPreview data={preview as PreviewData} className="mt-8" />
         </section>
 
         {debt ? (
