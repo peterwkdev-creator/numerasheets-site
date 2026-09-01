@@ -86,6 +86,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${archivo.variable} ${plexMono.variable}`}>
       <body>
+        {/* Os blocos revelados ao rolar comecam invisiveis e o JS os mostra.
+            Sem JS isso deixaria a pagina em branco -- esta regra devolve a
+            visibilidade. Fica aqui, e nao no componente, para nao repetir uma
+            vez por instancia. */}
+        <noscript>
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         {children}
         {/* Sem isto o projeto nao reporta visita nenhuma, e a medicao de
             trafego do site fica cega -- era o caso ate 31/08/2026. */}

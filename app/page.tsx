@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
 import {
@@ -189,13 +190,22 @@ export default function Home() {
            {/* A planilha, calculada de verdade. Nao e mockup nem captura: os
                valores saem do .xlsx depois de o LibreOffice recalcular, via
                Products/_shared/export_preview.py. */}
-           <div className="min-w-0">
+           <div className="relative min-w-0">
+             <div
+               aria-hidden
+               className="pointer-events-none absolute -inset-10 -z-0 opacity-70"
+               style={{
+                 background:
+                   "radial-gradient(58% 52% at 50% 44%, rgba(217,156,43,0.20), rgba(217,156,43,0) 70%)",
+               }}
+             />
              <SheetPreview
                data={heroSheet as PreviewData}
                compact
                caption={null}
+               className="relative z-[1]"
              />
-             <p className="mt-3 text-[13px] text-paper/55">
+             <p className="relative z-[1] mt-3 text-[13px] text-paper/55">
                A real dashboard from one of the workbooks, as it calculates.
                Nothing here was typed for this page.
              </p>
@@ -257,8 +267,8 @@ export default function Home() {
             </div>
 
             <ul className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((p) => (
-                <li key={p.id}>
+              {products.map((p, i) => (
+                <Reveal as="li" key={p.id} delay={(i % 3) * 90}>
                   <a
                     href={listingUrl(p)}
                     className="group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
@@ -328,7 +338,7 @@ export default function Home() {
                       </span>
                     </div>
                   </a>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
