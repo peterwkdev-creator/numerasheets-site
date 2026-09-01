@@ -33,6 +33,21 @@ export type PreviewData = {
 /** Largura do Excel -> px. Menor no modo compacto, que vive no hero. */
 const px = (w: number, compact: boolean) => Math.round(w * (compact ? 5.4 : 7));
 
+/**
+ * Largura mínima para o número mais largo da coluna caber.
+ *
+ * Rede de segurança, não a fonte da largura: a largura certa vem do `.xlsx`.
+ * Existe porque em 01/09/2026 a coluna F saiu com 9.0 (um fallback do
+ * exportador) em vez de 16.0, e `$42,580.84` vazou para fora da célula no
+ * celular -- em silêncio, porque célula numérica é `whitespace-nowrap` e o
+ * estouro não quebra layout nenhum, só desenha por cima.
+ *
+ * Métrica medida na fonte mono do site: 6,3px por caractere a 11,5px, e a
+ * mesma proporção a 13px. `pad` acompanha o `px-1.5`/`px-2` das células.
+ */
+const minPx = (chars: number, compact: boolean) =>
+  chars === 0 ? 0 : Math.ceil(chars * (compact ? 6.3 : 7.15)) + (compact ? 13 : 17);
+
 export default function SheetPreview({
   data,
   className = "",
@@ -46,7 +61,18 @@ export default function SheetPreview({
   /** `null` esconde a legenda. Sem passar nada, usa a padrão. */
   caption?: string | null;
 }) {
-  const total = data.cols.reduce((a, c) => a + px(c.width, compact), 0);
+  // Maior número (em caracteres) de cada coluna -- só os numéricos, que são os
+  // que não quebram linha. Texto pode transbordar de propósito, como no Excel.
+  const maiorNum: Record<string, number> = {};
+  for (const row of data.rows)
+    for (const cell of row.cells)
+      if (cell.num && !cell.span)
+        maiorNum[cell.col] = Math.max(maiorNum[cell.col] ?? 0, cell.v.length);
+
+  const larg = (c: { letter: string; width: number }) =>
+    Math.max(px(c.width, compact), minPx(maiorNum[c.letter] ?? 0, compact));
+
+  const total = data.cols.reduce((a, c) => a + larg(c), 0);
   const pad = compact ? "px-1.5 py-[1px]" : "px-2 py-[3px]";
   const escala = compact ? 1.0 : 1.15;
   const rowHdr = compact ? 26 : 34;
@@ -80,7 +106,7 @@ export default function SheetPreview({
                 {data.cols.map((c) => (
                   <th
                     key={c.letter}
-                    style={{ width: px(c.width, compact) }}
+                    style={{ width: larg(c) }}
                     className="border-b border-r border-rule bg-cool py-1 text-center font-mono text-[11px] font-normal text-slate"
                   >
                     {c.letter}

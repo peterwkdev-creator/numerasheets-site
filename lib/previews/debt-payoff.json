@@ -2,7 +2,7 @@
  "product": "debt-payoff-tracker",
  "sheet": "Dashboard",
  "range": "B2:F24",
- "generated": "2026-08-31",
+ "generated": "2026-09-01",
  "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
  "cols": [
   {
@@ -23,7 +23,7 @@
   },
   {
    "letter": "F",
-   "width": 9.0
+   "width": 16.0
   }
  ],
  "rows": [
@@ -291,7 +291,7 @@
     },
     {
      "col": "D",
-     "v": "Jan 2030"
+     "v": "Feb 2030"
     },
     {
      "col": "E",
@@ -319,7 +319,7 @@
     },
     {
      "col": "D",
-     "v": "Dec 2029"
+     "v": "Jan 2030"
     },
     {
      "col": "E",
@@ -501,7 +501,7 @@
     },
     {
      "col": "C",
-     "v": "Nov 2026"
+     "v": "Dec 2026"
     },
     {
      "col": "D",
@@ -513,7 +513,7 @@
     },
     {
      "col": "F",
-     "v": "Sep 2028"
+     "v": "Oct 2028"
     }
    ]
   },
@@ -526,7 +526,7 @@
     },
     {
      "col": "C",
-     "v": "Aug 2027"
+     "v": "Sep 2027"
     },
     {
      "col": "D",
@@ -538,7 +538,7 @@
     },
     {
      "col": "F",
-     "v": "Dec 2028"
+     "v": "Jan 2029"
     }
    ]
   },
@@ -551,7 +551,7 @@
     },
     {
      "col": "C",
-     "v": "May 2028"
+     "v": "Jun 2028"
     },
     {
      "col": "D",
@@ -563,7 +563,7 @@
     },
     {
      "col": "F",
-     "v": "Dec 2028"
+     "v": "Jan 2029"
     }
    ]
   },
@@ -576,7 +576,7 @@
     },
     {
      "col": "C",
-     "v": "Apr 2029"
+     "v": "May 2029"
     },
     {
      "col": "D",
@@ -588,7 +588,7 @@
     },
     {
      "col": "F",
-     "v": "Feb 2029"
+     "v": "Mar 2029"
     }
    ]
   },
@@ -601,7 +601,7 @@
     },
     {
      "col": "C",
-     "v": "Jan 2030"
+     "v": "Feb 2030"
     },
     {
      "col": "D",
@@ -613,7 +613,7 @@
     },
     {
      "col": "F",
-     "v": "Dec 2029"
+     "v": "Jan 2030"
     }
    ]
   }

@@ -2,7 +2,7 @@
  "product": "debt-payoff-tracker",
  "sheet": "Dashboard",
  "range": "B6:F15",
- "generated": "2026-08-31",
+ "generated": "2026-09-01",
  "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
  "cols": [
   {
@@ -23,7 +23,7 @@
   },
   {
    "letter": "F",
-   "width": 9.0
+   "width": 16.0
   }
  ],
  "rows": [
@@ -188,7 +188,7 @@
     },
     {
      "col": "D",
-     "v": "Jan 2030"
+     "v": "Feb 2030"
     },
     {
      "col": "E",
@@ -216,7 +216,7 @@
     },
     {
      "col": "D",
-     "v": "Dec 2029"
+     "v": "Jan 2030"
     },
     {
      "col": "E",
