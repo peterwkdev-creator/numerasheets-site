@@ -50,6 +50,14 @@ export type Product = {
   tags: string[];
 };
 
+/**
+ * A captura que aparece no hover do cartão: a mesma base com sufixo `-2`.
+ * Gerada por `Products/_shared/export_card_shots.py` a partir da segunda
+ * imagem de listagem de cada produto. Derivar em vez de escrever à mão
+ * garante que nenhum produto fique com o par trocado.
+ */
+export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.png");
+
 /** The only place a product URL is built, so no link can miss the switch. */
 export const listingUrl = (p: Product) =>
   BUY_ON === "payhip"

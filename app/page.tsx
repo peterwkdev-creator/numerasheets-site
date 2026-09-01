@@ -1,9 +1,11 @@
 import Image from "next/image";
+import CardShot from "@/components/CardShot";
 import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
 import {
   faqs,
+  hoverShot,
   listingUrl,
   ProductCountWord,
   productCountWord,
@@ -279,16 +281,11 @@ export default function Home() {
                       style={{ backgroundColor: p.accent }}
                     />
 
-                    <div className="relative aspect-square overflow-hidden bg-cool">
-                      <Image
-                        src={p.shot}
-                        alt={`${p.name} — screenshot of the real thing`}
-                        width={900}
-                        height={900}
-                        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 90vw"
-                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.028]"
-                      />
-                    </div>
+                    <CardShot
+                      src={p.shot}
+                      hoverSrc={hoverShot(p)}
+                      alt={`${p.name} — screenshot of the real thing`}
+                    />
 
                     <div className="flex flex-1 flex-col p-5">
                       <div className="flex items-start justify-between gap-3">
