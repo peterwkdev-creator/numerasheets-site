@@ -7,7 +7,12 @@
   --color-ink-soft: #333a48;
   --color-paper: #faf7f1;
   --color-gold: #d99c2b;
-  --color-slate: #6b7280;
+  /* Era #6b7280, que dá 4,46:1 sobre --color-cool (#f4f6f8) e reprova no
+     limite de 4,5 da WCAG AA. O Lighthouse pegou: os numeros de linha da
+     prevIa de planilha e o rotulo "THE CATALOGUE" ficam sobre `cool`.
+     #656c78 da 4,88 sobre cool, 5,29 sobre branco e 4,95 sobre paper --
+     margem nos tres, e a diferenca a olho e imperceptivel. */
+  --color-slate: #656c78;
   --color-rule: #e3e6eb;
   --color-cool: #f4f6f8;
 
