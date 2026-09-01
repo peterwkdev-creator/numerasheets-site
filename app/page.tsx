@@ -1,4 +1,6 @@
 import Image from "next/image";
+import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
+import heroSheet from "@/lib/previews/debt-hero.json";
 import {
   faqs,
   listingUrl,
@@ -148,7 +150,12 @@ export default function Home() {
             }}
           />
 
-          <div className="relative mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:py-32">
+          {/* Duas colunas a partir de lg. O produto tem de estar na PRIMEIRA
+              dobra: o apelo visual de uma pagina e julgado em ~50 ms (Lindgaard
+              et al., 2006), e ate 31/08/2026 o hero era so texto -- quem batia
+              o olho nao via planilha nenhuma. Ver Etsy/DESIGN-PESQUISA. */}
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 lg:py-28">
+           <div className="min-w-0">
             <p className="t-label text-gold">Digital spreadsheet templates</p>
 
             <h1 className="t-display mt-5 max-w-4xl text-balance">
@@ -160,24 +167,6 @@ export default function Home() {
               calculate, flag and total on their own, plus one Notion template
               that does the same. You type what happened; it works out what it
               means.
-            </p>
-
-            {/* Formula bar: what these templates actually contain. */}
-            <div className="mt-9 max-w-xl overflow-hidden rounded-xl border border-white/14 bg-white/[0.055]">
-              <div className="flex items-stretch">
-                <span
-                  aria-hidden
-                  className="grid w-12 shrink-0 place-items-center border-r border-white/14 font-mono text-[13px] italic text-paper/45"
-                >
-                  fx
-                </span>
-                <code className="overflow-x-auto whitespace-nowrap px-4 py-3 font-mono text-[12.5px] leading-6 text-gold sm:text-[13.5px]">
-                  =IF(TODAY()&gt;$D2,&quot;Overdue&quot;,&quot;On track&quot;)
-                </code>
-              </div>
-            </div>
-            <p className="mt-3 text-[13.5px] text-paper/50">
-              Already written, in every file. You never see it unless you look.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -195,6 +184,22 @@ export default function Home() {
                 See all {productCountWord}
               </a>
             </div>
+           </div>
+
+           {/* A planilha, calculada de verdade. Nao e mockup nem captura: os
+               valores saem do .xlsx depois de o LibreOffice recalcular, via
+               Products/_shared/export_preview.py. */}
+           <div className="min-w-0">
+             <SheetPreview
+               data={heroSheet as PreviewData}
+               compact
+               caption={null}
+             />
+             <p className="mt-3 text-[13px] text-paper/55">
+               A real dashboard from one of the workbooks, as it calculates.
+               Nothing here was typed for this page.
+             </p>
+           </div>
           </div>
 
           {/* Trust strip */}

@@ -30,17 +30,26 @@ export type PreviewData = {
   rows: { n: number; cells: PreviewCell[] }[];
 };
 
-/** 7px por unidade de largura do Excel aproxima bem a proporção original. */
-const px = (w: number) => Math.round(w * 7);
+/** Largura do Excel -> px. Menor no modo compacto, que vive no hero. */
+const px = (w: number, compact: boolean) => Math.round(w * (compact ? 5.4 : 7));
 
 export default function SheetPreview({
   data,
   className = "",
+  compact = false,
+  caption,
 }: {
   data: PreviewData;
   className?: string;
+  /** Menos altura de linha e tipo menor, para caber no hero. */
+  compact?: boolean;
+  /** `null` esconde a legenda. Sem passar nada, usa a padrão. */
+  caption?: string | null;
 }) {
-  const total = data.cols.reduce((a, c) => a + px(c.width), 0);
+  const total = data.cols.reduce((a, c) => a + px(c.width, compact), 0);
+  const pad = compact ? "px-1.5 py-[1px]" : "px-2 py-[3px]";
+  const escala = compact ? 1.0 : 1.15;
+  const rowHdr = compact ? 26 : 34;
 
   return (
     <figure className={className}>
@@ -55,16 +64,23 @@ export default function SheetPreview({
 
         <div className="overflow-x-auto">
           <table
-            className="border-collapse text-[13px]"
-            style={{ minWidth: total + 40 }}
+            className={compact ? "border-collapse text-[11.5px]" : "border-collapse text-[13px]"}
+            // `width` explicita, nao `minWidth`: com `table-layout: fixed` e
+            // largura `auto`, a especificacao manda cair de volta para o
+            // algoritmo automatico -- e a coluna B chegava a 528px em vez de
+            // 140, escondendo todas as outras. Medido no DOM.
+            style={{ width: total + rowHdr, tableLayout: "fixed" }}
           >
             <thead>
               <tr>
-                <th className="sticky left-0 z-10 w-10 border-b border-r border-rule bg-cool" />
+                <th
+                  style={{ width: rowHdr }}
+                  className="sticky left-0 z-10 border-b border-r border-rule bg-cool"
+                />
                 {data.cols.map((c) => (
                   <th
                     key={c.letter}
-                    style={{ width: px(c.width) }}
+                    style={{ width: px(c.width, compact) }}
                     className="border-b border-r border-rule bg-cool py-1 text-center font-mono text-[11px] font-normal text-slate"
                   >
                     {c.letter}
@@ -82,24 +98,31 @@ export default function SheetPreview({
                     <td
                       colSpan={data.cols.length}
                       className="border-b border-rule"
-                      style={{ height: 22 }}
+                      style={{ height: compact ? 16 : 22 }}
                     />
                   ) : (
                     row.cells.map((cell) => {
                       const style: CSSProperties = {};
-                      if (cell.sz) style.fontSize = `${Math.round(cell.sz * 1.15)}px`;
+                      if (cell.sz) style.fontSize = `${Math.round(cell.sz * escala)}px`;
                       return (
                         <td
                           key={cell.col}
                           colSpan={cell.span}
                           style={style}
                           className={[
-                            "whitespace-nowrap border-b border-r border-rule px-2 py-[3px] align-middle",
+                            `whitespace-nowrap border-b border-r border-rule ${pad} align-middle`,
+                            cell.num ? "" : "overflow-visible",
                             cell.b ? "font-semibold text-ink" : "text-ink-soft",
                             cell.num ? "text-right font-mono tabular-nums" : "",
                           ].join(" ")}
                         >
-                          {cell.v}
+                          {cell.num ? (
+                            cell.v
+                          ) : (
+                            <span className="relative z-[1] block w-max max-w-none">
+                              {cell.v}
+                            </span>
+                          )}
                         </td>
                       );
                     })
@@ -111,10 +134,12 @@ export default function SheetPreview({
         </div>
       </div>
 
-      <figcaption className="mt-3 text-[13px] text-slate">
-        The {data.sheet} tab of the example workbook, exactly as it calculates —
-        every figure read from the file itself, not typed for this page.
-      </figcaption>
+      {caption === null ? null : (
+        <figcaption className="mt-3 text-[13px] text-slate">
+          {caption ??
+            `The ${data.sheet} tab of the example workbook, exactly as it calculates — every figure read from the file itself, not typed for this page.`}
+        </figcaption>
+      )}
     </figure>
   );
 }
