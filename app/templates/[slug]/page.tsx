@@ -92,6 +92,25 @@ export default async function Page({ params }: Params) {
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
       url: listingUrl(p),
+      // Apontado pelo Search Console em 02/09/2026 ("Listagens do
+      // comerciante"). E o UNICO dos quatro campos que ele pediu e que da
+      // para preencher com verdade:
+      //
+      //   `aggregateRating` e `review` -- a loja tem zero venda e zero
+      //     avaliacao. Preencher seria inventar avaliacao, que a politica de
+      //     spam de dados estruturados do Google proibe. Resolve-se sozinho
+      //     quando houver avaliacao real. **Nao preencher.**
+      //   `shippingDetails` -- download digital, nao existe frete.
+      //   `hasMerchantReturnPolicy` -- existe de verdade, e e esta: arquivo
+      //     digital nao volta. A frase equivalente esta VISIVEL logo abaixo
+      //     do botao, porque a marcacao nao pode afirmar o que o leitor nao
+      //     consegue ler.
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: ["US", "CA", "GB", "AU", "NZ"],
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnNotPermitted",
+      },
     },
   };
 
@@ -166,6 +185,18 @@ export default async function Page({ params }: Params) {
                 One payment · instant download
               </span>
             </div>
+
+            {/* Esta frase existe por dois motivos, nesta ordem: o comprador
+                merece saber antes de clicar, e o dado estruturado da pagina
+                (`hasMerchantReturnPolicy`) so pode afirmar o que a pagina
+                mostra -- a politica do Google exige que a marcacao represente
+                conteudo visivel ao leitor. Adicionada em 02/09/2026, depois de
+                o Search Console apontar o campo como faltando. */}
+            <p className="mt-3 text-[13.5px] leading-relaxed text-slate">
+              Digital download — the files are yours as soon as you pay, so
+              there are no returns. What the file does is shown above and in
+              the listing photos, before you buy.
+            </p>
           </div>
 
           <div className="overflow-hidden rounded-2xl border border-rule bg-white">
