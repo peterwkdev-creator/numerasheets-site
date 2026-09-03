@@ -45,6 +45,10 @@ export type Product = {
    * slug inventado ou vazio virar para "payhip" mandaria o comprador para um
    * 404 sem quebrar build nenhum. Nulo obriga `listingUrl` a decidir, e a
    * decisao esta escrita la.
+   *
+   * Em 02/09/2026 nenhum produto e nulo -- os dois que so existiam na Etsy
+   * foram publicados na Payhip no mesmo dia. O tipo e a guarda ficam: e o
+   * proximo produto so-Etsy que eles protegem.
    */
   payhip: string | null;
   /**
@@ -220,8 +224,7 @@ export const products: Product[] = [
   },
   {
     id: "4567686307",
-    // So na Etsy por enquanto: nao existe produto correspondente na Payhip.
-    payhip: null,
+    payhip: "jGRAN",
     slug: "cleaning-business-spreadsheet",
     term: "cleaning business",
     name: "Cleaning Business Spreadsheet",
@@ -234,7 +237,7 @@ export const products: Product[] = [
   },
   {
     id: "4567702601",
-    payhip: null,
+    payhip: "n05vg",
     slug: "travel-itinerary-template",
     term: "travel itinerary template",
     name: "Travel Itinerary & Trip Planner",
