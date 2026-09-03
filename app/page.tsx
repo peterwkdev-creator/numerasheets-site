@@ -9,8 +9,9 @@ import {
   maxPrice,
   ProductCountWord,
   productCountWord,
-  products,
   productUrl,
+  templates,
+  bundle,
   SHOP_NAME,
   SHOP_URL,
   SITE_URL,
@@ -270,7 +271,7 @@ export default function Home() {
             </div>
 
             <ul className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {products.map((p, i) => (
+              {templates.map((p, i) => (
                 <Reveal as="li" key={p.id} delay={(i % 3) * 90}>
                   {/*
                     O cartao aponta para a NOSSA pagina do produto, nao direto
@@ -349,6 +350,58 @@ export default function Home() {
                 </Reveal>
               ))}
             </ul>
+
+            {/*
+              O conjunto NAO entra na grade acima. Duas razoes, e as duas
+              importam: a grade se chama "N templates" e o bundle nao e um
+              template a mais (contaria os onze duas vezes), e uma oferta de
+              conjunto se vende dizendo a economia, o que um cartao igual aos
+              outros nao faz. `bundle` e opcional de proposito -- se ele sair
+              do catalogo, este bloco desaparece sozinho.
+            */}
+            {bundle && (
+              <Reveal>
+                <a
+                  href={productUrl(bundle)}
+                  className="group mt-6 flex flex-col gap-6 overflow-hidden rounded-2xl border border-rule bg-ink p-6 text-paper transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.44)] sm:flex-row sm:items-center sm:p-8"
+                >
+                  <div className="flex-1">
+                    <p className="t-label text-gold">Or take the set</p>
+                    <h3 className="mt-2.5 text-[22px] font-semibold leading-snug tracking-[-0.02em] sm:text-[26px]">
+                      {bundle.name}
+                    </h3>
+                    <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-paper/72">
+                      {bundle.does}
+                    </p>
+                  </div>
+
+                  <div className="shrink-0 sm:text-right">
+                    {/*
+                      Sem riscado, de proposito. A regra da casa e nao usar
+                      preco riscado (ver a memoria do projeto): riscado sugere
+                      um preco que vigorou e caiu, e este nunca vigorou -- e a
+                      soma das onze avulsas, que continuam a esse preco. Dito
+                      por extenso, a comparacao fica mais forte e e verdade.
+                    */}
+                    <p className="font-mono text-[13px] text-paper/60">
+                      USD 65.00 bought separately
+                    </p>
+                    <p className="mt-1 font-mono text-[32px] font-medium leading-none text-gold">
+                      ${bundle.price.toFixed(2)}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-medium text-paper">
+                      View the bundle
+                      <span
+                        aria-hidden
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </span>
+                  </div>
+                </a>
+              </Reveal>
+            )}
           </div>
         </section>
 

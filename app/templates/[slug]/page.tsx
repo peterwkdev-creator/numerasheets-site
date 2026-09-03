@@ -75,6 +75,7 @@ export default async function Page({ params }: Params) {
 
   const page = productPages[p.slug];
   const isNotion = p.tags.includes("Notion");
+  const isBundle = p.kind === "bundle";
 
   // Aqui o Product/Offer e honesto, ao contrario da home e da calculadora:
   // esta pagina e sobre UM produto, com um preco, e o `url` da oferta aponta
@@ -239,9 +240,11 @@ export default async function Page({ params }: Params) {
               ))}
             </ul>
             <p className="mt-4 text-[15px] leading-relaxed text-slate">
-              {isNotion
-                ? "Three connected Notion databases, duplicated into your own workspace in one click."
-                : "Every tab is in one workbook. Thousands of rows are already formatted, so there is no question of what happens when you run out."}
+              {isBundle
+                ? "One ZIP. Each of the eleven sits in its own folder with the workbook, a copy already filled in, the one-page guide and its own licence."
+                : isNotion
+                  ? "Three connected Notion databases, duplicated into your own workspace in one click."
+                  : "Every tab is in one workbook. Thousands of rows are already formatted, so there is no question of what happens when you run out."}
             </p>
           </div>
 
@@ -253,9 +256,11 @@ export default async function Page({ params }: Params) {
               {page.notDoes}
             </p>
             <p className="mt-4 text-[15px] leading-relaxed text-slate">
-              {isNotion
-                ? "Said here rather than after you have paid: it is a template, not a download."
-                : "It opens in Excel and in Google Sheets. No macros, nothing to install, no subscription — which is also why nothing in it can reach the internet on your behalf."}
+              {isBundle
+                ? "Every file opens in Excel and in Google Sheets, and each folder carries the licence that applies to it — the Debt Payoff one says the projection is an estimate, the Wedding one that deposit deadlines come from your supplier contracts."
+                : isNotion
+                  ? "Said here rather than after you have paid: it is a template, not a download."
+                  : "It opens in Excel and in Google Sheets. No macros, nothing to install, no subscription — which is also why nothing in it can reach the internet on your behalf."}
             </p>
           </div>
         </section>

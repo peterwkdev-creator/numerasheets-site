@@ -114,6 +114,20 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "One-person cleaning rounds priced per visit, who want to know which clients actually pay well for the hours they take.",
   },
+  "spreadsheet-bundle": {
+    // Aqui `sheets` nao sao abas: sao os onze arquivos. A secao da pagina se
+    // chama "What is inside", e para o conjunto o que esta dentro sao os
+    // produtos -- a lista de abas seria de onze workbooks diferentes.
+    sheets: ["Small Business Bookkeeping", "Seller Bookkeeping",
+             "Invoice & Expense Tracker", "Cleaning Business Tracker",
+             "Rental Property Tracker", "Social Media Content Calendar",
+             "Debt Payoff Tracker", "Wedding Planner", "Travel Planner",
+             "Homeschool Planner & Records", "Assignment Tracker"],
+    notDoes:
+      "It does not include the Notion template, which is not a file. Bought separately these eleven cost USD 65; the bundle does not add anything that is not already in one of them.",
+    forWho:
+      "People who want the whole set at once rather than picking one now and paying full price for the next.",
+  },
   "travel-itinerary-template": {
     sheets: ["Dashboard", "Trip", "Itinerary", "Budget", "Bookings", "Packing",
              "Charts", "On your phone"],

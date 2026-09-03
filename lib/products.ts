@@ -72,6 +72,18 @@ export type Product = {
   accent: string;
   shot: string;
   tags: string[];
+  /**
+   * `"bundle"` marca o conjunto -- as onze planilhas num download.
+   *
+   * Nao e decoracao de tipo: ele entra em `products` para ganhar pagina, rota,
+   * sitemap e `keywords` como qualquer outro, mas NAO pode entrar na contagem
+   * do catalogo. Sem esta marca a home passaria a dizer "Thirteen templates"
+   * com doze templates na lista -- o bundle nao e um decimo terceiro template,
+   * e os onze juntos, e contar assim seria contar duas vezes.
+   *
+   * Ausente = template normal.
+   */
+  kind?: "bundle";
 };
 
 /**
@@ -248,7 +260,33 @@ export const products: Product[] = [
     shot: "/shots/travel.png",
     tags: ["Travel", "Trip budget"],
   },
+  {
+    id: "4568054728",
+    // So na Etsy por enquanto -- e o caso exato para o qual o `null` existe.
+    payhip: null,
+    slug: "spreadsheet-bundle",
+    term: "small business spreadsheet bundle",
+    name: "Complete Bundle, 11 Spreadsheets",
+    does: "Puts every spreadsheet in the shop in one download, each in its own folder with the example file and the guide that comes with it.",
+    standout: "USD 65 of templates for 15",
+    price: 15,
+    accent: "#1F6F4A",
+    shot: "/shots/bundle.png",
+    tags: ["Everything", "One download"],
+    kind: "bundle",
+  },
 ];
+
+/**
+ * O catalogo de templates -- tudo menos o bundle.
+ *
+ * A home conta e lista a partir daqui; `products` continua sendo a lista
+ * inteira, que e o que alimenta rota, sitemap e `keywords`.
+ */
+export const templates = products.filter((p) => p.kind !== "bundle");
+
+/** O conjunto, quando existe. Renderizado como oferta propria, nao como cartao. */
+export const bundle = products.find((p) => p.kind === "bundle");
 
 /**
  * Tamanho do catalogo por extenso, derivado do array.
@@ -259,18 +297,18 @@ export const products: Product[] = [
  */
 const NUMBER_WORDS = [
   "zero", "one", "two", "three", "four", "five", "six",
-  "seven", "eight", "nine", "ten", "eleven", "twelve",
+  "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen",
 ];
 
 export const productCountWord =
-  NUMBER_WORDS[products.length] ?? String(products.length);
+  NUMBER_WORDS[templates.length] ?? String(templates.length);
 
 /** A mesma palavra com inicial maiuscula, para inicio de frase e titulo. */
 export const ProductCountWord =
   productCountWord.charAt(0).toUpperCase() + productCountWord.slice(1);
 
 /** Quantos sao planilhas, para a copy nao prometer .xlsx pelo catalogo todo. */
-const spreadsheets = products.filter((p) => !p.tags.includes("Notion"));
+const spreadsheets = templates.filter((p) => !p.tags.includes("Notion"));
 
 export const SpreadsheetCountWord = (() => {
   const w = NUMBER_WORDS[spreadsheets.length] ?? String(spreadsheets.length);
@@ -284,7 +322,10 @@ export const SpreadsheetCountWord = (() => {
  * coincidencia, e um produto mais caro o teria tornado mentira sem quebrar
  * build nenhum.
  */
-export const maxPrice = Math.max(...products.map((p) => p.price));
+// Teto do CATALOGO, nao do bundle: a frase e "none of them costs more than
+// $X" sobre os templates. Somar o bundle aqui trocaria 8,50 por 15,00 e
+// enfraqueceria a frase descrevendo outra coisa.
+export const maxPrice = Math.max(...templates.map((p) => p.price));
 
 export const faqs: { q: string; a: string }[] = [
   {
