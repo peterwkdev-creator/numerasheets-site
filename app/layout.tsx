@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { SITE_URL, SpreadsheetCountWord } from "@/lib/products";
+import { SITE_URL, SpreadsheetCountWord, products } from "@/lib/products";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -34,17 +34,15 @@ export const metadata: Metadata = {
     template: "%s — NumeraSheets",
   },
   description,
+  // Os termos de produto saem de `products`, nao escritos a mao: esta lista
+  // cravava dez termos e nao conhecia os dois produtos publicados em
+  // 02/09/2026. Mesma licao da contagem e do teto de preco -- o que se digita
+  // aqui diverge do catalogo sozinho, e sem quebrar build nenhum.
   keywords: [
     "spreadsheet templates",
     "excel templates",
     "google sheets templates",
-    "budget spreadsheet",
-    "bookkeeping template",
-    "wedding planner spreadsheet",
-    "debt payoff tracker",
-    "homeschool planner",
-    "notion template",
-    "assignment tracker",
+    ...products.map((p) => p.term),
   ],
   authors: [{ name: "NumeraSheets" }],
   openGraph: {

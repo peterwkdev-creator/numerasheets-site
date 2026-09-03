@@ -6,6 +6,7 @@ import heroSheet from "@/lib/previews/debt-hero.json";
 import {
   faqs,
   hoverShot,
+  maxPrice,
   ProductCountWord,
   productCountWord,
   products,
@@ -264,7 +265,7 @@ export default function Home() {
               </div>
               <p className="max-w-md text-[15px] leading-relaxed text-ink-soft">
                 Every one of them is delivered instantly, and none of them
-                costs more than $8.50.
+                costs more than ${maxPrice.toFixed(2)}.
               </p>
             </div>
 

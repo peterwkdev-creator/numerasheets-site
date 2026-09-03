@@ -37,8 +37,16 @@ export const SHOP_NAME = BUY_ON === "payhip" ? "Payhip" : "Etsy";
 export type Product = {
   /** Etsy listing id. */
   id: string;
-  /** Payhip product slug, the bit after /b/. */
-  payhip: string;
+  /**
+   * Payhip product slug, the bit after /b/ -- ou `null` enquanto o produto
+   * so existe na Etsy.
+   *
+   * Nao e detalhe de tipagem: `BUY_ON` e um interruptor de uma linha, e com
+   * slug inventado ou vazio virar para "payhip" mandaria o comprador para um
+   * 404 sem quebrar build nenhum. Nulo obriga `listingUrl` a decidir, e a
+   * decisao esta escrita la.
+   */
+  payhip: string | null;
   /**
    * Route segment of this product's own page: /templates/<slug>.
    * Carries the measured search term, because the slug is the part of the
@@ -72,7 +80,7 @@ export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.png");
 
 /** The only place a product URL is built, so no link can miss the switch. */
 export const listingUrl = (p: Product) =>
-  BUY_ON === "payhip"
+  BUY_ON === "payhip" && p.payhip
     ? `https://payhip.com/b/${p.payhip}`
     : `${ETSY_SHOP}/listing/${p.id}`;
 
@@ -210,6 +218,33 @@ export const products: Product[] = [
     shot: "/shots/notion.png",
     tags: ["Students", "Notion"],
   },
+  {
+    id: "4567686307",
+    // So na Etsy por enquanto: nao existe produto correspondente na Payhip.
+    payhip: null,
+    slug: "cleaning-business-spreadsheet",
+    term: "cleaning business",
+    name: "Cleaning Business Spreadsheet",
+    does: "Divides what each client pays by the hours their visit actually eats, and ranks every client by the rate you really earn.",
+    standout: "Your real hourly rate",
+    price: 5.5,
+    accent: "#2A7B8C",
+    shot: "/shots/cleaning.png",
+    tags: ["Cleaners", "Client jobs"],
+  },
+  {
+    id: "4567702601",
+    payhip: null,
+    slug: "travel-itinerary-template",
+    term: "travel itinerary template",
+    name: "Travel Itinerary & Trip Planner",
+    does: "Names the days of the trip that still have nothing in them, and works the cost out per person, per day.",
+    standout: "Days with nothing planned",
+    price: 4.5,
+    accent: "#A0342B",
+    shot: "/shots/travel.png",
+    tags: ["Travel", "Trip budget"],
+  },
 ];
 
 /**
@@ -239,6 +274,15 @@ export const SpreadsheetCountWord = (() => {
   return w.charAt(0).toUpperCase() + w.slice(1);
 })();
 
+/**
+ * O produto mais caro do catalogo, para a copy nao cravar um teto a mao.
+ * Mesma licao do `productCountWord`: ate 02/09/2026 a home dizia "none of
+ * them costs more than $8.50" com o numero digitado -- estava certo por
+ * coincidencia, e um produto mais caro o teria tornado mentira sem quebrar
+ * build nenhum.
+ */
+export const maxPrice = Math.max(...products.map((p) => p.price));
+
 export const faqs: { q: string; a: string }[] = [
   {
     q: "Do I need Microsoft Excel?",
@@ -246,7 +290,16 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: "How do I get the files?",
-    a: "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. For the spreadsheets you download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence. For the Notion template you download a one-page PDF with your duplication link.",
+    // O FORMATO da entrega segue o interruptor, como tudo o mais. Ate
+    // 02/09/2026 esta resposta prometia "a zip" -- verdade na Payhip, e falso
+    // na Etsy desde 31/08, onde os quatro arquivos sobem soltos. Uma promessa
+    // sobre o que chega ao comprador nao pode ficar presa a loja anterior.
+    a:
+      "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. " +
+      (BUY_ON === "payhip"
+        ? "For the spreadsheets you download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence."
+        : "A spreadsheet arrives as four separate downloads: the empty workbook, a worked example, a Start Here PDF and the licence.") +
+      " For the Notion template you download a one-page PDF with your duplication link.",
   },
   {
     q: "Are there macros, add-ins or a subscription?",

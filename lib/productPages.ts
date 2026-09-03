@@ -106,4 +106,20 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "Students who already live in Notion and want the weighted-grade maths there instead of in a spreadsheet.",
   },
+  "cleaning-business-spreadsheet": {
+    sheets: ["Dashboard", "Settings", "Clients", "Jobs", "Expenses", "Charts",
+             "On your phone"],
+    notDoes:
+      "It does not send invoices, take payments or book jobs, and it does not know your country's tax rules -- the mileage rate is a number you type in.",
+    forWho:
+      "One-person cleaning rounds priced per visit, who want to know which clients actually pay well for the hours they take.",
+  },
+  "travel-itinerary-template": {
+    sheets: ["Dashboard", "Trip", "Itinerary", "Budget", "Bookings", "Packing",
+             "Charts", "On your phone"],
+    notDoes:
+      "It does not book, hold or price anything, does not check availability, and does not convert currency at today's rate. Confirm every booking with the airline or operator.",
+    forWho:
+      "People planning a trip themselves who want the itinerary, the money, the bookings and the packing list to agree with each other.",
+  },
 };

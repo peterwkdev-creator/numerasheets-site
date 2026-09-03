@@ -114,7 +114,14 @@ export default async function Page({ params }: Params) {
     },
   };
 
-  const others = products.filter((o) => o.slug !== p.slug).slice(0, 3);
+  // Os TRES SEGUINTES no catalogo, dando a volta -- nao os tres primeiros.
+  // Com `.filter(...).slice(0, 3)` as doze paginas apontavam para os MESMOS
+  // tres produtos, e os outros nove nao recebiam link interno de irmao nenhum:
+  // a mesma orfandade que estas paginas existem para resolver. Rodando o
+  // indice, cada produto e apontado por exatamente tres, e nenhuma pagina
+  // repete a vizinhanca da outra.
+  const i = products.indexOf(p);
+  const others = [1, 2, 3].map((d) => products[(i + d) % products.length]);
 
   return (
     <>
