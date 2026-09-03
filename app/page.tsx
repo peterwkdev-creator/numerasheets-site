@@ -497,9 +497,17 @@ export default function Home() {
             © {new Date().getFullYear()} NumeraSheets. Templates are sold and
             delivered through {SHOP_NAME}.
           </p>
-          <a className="transition-colors hover:text-ink" href={SHOP_URL}>
-            {SHOP_URL.replace("https://", "")}
-          </a>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+            <a
+              className="transition-colors hover:text-ink"
+              href="/tools/debt-snowball-vs-avalanche"
+            >
+              Debt snowball vs avalanche calculator
+            </a>
+            <a className="transition-colors hover:text-ink" href={SHOP_URL}>
+              {SHOP_URL.replace("https://", "")}
+            </a>
+          </div>
         </div>
       </footer>
     </>

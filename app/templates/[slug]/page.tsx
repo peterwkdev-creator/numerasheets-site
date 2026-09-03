@@ -280,6 +280,29 @@ export default async function Page({ params }: Params) {
           </div>
         </section>
 
+        {/* A calculadora era ORFA ate 03/09/2026: estava no sitemap e nenhuma
+            pagina do site apontava para ela, entao nao recebia link interno
+            nenhum e so era alcancavel por quem ja soubesse a URL. Este link e
+            o mais natural que existe -- mesma duvida, mesmo comprador. */}
+        {p.slug === "debt-payoff-tracker" && (
+          <section className="mt-16">
+            <h2 className="text-[13px] uppercase tracking-[0.09em] text-slate">
+              Before you start
+            </h2>
+            <p className="mt-4 text-[15.5px] leading-relaxed text-ink-soft">
+              Snowball or avalanche? Both orders clear the same debts and one of
+              them costs less.{" "}
+              <a
+                className="underline underline-offset-4 hover:text-ink"
+                href="/tools/debt-snowball-vs-avalanche"
+              >
+                Put your own numbers in and see the difference
+              </a>{" "}
+              — free, in the browser, nothing to install.
+            </p>
+          </section>
+        )}
+
         <section className="mt-16">
           <h2 className="text-[13px] uppercase tracking-[0.09em] text-slate">
             Other templates

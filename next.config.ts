@@ -26,9 +26,12 @@ import { SITE_URL } from "./lib/products";
  *      mandaria todo preview para produção e tornaria impossível revisar uma
  *      branch antes de publicar — o remédio seria pior que a doença.
  *
- * Consequência que parece contradição e não é: no host de produção o
- * redirecionamento acontece antes, então o `X-Robots-Tag` dele nunca chega a
- * ser lido. Ele não está sobrando — o trabalho dele é nos previews.
+ * Correção de 03/09/2026: este comentário dizia que no host de produção o
+ * `X-Robots-Tag` "nunca chega a ser lido" porque o redirecionamento acontece
+ * antes. **Medido, e é falso** — o header vem junto na própria resposta 308.
+ * A conclusão prática continua valendo (a rede larga existe pelos previews),
+ * mas pelo motivo certo: no alias de produção o header é redundante, não
+ * inalcançável.
  *
  * Efeito colateral aceito: a propriedade `numerasheets.vercel.app` no Search
  * Console é verificada por meta tag, e com o 308 o Google deixa de conseguir
