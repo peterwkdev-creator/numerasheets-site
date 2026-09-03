@@ -46,9 +46,11 @@ export type Product = {
    * 404 sem quebrar build nenhum. Nulo obriga `listingUrl` a decidir, e a
    * decisao esta escrita la.
    *
-   * Em 02/09/2026 nenhum produto e nulo -- os dois que so existiam na Etsy
-   * foram publicados na Payhip no mesmo dia. O tipo e a guarda ficam: e o
-   * proximo produto so-Etsy que eles protegem.
+   * Em 03/09/2026 nenhum produto e nulo. O bundle chegou a ser o unico
+   * so-Etsy por algumas horas, e a guarda serviu exatamente para isso: com
+   * slug inventado, virar `BUY_ON` teria mandado o comprador do produto mais
+   * caro para um 404. Publicado na Payhip no mesmo dia. O tipo e a guarda
+   * ficam: e o proximo produto so-Etsy que eles protegem.
    */
   payhip: string | null;
   /**
@@ -262,8 +264,7 @@ export const products: Product[] = [
   },
   {
     id: "4568054728",
-    // So na Etsy por enquanto -- e o caso exato para o qual o `null` existe.
-    payhip: null,
+    payhip: "stI8r",
     slug: "spreadsheet-bundle",
     term: "small business spreadsheet bundle",
     name: "Complete Bundle, 11 Spreadsheets",
