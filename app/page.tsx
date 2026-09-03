@@ -4,6 +4,7 @@ import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
 import {
+  acentoTexto,
   faqs,
   hoverShot,
   maxPrice,
@@ -117,14 +118,17 @@ export default function Home() {
             </span>
           </a>
 
+          {/* `py-1` nao e estetica: medido em 03/09/2026, estes links tinham 22px
+              de altura e o minimo da WCAG 2.2 (2.5.8) e 24. Com o padding vao a
+              30px sem mudar o espacamento visual, porque a barra tem altura fixa. */}
           <nav className="hidden items-center gap-8 text-[14.5px] text-ink-soft md:flex">
-            <a className="transition-colors hover:text-ink" href="#templates">
+            <a className="py-1 transition-colors hover:text-ink" href="#templates">
               Templates
             </a>
-            <a className="transition-colors hover:text-ink" href="#how">
+            <a className="py-1 transition-colors hover:text-ink" href="#how">
               How it works
             </a>
-            <a className="transition-colors hover:text-ink" href="#faq">
+            <a className="py-1 transition-colors hover:text-ink" href="#faq">
               FAQ
             </a>
           </nav>
@@ -317,7 +321,7 @@ export default function Home() {
                         <span
                           className="rounded-full px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
                           style={{
-                            color: p.accent,
+                            color: acentoTexto(p),
                             backgroundColor: `${p.accent}15`,
                           }}
                         >
@@ -335,7 +339,7 @@ export default function Home() {
 
                       <span
                         className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium"
-                        style={{ color: p.accent }}
+                        style={{ color: acentoTexto(p) }}
                       >
                         View product
                         <span
@@ -499,12 +503,12 @@ export default function Home() {
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
             <a
-              className="transition-colors hover:text-ink"
+              className="py-1 transition-colors hover:text-ink"
               href="/tools/debt-snowball-vs-avalanche"
             >
               Debt snowball vs avalanche calculator
             </a>
-            <a className="transition-colors hover:text-ink" href={SHOP_URL}>
+            <a className="py-1 transition-colors hover:text-ink" href={SHOP_URL}>
               {SHOP_URL.replace("https://", "")}
             </a>
           </div>

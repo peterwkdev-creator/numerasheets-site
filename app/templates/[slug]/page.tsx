@@ -5,10 +5,12 @@ import { notFound } from "next/navigation";
 import {
   SHOP_NAME,
   SITE_URL,
+  acentoTexto,
   hoverShot,
   listingUrl,
   productUrl,
   products,
+  sobreAcento,
   type Product,
 } from "@/lib/products";
 import { productPages } from "@/lib/productPages";
@@ -164,7 +166,7 @@ export default async function Page({ params }: Params) {
           <div>
             <span
               className="inline-block rounded-full px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
-              style={{ color: p.accent, backgroundColor: `${p.accent}15` }}
+              style={{ color: acentoTexto(p), backgroundColor: `${p.accent}15` }}
             >
               {p.standout}
             </span>
@@ -184,8 +186,8 @@ export default async function Page({ params }: Params) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href={listingUrl(p)}
-                className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[15px] font-medium text-white transition-transform duration-200 hover:-translate-y-0.5"
-                style={{ backgroundColor: p.accent }}
+                className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
+                style={{ backgroundColor: p.accent, color: sobreAcento(p) }}
               >
                 Get it on {SHOP_NAME} — ${p.price.toFixed(2)}
               </a>

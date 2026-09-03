@@ -72,6 +72,17 @@ export type Product = {
   standout: string;
   price: number;
   accent: string;
+  /**
+   * O acento escurecido, para quando ele vira TEXTO sobre fundo claro.
+   *
+   * Medido em 03/09/2026: o ouro da marca (#D99C2B) sobre a pilula clara da
+   * sua propria cor da 2,25:1, e o minimo para texto e 4,5:1. Ele nao esta
+   * errado -- e uma cor CLARA, e brilha sobre o hero escuro (6,55:1). Errado
+   * era usa-lo como os outros doze acentos, que sao escuros.
+   *
+   * So existe onde o acento reprova. Ausente = o proprio acento ja passa.
+   */
+  accentInk?: string;
   shot: string;
   tags: string[];
   /**
@@ -96,6 +107,31 @@ export type Product = {
  */
 export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.png");
 
+/**
+ * A cor do texto que vai POR CIMA do acento solido (o botao de compra).
+ *
+ * Decidida por luminancia, nao a mao: doze acentos sao escuros e pedem branco,
+ * o ouro e claro e pede tinta. Com `text-white` fixo, o botao do Invoice ficava
+ * em 2,40:1 -- o elemento mais importante da pagina, ilegivel. Com tinta, 6,55:1.
+ *
+ * Automatico de proposito: um acento claro novo se resolve sozinho, em vez de
+ * quebrar em silencio como este quebrou.
+ */
+const luminancia = (hex: string) => {
+  const c = hex.replace("#", "");
+  const canal = (i: number) => {
+    const v = parseInt(c.slice(i * 2, i * 2 + 2), 16) / 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * canal(0) + 0.7152 * canal(1) + 0.0722 * canal(2);
+};
+
+export const sobreAcento = (p: Product) =>
+  luminancia(p.accent) > 0.35 ? "#1B2333" : "#ffffff";
+
+/** O acento quando ele e TEXTO sobre fundo claro. Ver `accentInk`. */
+export const acentoTexto = (p: Product) => p.accentInk ?? p.accent;
+
 /** The only place a product URL is built, so no link can miss the switch. */
 export const listingUrl = (p: Product) =>
   BUY_ON === "payhip" && p.payhip
@@ -116,6 +152,7 @@ export const products: Product[] = [
     standout: "Create Invoice tab",
     price: 6.5,
     accent: "#D99C2B",
+    accentInk: "#91671A",
     shot: "/shots/invoice.png",
     tags: ["Freelancers", "Invoicing"],
   },
@@ -246,6 +283,7 @@ export const products: Product[] = [
     standout: "Your real hourly rate",
     price: 5.5,
     accent: "#2A7B8C",
+    accentInk: "#297888",
     shot: "/shots/cleaning.png",
     tags: ["Cleaners", "Client jobs"],
   },
