@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
-import Analytics from "@/components/Analytics";
 import { SITE_URL, SpreadsheetCountWord, products } from "@/lib/products";
 import "./globals.css";
 
@@ -96,7 +95,6 @@ export default function RootLayout({
             trafego do site fica cega -- era o caso ate 31/08/2026.
             Desde 03/09/2026 e um wrapper que descarta as NOSSAS visitas: o
             painel mostrava 88 visitantes e os 88 eramos nos. Ver o arquivo. */}
-        <Analytics />
       </body>
     </html>
   );

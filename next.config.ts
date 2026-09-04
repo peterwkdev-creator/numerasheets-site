@@ -1,71 +1,32 @@
 import type { NextConfig } from "next";
 
-import { SITE_URL } from "./lib/products";
-
 /**
- * O host `.vercel.app` continua no ar depois de apontar o domínio próprio, e
- * serve o site inteiro com 200 — medido em 03/09/2026, doze cartões e tudo.
- * Isso é conteúdo duplicado: duas URLs diferentes com a mesma página.
+ * Configuração para hospedagem ESTÁTICA (Cloudflare Pages), a partir de
+ * 04/09/2026.
  *
- * A Vercel recomenda TRÊS medidas juntas, e elas não são redundantes — cada
- * uma cobre um host que as outras não alcançam:
+ * **Por que saímos da Vercel:** as Fair Use Guidelines dizem que
+ * *"Hobby teams are restricted to non-commercial personal use only"*, e a
+ * definição de uso comercial inclui literalmente *"advertising the sale of a
+ * product or service"* — que é o que as 13 páginas de produto fazem. Vender na
+ * Etsy em vez de aqui não muda nada: a regra proíbe anunciar, não só processar.
+ * Ver `Etsy/VERCEL-USO-COMERCIAL-2026-09-04.md`.
  *
- *   1. `canonical` apontando para o domínio próprio.
- *      **Já existia** e não é preciso mexer: `SITE_URL` é absoluto, então
- *      `alternates.canonical` no `app/layout.tsx` e nas páginas de produto
- *      emite `https://numerasheets.com/...` mesmo quando a página é servida
- *      pelo `.vercel.app`. Conferido na tela antes de escrever isto.
+ * **O que sumiu daqui, e é ganho:** este arquivo tinha 50 linhas resolvendo o
+ * host `.vercel.app` duplicado — um `redirects()` para o alias de produção e um
+ * `X-Robots-Tag: noindex` para os hosts de preview. Fora da Vercel **o problema
+ * deixa de existir**, então o remédio sai junto. O `canonical` continua onde
+ * sempre esteve (`SITE_URL` absoluto no `app/layout.tsx`), e não dependia disto.
  *
- *   2. `X-Robots-Tag: noindex` em TODO host `.vercel.app`.
- *      A rede é larga de propósito: ela cobre os **deploys de preview**
- *      (`<projeto>-<hash>-<slug>.vercel.app`), que o redirecionamento abaixo
- *      deliberadamente NÃO pega.
+ * **`output: "export"`** é possível porque as 22 rotas são todas estáticas ou
+ * SSG — nenhuma função de servidor. Conferido no build antes de escrever isto.
  *
- *   3. Redirecionamento permanente, e **só do alias de produção**
- *      (`numerasheets.vercel.app`). Redirecionar `*.vercel.app` inteiro
- *      mandaria todo preview para produção e tornaria impossível revisar uma
- *      branch antes de publicar — o remédio seria pior que a doença.
- *
- * Correção de 03/09/2026: este comentário dizia que no host de produção o
- * `X-Robots-Tag` "nunca chega a ser lido" porque o redirecionamento acontece
- * antes. **Medido, e é falso** — o header vem junto na própria resposta 308.
- * A conclusão prática continua valendo (a rede larga existe pelos previews),
- * mas pelo motivo certo: no alias de produção o header é redundante, não
- * inalcançável.
- *
- * Efeito colateral aceito: a propriedade `numerasheets.vercel.app` no Search
- * Console é verificada por meta tag, e com o 308 o Google deixa de conseguir
- * lê-la — a propriedade perde a verificação numa reconferência. É obsoleta de
- * qualquer jeito; quem quiser um retrato de quantas URLs estavam indexadas ali
- * precisa tirar ANTES de publicar isto.
+ * **`images.unoptimized`** é obrigatório no export: o otimizador de imagem do
+ * `next/image` é um serviço de servidor, e não há servidor. As imagens são
+ * PNGs já dimensionados que nós mesmos geramos, então não se perde nada.
  */
-const HOST_VERCEL_PRODUCAO = "numerasheets.vercel.app";
-// Qualquer subdomínio de vercel.app, incluindo os hosts de preview.
-const QUALQUER_HOST_VERCEL = "(?<hostVercel>.*\\.vercel\\.app)";
-
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/:caminho*",
-        has: [{ type: "host", value: HOST_VERCEL_PRODUCAO }],
-        destination: `${SITE_URL}/:caminho*`,
-        // 308. Temporário (307) diria ao Google para manter a URL antiga
-        // indexada, que é exatamente o oposto do que se quer aqui.
-        permanent: true,
-      },
-    ];
-  },
-
-  async headers() {
-    return [
-      {
-        source: "/:caminho*",
-        has: [{ type: "host", value: QUALQUER_HOST_VERCEL }],
-        headers: [{ key: "X-Robots-Tag", value: "noindex" }],
-      },
-    ];
-  },
+  output: "export",
+  images: { unoptimized: true },
 };
 
 export default nextConfig;
