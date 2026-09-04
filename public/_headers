@@ -1,0 +1,21 @@
+# Cabecalhos da Cloudflare Pages. Este arquivo e copiado de `public/` para a
+# raiz do build (`out/`) e lido pelo Pages.
+#
+# POR QUE ELE EXISTE
+# O host `<projeto>.pages.dev` serve o site inteiro, igualzinho ao dominio
+# proprio -- e o `canonical` de cada pagina ja aponta para numerasheets.com,
+# mas duas URLs servindo o mesmo conteudo continuam sendo conteudo duplicado.
+# E exatamente o problema que o host `.vercel.app` nos deu em 03/09/2026.
+#
+# A sintaxe com `:project` e a documentada pela Cloudflare para escopar uma
+# regra a um host especifico (https://developers.cloudflare.com/pages/configuration/headers/).
+#
+# Sao DUAS regras, e nao e redundancia: a primeira pega o host de producao
+# (`numerasheets-site.pages.dev`), a segunda pega os deploys de PREVIEW
+# (`<hash>.numerasheets-site.pages.dev`), que a primeira nao alcanca.
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
