@@ -54,7 +54,9 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       description,
       url: productUrl(p),
       siteName: "NumeraSheets",
-      type: "website",
+      // `type` sai daqui de proposito. O Next nao tipa `og:type="product"`, e
+      // a tag de produto e injetada no corpo da pagina (o React eleva para o
+      // <head>). Deixar `type: "website"` aqui emitiria DUAS `og:type`.
       images: [{ url: p.shot }],
     },
     // Sem isto o card do Twitter/X herda o `twitter` do layout, e as dez
@@ -128,6 +130,25 @@ export default async function Page({ params }: Params) {
 
   return (
     <>
+      {/* Product Rich Pin. Medido em 03/09/2026: o Pinterest mostra preco e
+          disponibilidade DENTRO do pin quando a pagina de destino traz estas
+          tags, e nao ha mais processo de aprovacao -- ele sincroniza sozinho
+          em ate 24 h. Ate hoje as nossas paginas emitiam `og:type=website` e
+          nenhuma tag de preco, entao os 54 pins nao recebiam nada.
+
+          Por que Open Graph e nao o JSON-LD que ja existe logo abaixo: a
+          documentacao do Pinterest descreve a rota Schema.org mas **nao
+          menciona suporte a JSON-LD**. O JSON-LD fica para o Google, que o le;
+          estas quatro tags ficam para o Pinterest, que a doc garante ler.
+
+          Elas vao no corpo e nao no `metadata` porque o Next nao tipa
+          `og:type="product"` nem os campos `product:*`. */}
+      <meta property="og:type" content="product" />
+      <meta property="product:price:amount" content={p.price.toFixed(2)} />
+      <meta property="product:price:currency" content="USD" />
+      <meta property="og:availability" content="instock" />
+      <meta property="og:brand" content="NumeraSheets" />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
