@@ -19,24 +19,34 @@ npm run dev
 
 ## Domains, and the duplicate-content trap
 
-Live on **numerasheets.com**. Two other hostnames answer, and each needs
-different treatment — all of it in `next.config.ts`, with the reasoning in the
-comment at the top of that file:
+Live on **numerasheets.com**, served by **Cloudflare Pages** (the site left
+Vercel on 2026-09-04 — see `MIGRACAO-VERCEL-CLOUDFLARE.md` in the workspace).
 
 | Host | What happens | Why |
 |---|---|---|
 | `numerasheets.com` | serves the site | the canonical host |
-| `www.numerasheets.com` | 308 → apex | handled by the DNS/Vercel layer |
-| `numerasheets.vercel.app` | **308 → apex** | pointing a custom domain does **not** take the `.vercel.app` down; left alone it serves the whole site on a second URL, which is duplicate content |
-| `<branch>-<hash>.vercel.app` | 200 + **`X-Robots-Tag: noindex`** | previews must keep working, so they are not redirected — only kept out of the index |
+| `www.numerasheets.com` | **200, serves the site** | ⚠️ duplicate host — see below |
+| `numerasheets-site.pages.dev` | 200 + **`X-Robots-Tag: noindex`** | the Pages host must keep working for deploy previews, so it is not redirected — only kept out of the index. Rule lives in `public/_headers` |
 
-The third measure is the `canonical` tag, and it needs no host logic: `SITE_URL`
-in `lib/products.ts` is absolute, so every page declares
-`https://numerasheets.com/...` no matter which host served it.
+**The `canonical` tag is what keeps this safe, and it needs no host logic:**
+`SITE_URL` in `lib/products.ts` is absolute, so every page declares
+`https://numerasheets.com/...` no matter which host served it. Verified by
+fetching `www` and `pages.dev` directly — both return the apex canonical.
 
-**Do not "simplify" this by redirecting `*.vercel.app`.** That pattern matches
-the preview hosts too, and every branch deploy would bounce to production —
-you would lose the ability to review a change before publishing it.
+### Why `www` is not redirected, and where that fix belongs
+
+Static export has **no `redirects()` and no `headers()`** — there is no server
+to run them. Everything that used to live in `next.config.ts` had to move:
+headers became `public/_headers`, which Cloudflare Pages reads.
+
+Redirects cannot follow the same path: Cloudflare's `_redirects` file is
+**path-based only** and explicitly does not support domain-level redirects.
+A `www` → apex redirect has to be a **Redirect Rule / Bulk Redirect in the
+Cloudflare dashboard**, not a file in this repo. Do not try to express it in
+`_redirects`; it will silently never match.
+
+Until that rule exists, `www` is a duplicate host held in check by the
+canonical tag alone.
 
 ## Notes
 
