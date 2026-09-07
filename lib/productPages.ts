@@ -114,6 +114,14 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "One-person cleaning rounds priced per visit, who want to know which clients actually pay well for the hours they take.",
   },
+"poshmark-reseller-spreadsheet": {
+    sheets: ["Dashboard", "Settings", "Inventory", "Sales", "Pricing helper",
+             "Charts", "On your phone"],
+    notDoes:
+      "It does not connect to Poshmark: it will not import your sales, read your closet or print a label -- you type the date, the SKU and the price, and it works out the rest. This shop is not affiliated with, endorsed by or connected to Poshmark; the name says which platform's fee structure the workbook is set up for.",
+    forWho:
+      "For resellers who list under fifteen dollars often enough that the flat fee matters. That is where a percentage-based spreadsheet lies to you: $2.95 on a $5.00 sale is 59%, and listing at $12.00 leaves you less than listing at $15.00.",
+  },
   "spreadsheet-bundle": {
     // Aqui `sheets` nao sao abas: sao os onze arquivos. A secao da pagina se
     // chama "What is inside", e para o conjunto o que esta dentro sao os

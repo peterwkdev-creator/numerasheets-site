@@ -301,6 +301,26 @@ export const products: Product[] = [
     tags: ["Travel", "Trip budget"],
   },
   {
+    id: "4570365184",
+    // Primeiro produto so-Etsy da linha, e por isso `payhip` e nulo de verdade:
+    // e exatamente o caso que o tipo foi desenhado para proteger. Virar
+    // `BUY_ON` mandaria o comprador daqui para um 404 se houvesse slug
+    // inventado; nulo faz `listingUrl` cair na Etsy, que e onde ele existe.
+    payhip: null,
+    slug: "poshmark-reseller-spreadsheet",
+    term: "reseller spreadsheet",
+    name: "Poshmark Reseller Tracker",
+    does: "Applies the real fee rule -- a flat $2.95 below $15 and 20% at or above it -- so each sale shows what it actually left you, not a flat percentage guess.",
+    standout: "Break-even list price",
+    price: 8.5,
+    // O ameixa das proprias imagens de listagem. Fica perto do #8E3B62 do
+    // content calendar, e a proximidade e deliberada: o cartao mostra a
+    // 01-main, entao o acento tem de combinar com a imagem, nao com a grade.
+    accent: "#7A2E5D",
+    shot: "/shots/poshmark.png",
+    tags: ["Resellers", "Poshmark"],
+  },
+  {
     id: "4568054728",
     payhip: "stI8r",
     slug: "spreadsheet-bundle",
@@ -334,9 +354,16 @@ export const bundle = products.find((p) => p.kind === "bundle");
  * produtos na lista o tempo todo em que o nono esteve no ar. Derivar mata a
  * classe inteira de erro: acrescentar um produto acerta a copy sozinho.
  */
+// Ia ate "thirteen", que era exatamente o tamanho do catalogo em 06/09/2026 --
+// ou seja, o PROXIMO produto cairia no fallback e a home diria "14 templates"
+// com digito no meio da prosa, sem quebrar build nenhum. Estendida ate 26,
+// que e a meta de catalogo aprovada, para a copy nao envelhecer no caminho.
 const NUMBER_WORDS = [
   "zero", "one", "two", "three", "four", "five", "six",
   "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen",
+  "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen",
+  "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four",
+  "twenty-five", "twenty-six",
 ];
 
 export const productCountWord =
