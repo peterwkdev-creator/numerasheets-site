@@ -324,13 +324,33 @@ export const products: Product[] = [
     tags: ["Resellers", "Poshmark"],
   },
   {
+    id: "4570829237",
+    // Segundo so-Etsy da linha. Vai para a Payhip depois; ate la o nulo
+    // mantem `listingUrl` apontando para onde o produto existe de verdade.
+    payhip: null,
+    slug: "project-management-spreadsheet",
+    // O PRIMEIRO termo da linha escolhido por demanda medida antes de
+    // construir: 328 buscas/mes crescendo 114,6%, conversao Very high, e a
+    // Etsy dizia "No listings detected" para a nossa loja.
+    term: "project management spreadsheet",
+    name: "Project Management Tracker",
+    does: "Starts every task on the later of your planned day and the day after the one it waits for, so when a task slips the finish date moves with it.",
+    standout: "Computed finish date",
+    price: 6.3,
+    // Ardosia: as familias de azul do catalogo (2A5D7C, 3B4A8C, 1D6A73,
+    // 2A7B8C) sao todas saturadas; esta e neutra e le como ferramenta.
+    accent: "#37474F",
+    shot: "/shots/project.png",
+    tags: ["Project teams", "Planning"],
+  },
+  {
     id: "4568054728",
     payhip: "stI8r",
     slug: "spreadsheet-bundle",
     term: "small business spreadsheet bundle",
-    name: "Complete Bundle, 12 Spreadsheets",
+    name: "Complete Bundle, 13 Spreadsheets",
     does: "Puts every spreadsheet in the shop in one download, each in its own folder with the example file and the guide that comes with it.",
-    standout: "USD 66.30 of templates for 15",
+    standout: "USD 72.60 of templates for 15",
     price: 15,
     accent: "#1F6F4A",
     shot: "/shots/bundle.png",

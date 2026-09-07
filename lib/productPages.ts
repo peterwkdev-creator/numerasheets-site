@@ -122,6 +122,14 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "For resellers who list under fifteen dollars often enough that the flat fee matters. That is where a percentage-based spreadsheet lies to you: $2.95 on a $5.00 sale is 59%, and listing at $12.00 leaves you less than listing at $15.00.",
   },
+"project-management-spreadsheet": {
+    sheets: ["Dashboard", "Settings", "Tasks", "Timeline", "Workload",
+             "Charts", "On your phone"],
+    notDoes:
+      "It is not a Kanban board -- a spreadsheet does not drag cards -- and it does not resolve a whole network of dependencies or compute a critical path: one task waits for one task. Days are calendar days, so if your team works five days a week, plan the extra days in yourself.",
+    forWho:
+      "For anyone running a plan that other people are waiting on. The three bestsellers in this category all sell the same trio -- Gantt, Kanban, Eisenhower -- and every one of them draws the tasks you typed. This one moves the finish date when a task slips, and adds up the hours landing on each person.",
+  },
   "spreadsheet-bundle": {
     // Aqui `sheets` nao sao abas: sao os onze arquivos. A secao da pagina se
     // chama "What is inside", e para o conjunto o que esta dentro sao os
@@ -132,7 +140,7 @@ export const productPages: Record<string, ProductPage> = {
              "Debt Payoff Tracker", "Wedding Planner", "Travel Planner",
              "Homeschool Planner & Records", "Assignment Tracker"],
     notDoes:
-      "It does not include the Notion template, which is not a file. Bought separately these twelve cost USD 66.30; the bundle does not add anything that is not already in one of them.",
+      "It does not include the Notion template, which is not a file. Bought separately these thirteen cost USD 72.60; the bundle does not add anything that is not already in one of them.",
     forWho:
       "People who want the whole set at once rather than picking one now and paying full price for the next.",
   },
