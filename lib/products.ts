@@ -305,11 +305,10 @@ export const products: Product[] = [
   },
   {
     id: "4570365184",
-    // Primeiro produto so-Etsy da linha, e por isso `payhip` e nulo de verdade:
-    // e exatamente o caso que o tipo foi desenhado para proteger. Virar
-    // `BUY_ON` mandaria o comprador daqui para um 404 se houvesse slug
-    // inventado; nulo faz `listingUrl` cair na Etsy, que e onde ele existe.
-    payhip: null,
+    // Publicado na Payhip em 07/09/2026, algumas horas depois da Etsy. Ficou
+    // `null` enquanto so existia na Etsy -- que e exatamente o caso que o tipo
+    // foi desenhado para proteger, e o motivo de a nota ficar aqui.
+    payhip: "n0tTK",
     slug: "poshmark-reseller-spreadsheet",
     term: "reseller spreadsheet",
     name: "Poshmark Reseller Tracker",
@@ -325,9 +324,8 @@ export const products: Product[] = [
   },
   {
     id: "4570829237",
-    // Segundo so-Etsy da linha. Vai para a Payhip depois; ate la o nulo
-    // mantem `listingUrl` apontando para onde o produto existe de verdade.
-    payhip: null,
+    // Publicado na Payhip em 07/09/2026, no mesmo lote do Poshmark.
+    payhip: "ANECU",
     slug: "project-management-spreadsheet",
     // O PRIMEIRO termo da linha escolhido por demanda medida antes de
     // construir: 328 buscas/mes crescendo 114,6%, conversao Very high, e a
