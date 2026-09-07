@@ -267,7 +267,11 @@ export const products: Product[] = [
     id: "4566082074",
     payhip: "VbQw2",
     slug: "assignment-tracker-notion-template",
-    term: "notion assignment tracker",
+    // Trocado em 07/09/2026. O termo antigo, `notion assignment tracker`, tinha
+    // 55 buscas/30d e caia 40,9% -- o segundo pior do catalogo. Este tem 694,
+    // conversao Very high, faixa de compra 7,20-8,80 (o preco ja estava certo)
+    // e cai so 4,7%. Medicao em `Etsy/INSIGHTS-15-TERMOS-2026-09-07.md`.
+    term: "notion student planner",
     name: "Assignment Tracker for Notion",
     does: "The same weighted-grade maths as the spreadsheet, built as three connected Notion databases you duplicate in one click.",
     standout: "Notion, not a file",
