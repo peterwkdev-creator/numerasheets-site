@@ -146,7 +146,10 @@ export const products: Product[] = [
     id: "4564974686",
     payhip: "J5gqs",
     slug: "invoice-tracker-spreadsheet",
-    term: "invoice tracker",
+    // O slug fica: a URL esta indexada e trocar quebraria o que ja funciona.
+    // O TERMO muda porque o Insights (07/09/2026) mede `invoice tracker` como
+    // conversao **Low** e `small business expense tracker` como **Very high**.
+    term: "small business expense tracker",
     name: "Invoice Tracker & Generator",
     does: "Marks an invoice overdue the moment its due date passes, then builds the printable invoice out of the row you already logged.",
     standout: "Create Invoice tab",
@@ -229,7 +232,7 @@ export const products: Product[] = [
     name: "Small Business Bookkeeping",
     does: "Files every entry into the right quarter from its date, and applies your own deductible percentage per category.",
     standout: "Quarter from date",
-    price: 6.5,
+    price: 5.4,
     accent: "#55642A",
     shot: "/shots/tax.png",
     tags: ["Small business", "Tax year"],
@@ -255,7 +258,7 @@ export const products: Product[] = [
     name: "Assignment Tracker",
     does: "Divides by the weight that has actually been graded, so a final you have not sat yet never counts as a zero.",
     standout: "What you need on the final",
-    price: 3,
+    price: 1.8,
     accent: "#6B4FA0",
     shot: "/shots/assignment.png",
     tags: ["Students", "Grades"],
@@ -295,7 +298,7 @@ export const products: Product[] = [
     name: "Travel Itinerary & Trip Planner",
     does: "Names the days of the trip that still have nothing in them, and works the cost out per person, per day.",
     standout: "Days with nothing planned",
-    price: 4.5,
+    price: 3.6,
     accent: "#A0342B",
     shot: "/shots/travel.png",
     tags: ["Travel", "Trip budget"],
@@ -312,7 +315,7 @@ export const products: Product[] = [
     name: "Poshmark Reseller Tracker",
     does: "Applies the real fee rule -- a flat $2.95 below $15 and 20% at or above it -- so each sale shows what it actually left you, not a flat percentage guess.",
     standout: "Break-even list price",
-    price: 8.5,
+    price: 4.5,
     // O ameixa das proprias imagens de listagem. Fica perto do #8E3B62 do
     // content calendar, e a proximidade e deliberada: o cartao mostra a
     // 01-main, entao o acento tem de combinar com a imagem, nao com a grade.
@@ -327,7 +330,7 @@ export const products: Product[] = [
     term: "small business spreadsheet bundle",
     name: "Complete Bundle, 12 Spreadsheets",
     does: "Puts every spreadsheet in the shop in one download, each in its own folder with the example file and the guide that comes with it.",
-    standout: "USD 73.50 of templates for 15",
+    standout: "USD 66.30 of templates for 15",
     price: 15,
     accent: "#1F6F4A",
     shot: "/shots/bundle.png",

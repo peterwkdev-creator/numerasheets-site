@@ -132,7 +132,7 @@ export const productPages: Record<string, ProductPage> = {
              "Debt Payoff Tracker", "Wedding Planner", "Travel Planner",
              "Homeschool Planner & Records", "Assignment Tracker"],
     notDoes:
-      "It does not include the Notion template, which is not a file. Bought separately these twelve cost USD 73.50; the bundle does not add anything that is not already in one of them.",
+      "It does not include the Notion template, which is not a file. Bought separately these twelve cost USD 66.30; the bundle does not add anything that is not already in one of them.",
     forWho:
       "People who want the whole set at once rather than picking one now and paying full price for the next.",
   },
