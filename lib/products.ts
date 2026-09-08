@@ -278,7 +278,13 @@ export const products: Product[] = [
     // catalogo fica menos ambiguo, porque a planilha ao lado tambem se chama
     // "Assignment Tracker".
     name: "Notion Student Planner",
-    does: "The same weighted-grade maths as the spreadsheet, built as three connected Notion databases you duplicate in one click.",
+    // A frase carrega "assignment tracker" de proposito. O Search Console de
+    // 08/09/2026 mostra que 4 das 9 consultas que nos dao impressao no Google
+    // sao dessa familia (`notion assignment tracker`, `notion assignment
+    // template`, ...), e sao 9 das 25 impressoes -- a pagina mais vista do
+    // site. Trocar o `name` para "Notion Student Planner" tirou a expressao
+    // do H1; ela volta aqui, onde continua sendo verdade.
+    does: "An assignment tracker built as three connected Notion databases you duplicate in one click — the same weighted-grade maths as the spreadsheet.",
     standout: "Notion, not a file",
     price: 7.5,
     accent: "#4B3A7A",
