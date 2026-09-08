@@ -132,7 +132,7 @@ export default function Calculator() {
           <button
             type="button"
             onClick={() => setRows((r) => [...r, { name: "", balance: "", apr: "", min: "" }])}
-            className="rounded-full border border-ink px-4 py-2 text-[14px] font-medium transition-colors hover:bg-ink hover:text-white"
+            className="rounded-btn border border-ink px-4 py-2 text-[14px] font-medium transition-colors hover:bg-ink hover:text-white"
           >
             Add a debt
           </button>
@@ -144,7 +144,7 @@ export default function Calculator() {
       </div>
 
       {/* ── resultado ────────────────────────────────────────── */}
-      <div className="rounded-2xl bg-cool p-6 sm:p-7">
+      <div className="rounded-card bg-cool p-6 sm:p-7">
         {c.neverClears ? (
           <>
             <h2 className="t-section text-[1.5rem]">This never clears.</h2>

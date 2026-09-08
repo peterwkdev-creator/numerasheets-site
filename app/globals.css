@@ -18,6 +18,24 @@
 
   --font-sans: var(--font-archivo), "Segoe UI", system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "Cascadia Mono", monospace;
+
+  /* Tres raios, e a escala e deliberada.
+
+     Ate 08/09/2026 as CTAs eram `rounded-full` -- a "pilula", que a pesquisa
+     de design (`Etsy/DESIGN-SITE-AI-2026-09-08.md`) lista como um dos dois
+     marcadores mais citados de pagina gerada por IA em 2026, ao lado do
+     eyebrow em maiusculas espacadas. Cartao era `rounded-2xl`, que e o 16px
+     uniforme da mesma lista.
+
+     Nada de raio unico: 3 / 5 / 10 sao tres degraus visiveis, que e o que
+     "variacao intencional" quer dizer. E raio pequeno le como ferramenta, nao
+     como template de SaaS -- que e o que vendemos.
+
+     Circulo de verdade (o ponto do hero, o numero do "how it works", o + do
+     FAQ) continua `rounded-full`: ali nao e pilula, e circunferencia. */
+  --radius-chip: 3px;
+  --radius-btn: 5px;
+  --radius-card: 10px;
 }
 
 html {

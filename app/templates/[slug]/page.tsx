@@ -186,7 +186,7 @@ export default async function Page({ params }: Params) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <div>
             <span
-              className="inline-block rounded-full px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
+              className="inline-block rounded-chip px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
               style={{ color: acentoTexto(p), backgroundColor: `${p.accent}15` }}
             >
               {p.standout}
@@ -207,7 +207,7 @@ export default async function Page({ params }: Params) {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href={listingUrl(p)}
-                className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-btn px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ backgroundColor: p.accent, color: sobreAcento(p) }}
               >
                 Get it on {SHOP_NAME} — ${p.price.toFixed(2)}
@@ -230,7 +230,7 @@ export default async function Page({ params }: Params) {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-rule bg-white">
+          <div className="overflow-hidden rounded-card border border-rule bg-white">
             <span
               aria-hidden
               className="block h-1 w-full"
@@ -256,7 +256,7 @@ export default async function Page({ params }: Params) {
               {page.sheets.map((s) => (
                 <li
                   key={s}
-                  className="rounded-full bg-cool px-3 py-1.5 font-mono text-[12.5px] text-ink-soft"
+                  className="rounded-chip bg-cool px-3 py-1.5 font-mono text-[12.5px] text-ink-soft"
                 >
                   {s}
                 </li>
@@ -292,7 +292,7 @@ export default async function Page({ params }: Params) {
           <h2 className="text-[13px] uppercase tracking-[0.09em] text-slate">
             A second look
           </h2>
-          <div className="mt-4 overflow-hidden rounded-2xl border border-rule bg-white">
+          <div className="mt-4 overflow-hidden rounded-card border border-rule bg-white">
             <Image
               src={hoverShot(p)}
               alt={`${p.name} — a second screenshot of the real file`}
@@ -335,7 +335,7 @@ export default async function Page({ params }: Params) {
               <li key={o.slug}>
                 <a
                   href={productUrl(o)}
-                  className="flex h-full flex-col rounded-xl border border-rule bg-white p-4 transition-colors hover:border-ink/25"
+                  className="flex h-full flex-col rounded-card border border-rule bg-white p-4 transition-colors hover:border-ink/25"
                 >
                   <span className="text-[15px] font-semibold leading-snug tracking-[-0.015em]">
                     {o.name}

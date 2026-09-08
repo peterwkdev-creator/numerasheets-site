@@ -95,7 +95,7 @@ export default function Home() {
 
       <a
         href="#templates"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-btn focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
       >
         Skip to the templates
       </a>
@@ -135,7 +135,7 @@ export default function Home() {
 
           <a
             href={SHOP_URL}
-            className="rounded-full bg-ink px-4 py-2 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
+            className="rounded-btn bg-ink px-4 py-2 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
           >
             Visit the shop
           </a>
@@ -181,14 +181,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={SHOP_URL}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-7 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 rounded-btn bg-gold px-7 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
                 Browse the shop
                 <span aria-hidden>→</span>
               </a>
               <a
                 href="#templates"
-                className="inline-flex items-center justify-center rounded-full border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
+                className="inline-flex items-center justify-center rounded-btn border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
               >
                 See all {productCountWord}
               </a>
@@ -238,8 +238,27 @@ export default function Home() {
           </div>
         </section>
 
+        {/*
+          ── RITMO VERTICAL ─────────────────────────────────────────
+          As seções abaixo NÃO têm o mesmo `py` de propósito. Até
+          08/09/2026 todas usavam `py-20 sm:py-24`, e espaçamento
+          idêntico em tudo é um dos seis marcadores de página gerada
+          por IA levantados em `Etsy/DESIGN-SITE-AI-2026-09-08.md`
+          ("identical padding across all elements").
+
+          A regra que os artigos dão é: mais largo para o que importa,
+          mais apertado para o que é continuação. Daí a escada:
+
+            14/16  argumentos  — pertencem ao hero, ficam colados nele
+            24/32  catálogo    — o evento da página
+            16/20  como funciona — continuação do catálogo
+            14/16  FAQ         — consulta, não argumento
+            20/28  fecho       — precisa de ar para aterrissar
+
+          Uniformizar isto de novo desfaz a correção.
+        */}
         {/* ── What makes them different ────────────────────────── */}
-        <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <section className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-16">
           <h2 className="t-section max-w-2xl text-balance">
             A template is only worth paying for if it does something you would
             otherwise do by hand.
@@ -261,7 +280,7 @@ export default function Home() {
         </section>
 
         {/* ── The catalogue ───────────────────────────────────── */}
-        <section id="templates" className="scroll-mt-16 bg-cool py-20 sm:py-24">
+        <section id="templates" className="scroll-mt-16 bg-cool py-24 sm:py-32">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
               <div>
@@ -289,7 +308,7 @@ export default function Home() {
                   */}
                   <a
                     href={productUrl(p)}
-                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
+                    className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
                   >
                     <span
                       aria-hidden
@@ -319,7 +338,7 @@ export default function Home() {
 
                       <div className="mt-4 flex flex-wrap items-center gap-1.5">
                         <span
-                          className="rounded-full px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
+                          className="rounded-chip px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
                           style={{
                             color: acentoTexto(p),
                             backgroundColor: `${p.accent}15`,
@@ -330,7 +349,7 @@ export default function Home() {
                         {p.tags.map((t) => (
                           <span
                             key={t}
-                            className="rounded-full bg-cool px-2.5 py-1 text-[11.5px] text-slate"
+                            className="rounded-chip bg-cool px-2.5 py-1 text-[11.5px] text-slate"
                           >
                             {t}
                           </span>
@@ -367,7 +386,7 @@ export default function Home() {
               <Reveal>
                 <a
                   href={productUrl(bundle)}
-                  className="group mt-6 flex flex-col gap-6 overflow-hidden rounded-2xl border border-rule bg-ink p-6 text-paper transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.44)] sm:flex-row sm:items-center sm:p-8"
+                  className="group mt-6 flex flex-col gap-6 overflow-hidden rounded-card border border-rule bg-ink p-6 text-paper transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.44)] sm:flex-row sm:items-center sm:p-8"
                 >
                   <div className="flex-1">
                     <p className="t-label text-gold">Or take the set</p>
@@ -410,7 +429,7 @@ export default function Home() {
         </section>
 
         {/* ── How it works ────────────────────────────────────── */}
-        <section id="how" className="scroll-mt-16 py-20 sm:py-24">
+        <section id="how" className="scroll-mt-16 py-16 sm:py-20">
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <p className="t-label text-slate">How it works</p>
             <h2 className="t-section mt-3 max-w-2xl text-balance">
@@ -441,7 +460,7 @@ export default function Home() {
         </section>
 
         {/* ── FAQ ─────────────────────────────────────────────── */}
-        <section id="faq" className="scroll-mt-16 bg-cool py-20 sm:py-24">
+        <section id="faq" className="scroll-mt-16 bg-cool py-14 sm:py-16">
           <div className="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-16">
             <div>
               <p className="t-label text-slate">Questions</p>
@@ -474,7 +493,7 @@ export default function Home() {
         </section>
 
         {/* ── Closing CTA ─────────────────────────────────────── */}
-        <section className="bg-ink py-20 text-paper sm:py-24">
+        <section className="bg-ink py-20 text-paper sm:py-28">
           <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
             <h2 className="t-section mx-auto max-w-2xl text-balance">
               Every one of them downloads the moment you pay.
@@ -485,7 +504,7 @@ export default function Home() {
             </p>
             <a
               href={SHOP_URL}
-              className="mt-9 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
+              className="mt-9 inline-flex items-center gap-2 rounded-btn bg-gold px-8 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
             >
               Open the NumeraSheets shop
               <span aria-hidden>→</span>

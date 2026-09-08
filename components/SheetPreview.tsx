@@ -79,7 +79,7 @@ export default function SheetPreview({
 
   return (
     <figure className={className}>
-      <div className="overflow-hidden rounded-xl border border-rule bg-white shadow-[0_18px_40px_-24px_rgba(27,35,51,0.45)]">
+      <div className="overflow-hidden rounded-card border border-rule bg-white shadow-[0_18px_40px_-24px_rgba(27,35,51,0.45)]">
         {/* barra de aba, como no rodapé de uma planilha */}
         <div className="flex items-center gap-2 border-b border-rule bg-cool px-3 py-2">
           <span className="inline-block h-2.5 w-2.5 rounded-[3px] bg-gold" />

@@ -136,7 +136,7 @@ export default function Page() {
         </section>
 
         {debt ? (
-          <section className="mt-16 rounded-2xl bg-ink px-6 py-10 text-paper sm:px-10 sm:py-12">
+          <section className="mt-16 rounded-card bg-ink px-6 py-10 text-paper sm:px-10 sm:py-12">
             <div className="max-w-2xl">
               <p className="text-[12px] uppercase tracking-[0.09em] text-paper/60">
                 The spreadsheet this came from
@@ -153,7 +153,7 @@ export default function Page() {
               </p>
               <a
                 href={listingUrl(debt)}
-                className="mt-7 inline-flex rounded-full bg-paper px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white"
+                className="mt-7 inline-flex rounded-btn bg-paper px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white"
               >
                 See the {debt.name} — ${debt.price.toFixed(2)}
               </a>
