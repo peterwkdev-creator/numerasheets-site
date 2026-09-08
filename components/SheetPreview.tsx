@@ -88,7 +88,22 @@ export default function SheetPreview({
           </span>
         </div>
 
-        <div className="overflow-x-auto">
+        {/*
+          `tabIndex`, `role` e `aria-label` existem porque o axe-core acusou
+          `scrollable-region-focusable` (impacto "serious") em 08/09/2026: uma
+          area com rolagem horizontal e inalcancavel por teclado. A planilha e
+          mais larga que o celular, entao ela ROLA -- e sem isto quem navega
+          por teclado nao consegue ver as colunas da direita.
+
+          O nome vem da aba da planilha, que e o que o leitor de tela precisa
+          para saber de que regiao se trata.
+        */}
+        <div
+          className="overflow-x-auto"
+          tabIndex={0}
+          role="region"
+          aria-label={`${data.sheet} — planilha, role para o lado para ver todas as colunas`}
+        >
           <table
             className={compact ? "border-collapse text-[11.5px]" : "border-collapse text-[13px]"}
             // `width` explicita, nao `minWidth`: com `table-layout: fixed` e

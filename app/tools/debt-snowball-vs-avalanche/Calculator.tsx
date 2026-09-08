@@ -62,7 +62,13 @@ export default function Calculator() {
           O `overflow-x-auto` de dentro so segura depois que o pai aceita
           encolher. */}
       <div className="min-w-0">
-        <div className="overflow-x-auto">
+        {/* Mesmo motivo do `SheetPreview`: regiao rolavel precisa de teclado. */}
+        <div
+          className="overflow-x-auto"
+          tabIndex={0}
+          role="region"
+          aria-label="Comparação mês a mês — role para o lado para ver todas as colunas"
+        >
           <table className="w-full min-w-[560px] border-collapse text-left">
             <thead>
               <tr className="text-[12px] uppercase tracking-[0.09em] text-slate">
