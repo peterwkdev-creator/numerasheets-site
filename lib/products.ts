@@ -272,7 +272,12 @@ export const products: Product[] = [
     // conversao Very high, faixa de compra 7,20-8,80 (o preco ja estava certo)
     // e cai so 4,7%. Medicao em `Etsy/INSIGHTS-15-TERMOS-2026-09-07.md`.
     term: "notion student planner",
-    name: "Assignment Tracker for Notion",
+    // O nome do site acompanha o titulo da loja, trocado em 07/09/2026 --
+    // quem clica daqui tem de reconhecer o produto do outro lado. O `slug`
+    // NAO muda: a URL esta indexada, e nome nao e endereco. De quebra o
+    // catalogo fica menos ambiguo, porque a planilha ao lado tambem se chama
+    // "Assignment Tracker".
+    name: "Notion Student Planner",
     does: "The same weighted-grade maths as the spreadsheet, built as three connected Notion databases you duplicate in one click.",
     standout: "Notion, not a file",
     price: 7.5,
