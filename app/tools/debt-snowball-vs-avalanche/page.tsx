@@ -22,7 +22,29 @@ export const metadata: Metadata = {
   },
 };
 
-const debt = products.find((p) => p.id === "4565130836");
+/*
+  Buscar por SLUG, e explodir se nao achar.
+
+  Ate 08/09/2026 esta linha era `p.id === "4565130836"` -- que e o id do
+  WEDDING PLANNER. A pagina da calculadora de dividas fechava com "See the
+  Wedding Planner Spreadsheet — $8.50" e linkava para o anuncio errado, no ar,
+  na terceira pagina mais vista do site no Google.
+
+  O defeito era invisivel por duas razoes: id de dez digitos nao se le, e o
+  `debt ? ... : null` la embaixo faz a secao sumir em silencio quando o find
+  falha. Slug se le, e o `throw` quebra o build em vez de publicar errado.
+*/
+const debt = (() => {
+  const achado = products.find((p) => p.slug === "debt-payoff-tracker");
+  if (!achado) {
+    throw new Error(
+      "tools/debt-snowball-vs-avalanche: nao achei o produto " +
+        "`debt-payoff-tracker` no catalogo. Se o slug mudou, atualizar aqui -- " +
+        "a pagina nao pode fechar apontando para outro produto.",
+    );
+  }
+  return achado;
+})();
 
 export default function Page() {
   // WebApplication e o tipo certo para uma ferramenta que roda na pagina.
@@ -135,7 +157,7 @@ export default function Page() {
           <SheetPreview data={preview as PreviewData} className="mt-8" />
         </section>
 
-        {debt ? (
+        {(
           <section className="mt-16 rounded-card bg-ink px-6 py-10 text-paper sm:px-10 sm:py-12">
             <div className="max-w-2xl">
               <p className="text-[12px] uppercase tracking-[0.09em] text-paper/60">
@@ -159,7 +181,7 @@ export default function Page() {
               </a>
             </div>
           </section>
-        ) : null}
+        )}
 
         <p className="mt-14 text-[14px] text-slate">
           <a className="underline underline-offset-4 hover:text-ink" href="/">

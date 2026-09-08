@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { SITE_URL, products, productUrl } from "@/lib/products";
+import { toolUrl, tools } from "@/lib/tools";
 
 /**
  * Obrigatório com `output: "export"` (Cloudflare Pages): sem isto o Next trata
@@ -26,12 +27,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
-    {
-      url: `${SITE_URL}/tools/debt-snowball-vs-avalanche`,
+    // Derivado de `lib/tools.ts` pelo mesmo motivo dos produtos: ate 08/09/2026
+    // esta URL era cravada, e a segunda ferramenta teria nascido fora do
+    // sitemap sem quebrar build nenhum.
+    ...tools.map((t) => ({
+      url: toolUrl(SITE_URL, t),
       lastModified: new Date(),
-      changeFrequency: "monthly",
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
+    })),
     ...products.map((p) => ({
       url: productUrl(p),
       lastModified: new Date(),

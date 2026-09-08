@@ -18,6 +18,7 @@ import {
   SITE_URL,
   SpreadsheetCountWord,
 } from "@/lib/products";
+import { tools } from "@/lib/tools";
 
 const differences = [
   {
@@ -521,12 +522,18 @@ export default function Home() {
             delivered through {SHOP_NAME}.
           </p>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-            <a
-              className="py-1 transition-colors hover:text-ink"
-              href="/tools/debt-snowball-vs-avalanche"
-            >
-              Debt snowball vs avalanche calculator
-            </a>
+            {/* Derivado de `lib/tools.ts`: ferramenta nova entra aqui sozinha.
+                Pagina orfa nao e indexada -- a calculadora de divida ficou
+                assim ate 03/09/2026, no sitemap e sem link interno nenhum. */}
+            {tools.map((t) => (
+              <a
+                key={t.slug}
+                className="py-1 transition-colors hover:text-ink"
+                href={`/tools/${t.slug}`}
+              >
+                {t.label}
+              </a>
+            ))}
             <a className="py-1 transition-colors hover:text-ink" href={SHOP_URL}>
               {SHOP_URL.replace("https://", "")}
             </a>

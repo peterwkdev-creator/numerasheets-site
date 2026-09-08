@@ -1,0 +1,639 @@
+{
+ "product": "project-management",
+ "sheet": "Dashboard",
+ "range": "B2:I19",
+ "generated": "2026-09-08",
+ "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
+ "cols": [
+  {
+   "letter": "B",
+   "width": 26.0
+  },
+  {
+   "letter": "C",
+   "width": 14.0
+  },
+  {
+   "letter": "D",
+   "width": 14.0
+  },
+  {
+   "letter": "E",
+   "width": 26.0
+  },
+  {
+   "letter": "F",
+   "width": 14.0
+  },
+  {
+   "letter": "G",
+   "width": 3.0
+  },
+  {
+   "letter": "H",
+   "width": 26.0
+  },
+  {
+   "letter": "I",
+   "width": 14.0
+  }
+ ],
+ "rows": [
+  {
+   "n": 2,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Project Management Tracker",
+     "span": 8,
+     "b": true,
+     "sz": 16.0
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Everything below is computed. The only tab you type on is Tasks.",
+     "span": 8,
+     "sz": 10.0
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "cells": [
+    {
+     "col": "B",
+     "v": "PROJECT FINISHES",
+     "sz": 9.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "DAYS OF SLACK",
+     "sz": 9.0
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": "TASKS LATE",
+     "sz": 9.0
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Sep 30, 2026",
+     "b": true,
+     "sz": 20.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "-4",
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": "2",
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "cells": [
+    {
+     "col": "B",
+     "v": "WORK DONE",
+     "sz": 9.0
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "TASKS, OF WHICH DONE",
+     "sz": 9.0
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": "OVERBOOKED WEEKS",
+     "sz": 9.0
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "cells": [
+    {
+     "col": "B",
+     "v": "52.5%",
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": "18 / 8",
+     "b": true,
+     "sz": 20.0
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": "3",
+     "b": true,
+     "sz": 20.0,
+     "num": true
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Where the plan stands",
+     "span": 8,
+     "b": true
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Status",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "Tasks",
+     "b": true
+    },
+    {
+     "col": "D",
+     "v": "Hours",
+     "b": true
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Not started"
+    },
+    {
+     "col": "C",
+     "v": "7",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "104",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "cells": [
+    {
+     "col": "B",
+     "v": "In progress"
+    },
+    {
+     "col": "C",
+     "v": "2",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "60",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Blocked"
+    },
+    {
+     "col": "C",
+     "v": "1",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "6",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Done"
+    },
+    {
+     "col": "C",
+     "v": "8",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "132",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "cells": [
+    {
+     "col": "B",
+     "v": ""
+    },
+    {
+     "col": "C",
+     "v": ""
+    },
+    {
+     "col": "D",
+     "v": ""
+    },
+    {
+     "col": "E",
+     "v": ""
+    },
+    {
+     "col": "F",
+     "v": ""
+    },
+    {
+     "col": "G",
+     "v": ""
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Slack is your target date minus the day the plan actually ends. Negative means the plan does not fit, and Tasks names the one task that sets the date.",
+     "span": 8,
+     "b": true
+    }
+   ]
+  }
+ ]
+}

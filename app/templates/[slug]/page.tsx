@@ -14,6 +14,7 @@ import {
   type Product,
 } from "@/lib/products";
 import { productPages } from "@/lib/productPages";
+import { toolForProduct } from "@/lib/tools";
 
 /**
  * A pagina propria de cada produto.
@@ -127,6 +128,8 @@ export default async function Page({ params }: Params) {
   // repete a vizinhanca da outra.
   const i = products.indexOf(p);
   const others = [1, 2, 3].map((d) => products[(i + d) % products.length]);
+  // A calculadora vizinha deste produto, se houver — ver `lib/tools.ts`.
+  const ferramenta = toolForProduct(p.slug);
 
   return (
     <>
@@ -307,19 +310,21 @@ export default async function Page({ params }: Params) {
             pagina do site apontava para ela, entao nao recebia link interno
             nenhum e so era alcancavel por quem ja soubesse a URL. Este link e
             o mais natural que existe -- mesma duvida, mesmo comprador. */}
-        {p.slug === "debt-payoff-tracker" && (
+        {/* Generalizado em 08/09/2026, quando nasceu a segunda ferramenta: o
+            bloco era `p.slug === "debt-payoff-tracker"` cravado, e a segunda
+            teria nascido orfa outra vez. Agora sai de `toolForProduct`. */}
+        {ferramenta && (
           <section className="mt-16">
             <h2 className="text-[13px] uppercase tracking-[0.09em] text-slate">
               Before you start
             </h2>
             <p className="mt-4 text-[15.5px] leading-relaxed text-ink-soft">
-              Snowball or avalanche? Both orders clear the same debts and one of
-              them costs less.{" "}
+              {ferramenta.pergunta}{" "}
               <a
                 className="underline underline-offset-4 hover:text-ink"
-                href="/tools/debt-snowball-vs-avalanche"
+                href={`/tools/${ferramenta.slug}`}
               >
-                Put your own numbers in and see the difference
+                {ferramenta.chamada}
               </a>{" "}
               — free, in the browser, nothing to install.
             </p>
