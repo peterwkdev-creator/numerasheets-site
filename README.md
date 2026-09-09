@@ -25,7 +25,7 @@ Vercel on 2026-09-04 — see `MIGRACAO-VERCEL-CLOUDFLARE.md` in the workspace).
 | Host | What happens | Why |
 |---|---|---|
 | `numerasheets.com` | serves the site | the canonical host |
-| `www.numerasheets.com` | **200, serves the site** | ⚠️ duplicate host — see below |
+| `www.numerasheets.com` | **301 → apex**, path and query preserved | measured 2026-09-09; the redirect rule lives in the Cloudflare dashboard, not in this repo — see below |
 | `numerasheets-site.pages.dev` | 200 + **`X-Robots-Tag: noindex`** | the Pages host must keep working for deploy previews, so it is not redirected — only kept out of the index. Rule lives in `public/_headers` |
 
 **The `canonical` tag is what keeps this safe, and it needs no host logic:**
@@ -33,7 +33,7 @@ Vercel on 2026-09-04 — see `MIGRACAO-VERCEL-CLOUDFLARE.md` in the workspace).
 `https://numerasheets.com/...` no matter which host served it. Verified by
 fetching `www` and `pages.dev` directly — both return the apex canonical.
 
-### Why `www` is not redirected, and where that fix belongs
+### Why the `www` redirect is not in this repo
 
 Static export has **no `redirects()` and no `headers()`** — there is no server
 to run them. Everything that used to live in `next.config.ts` had to move:
@@ -43,10 +43,26 @@ Redirects cannot follow the same path: Cloudflare's `_redirects` file is
 **path-based only** and explicitly does not support domain-level redirects.
 A `www` → apex redirect has to be a **Redirect Rule / Bulk Redirect in the
 Cloudflare dashboard**, not a file in this repo. Do not try to express it in
-`_redirects`; it will silently never match.
+`_redirects`; it will silently never match — which is why looking for it here
+and finding nothing does **not** mean it is missing.
 
-Until that rule exists, `www` is a duplicate host held in check by the
-canonical tag alone.
+**It is in place.** Measured on 2026-09-09:
+
+```
+https://www.numerasheets.com/templates/debt-payoff-tracker?utm_source=pinterest
+  -> 301 https://numerasheets.com/templates/debt-payoff-tracker?utm_source=pinterest
+```
+
+Permanent, and it **preserves path and query** — which is what campaign links
+need, since they carry `?utm_source=`. Test it from the command line, not the
+browser: host-level routing is invisible to a normal page load.
+
+> This paragraph used to read *"until that rule exists, `www` is a duplicate
+> host held in check by the canonical tag alone."* The rule was created and the
+> warning stayed — an orphaned note, the same failure mode already recorded in
+> `.claude/rules/etsy-titulo.md`. **A note that justifies the absence of
+> something has to be re-read when that something arrives**, or the next review
+> spends its time chasing a problem that is already solved.
 
 ## Notes
 
