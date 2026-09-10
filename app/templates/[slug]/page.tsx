@@ -8,6 +8,7 @@ import {
   acentoTexto,
   hoverShot,
   listingUrl,
+  porExtenso,
   productUrl,
   products,
   sobreAcento,
@@ -267,7 +268,7 @@ export default async function Page({ params }: Params) {
             </ul>
             <p className="mt-4 text-[15px] leading-relaxed text-slate">
               {isBundle
-                ? "One ZIP. Each of the eleven sits in its own folder with the workbook, a copy already filled in, the one-page guide and its own licence."
+                ? `One ZIP. Each of the ${porExtenso(page.sheets.length)} sits in its own folder with the workbook, a copy already filled in, the start-here guide written for it and its own licence.`
                 : isNotion
                   ? "Three connected Notion databases, duplicated into your own workspace in one click."
                   : "Every tab is in one workbook. Thousands of rows are already formatted, so there is no question of what happens when you run out."}

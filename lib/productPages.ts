@@ -131,12 +131,18 @@ export const productPages: Record<string, ProductPage> = {
       "For anyone running a plan that other people are waiting on. The three bestsellers in this category all sell the same trio -- Gantt, Kanban, Eisenhower -- and every one of them draws the tasks you typed. This one moves the finish date when a task slips, and adds up the hours landing on each person.",
   },
   "spreadsheet-bundle": {
-    // Aqui `sheets` nao sao abas: sao os onze arquivos. A secao da pagina se
+    // Aqui `sheets` nao sao abas: sao os arquivos do ZIP. A secao da pagina se
     // chama "What is inside", e para o conjunto o que esta dentro sao os
-    // produtos -- a lista de abas seria de onze workbooks diferentes.
+    // produtos -- a lista de abas seria de treze workbooks diferentes.
+    //
+    // A ORDEM e a das pastas do ZIP (01..13), e a lista tem de nomear todas.
+    // Em 07/09/2026 o Poshmark e o Project Management entraram no bundle e as
+    // descricoes da Etsy e da Payhip foram corrigidas; esta lista ficou nos
+    // onze ate 10/09. O `sincronizar.py` agora confere as TRES superficies.
     sheets: ["Small Business Bookkeeping", "Seller Bookkeeping",
-             "Invoice & Expense Tracker", "Cleaning Business Tracker",
-             "Rental Property Tracker", "Social Media Content Calendar",
+             "Poshmark Reseller Tracker", "Invoice & Expense Tracker",
+             "Cleaning Business Tracker", "Rental Property Tracker",
+             "Project Management Tracker", "Social Media Content Calendar",
              "Debt Payoff Tracker", "Wedding Planner", "Travel Planner",
              "Homeschool Planner & Records", "Assignment Tracker"],
     notDoes:

@@ -402,6 +402,15 @@ const NUMBER_WORDS = [
   "twenty-five", "twenty-six",
 ];
 
+/**
+ * A palavra por extenso de um numero qualquer.
+ *
+ * Existe porque em 10/09/2026 a pagina do bundle dizia `the eleven` em prosa
+ * ao lado de uma lista de treze -- numero escrito a mao envelhece na direcao
+ * de virar mentira. Onde ha lista, a prosa conta a lista.
+ */
+export const porExtenso = (n: number) => NUMBER_WORDS[n] ?? String(n);
+
 export const productCountWord =
   NUMBER_WORDS[templates.length] ?? String(templates.length);
 
