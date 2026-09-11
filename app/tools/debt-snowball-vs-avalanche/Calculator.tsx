@@ -67,7 +67,7 @@ export default function Calculator() {
           className="overflow-x-auto"
           tabIndex={0}
           role="region"
-          aria-label="Comparação mês a mês — role para o lado para ver todas as colunas"
+          aria-label="Month-by-month comparison — scroll sideways to see every column"
         >
           <table className="w-full min-w-[560px] border-collapse text-left">
             <thead>

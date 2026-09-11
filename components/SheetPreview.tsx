@@ -102,7 +102,7 @@ export default function SheetPreview({
           className="overflow-x-auto"
           tabIndex={0}
           role="region"
-          aria-label={`${data.sheet} — planilha, role para o lado para ver todas as colunas`}
+          aria-label={`${data.sheet} — spreadsheet, scroll sideways to see every column`}
         >
           <table
             className={compact ? "border-collapse text-[11.5px]" : "border-collapse text-[13px]"}
