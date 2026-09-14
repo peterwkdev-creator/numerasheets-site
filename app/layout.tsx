@@ -21,10 +21,16 @@ const title = "NumeraSheets — spreadsheet templates that do the math for you";
 // os helpers derivados enquanto esta description cravava "Nine" -- as duas
 // estavam certas em 31/08/2026 por coincidencia, e divergiriam sozinhas assim
 // que um produto entrasse no catalogo.
+// ⚠️ TETO DE 155 CARACTERES, e o `sincronizar.py` confere no ar.
+// Em 14/09/2026 esta description estava com 176 -- o Google corta perto de 155.
+// Ela nao foi digitada longa: NASCEU curta e CRESCEU, porque a contagem por
+// extenso vem do catalogo. Mesma familia da contagem e do teto de preco -- o
+// que e derivado envelhece sozinho, e sem quebrar build nenhum.
+// Margem: com uma palavra de 12 letras ("Twenty-three") ela da 143.
 const description =
   `${SpreadsheetCountWord} Excel and Google Sheets workbooks that calculate, ` +
-  "flag and total on their own, plus a Notion template that does the same. " +
-  "Instant download, no macros, no subscription.";
+  "flag and total on their own, plus a Notion template. " +
+  "No macros, no subscription.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
