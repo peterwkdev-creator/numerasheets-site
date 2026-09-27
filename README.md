@@ -17,6 +17,17 @@ npm install
 npm run dev
 ```
 
+## Deploying
+
+A push to `main` that touches the site runs `.github/workflows/publicar-cloudflare.yml`:
+`npm ci` → `typecheck` → `build` → `wrangler pages deploy out` (Direct Upload) to the
+existing Pages project `numerasheets-site`. The build runs on GitHub Actions, not on
+Cloudflare, and the Pages project's own automatic builds are switched off in the
+dashboard so each push publishes once. It needs two repository secrets,
+`CLOUDFLARE_API_TOKEN` (Pages: Edit only) and `CLOUDFLARE_ACCOUNT_ID`.
+
+To roll back: Pages dashboard → Deployments → *Rollback to this deployment*.
+
 ## Domains, and the duplicate-content trap
 
 Live on **numerasheets.com**, served by **Cloudflare Pages** (the site left

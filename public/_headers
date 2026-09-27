@@ -19,3 +19,11 @@ https://:project.pages.dev/*
 
 https://:version.:project.pages.dev/*
   X-Robots-Tag: noindex
+
+# CACHE LONGO para o que o Next.js grava com hash no nome (27/09/2026, guia
+# `GUIA-CLOUDFLARE-PAGES.md` da raiz de ClaudeProjects). O arquivo muda de NOME
+# quando muda de conteudo, entao pode ficar em cache para sempre. Antes disto o
+# Pages servia `max-age=14400, must-revalidate` no dominio e `max-age=0` no
+# pages.dev. Nao toca o HTML, que continua revalidando a cada visita.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
