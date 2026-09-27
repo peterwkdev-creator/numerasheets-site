@@ -166,7 +166,7 @@ export const products: Product[] = [
     term: "rental property spreadsheet",
     name: "Rental Property Tracker",
     does: "Reads each month's rent against what was paid and calls it Paid, Partial, Due or Late without you deciding.",
-    standout: "Per-property yield",
+    standout: "Net per property",
     price: 7.5,
     accent: "#2E6F5E",
     shot: "/shots/rental.png",

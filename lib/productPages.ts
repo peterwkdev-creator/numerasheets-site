@@ -41,7 +41,7 @@ export const productPages: Record<string, ProductPage> = {
     notDoes:
       "It does not connect to a bank or a listing site. You enter what was paid, and the file works out the rest.",
     forWho:
-      "Landlords with a few units who want rent status and per-property yield without a monthly subscription.",
+      "Landlords with a few units who want rent status and what each property keeps after costs, without a monthly subscription.",
   },
   "etsy-seller-spreadsheet": {
     sheets: ["Dashboard", "Products", "Settings", "Sales", "Expenses",
