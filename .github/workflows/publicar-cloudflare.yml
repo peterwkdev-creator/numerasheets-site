@@ -15,7 +15,7 @@ name: Publicar na Cloudflare
 
 on:
   push:
-    branches: [teste-cloudflare]
+    branches: [main]
     paths:
       - "app/**"
       - "components/**"
