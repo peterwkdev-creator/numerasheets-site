@@ -14,6 +14,7 @@ import {
   sobreAcento,
   type Product,
 } from "@/lib/products";
+import Footer from "@/components/Footer";
 import { productPages } from "@/lib/productPages";
 import { toolForProduct } from "@/lib/tools";
 
@@ -305,6 +306,22 @@ export default async function Page({ params }: Params) {
               className="h-auto w-full"
             />
           </div>
+        {/* O segundo botao de compra. Ate 30/09/2026 havia so o do topo: no
+            celular ele ficava em y=499 de uma pagina de 2.425 px, e quem
+            rolava ate a segunda captura -- o leitor mais interessado -- tinha
+            de voltar ao topo para comprar. */}
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <a
+            href={listingUrl(p)}
+            className="inline-flex items-center gap-2 rounded-btn px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
+            style={{ backgroundColor: p.accent, color: sobreAcento(p) }}
+          >
+            Get it on {SHOP_NAME} — ${p.price.toFixed(2)}
+          </a>
+          <span className="font-mono text-[12.5px] uppercase tracking-[0.08em] text-slate">
+            One payment · instant download
+          </span>
+        </div>
         </section>
 
         {/* A calculadora era ORFA ate 03/09/2026: estava no sitemap e nenhuma
@@ -355,6 +372,7 @@ export default async function Page({ params }: Params) {
           </ul>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

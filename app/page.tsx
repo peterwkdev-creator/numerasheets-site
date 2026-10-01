@@ -1,5 +1,6 @@
 import Image from "next/image";
 import CardShot from "@/components/CardShot";
+import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
@@ -19,7 +20,6 @@ import {
   SITE_URL,
   SpreadsheetCountWord,
 } from "@/lib/products";
-import { tools } from "@/lib/tools";
 
 const differences = [
   {
@@ -516,32 +516,7 @@ export default function Home() {
         </section>
       </main>
 
-      {/* ── Footer ─────────────────────────────────────────────── */}
-      <footer className="border-t border-rule py-10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 text-[13.5px] text-slate sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>
-            © {new Date().getFullYear()} NumeraSheets. Templates are sold and
-            delivered through {SHOP_NAME}.
-          </p>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
-            {/* Derivado de `lib/tools.ts`: ferramenta nova entra aqui sozinha.
-                Pagina orfa nao e indexada -- a calculadora de divida ficou
-                assim ate 03/09/2026, no sitemap e sem link interno nenhum. */}
-            {tools.map((t) => (
-              <a
-                key={t.slug}
-                className="py-1 transition-colors hover:text-ink"
-                href={`/tools/${t.slug}`}
-              >
-                {t.label}
-              </a>
-            ))}
-            <a className="py-1 transition-colors hover:text-ink" href={SHOP_URL}>
-              {SHOP_URL.replace("https://", "")}
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

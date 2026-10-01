@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Calculator from "./Calculator";
+import Footer from "@/components/Footer";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import preview from "@/lib/previews/debt-payoff.json";
 import { SITE_URL, listingUrl, products } from "@/lib/products";
@@ -189,6 +190,7 @@ export default function Page() {
           </a>
         </p>
       </main>
+      <Footer />
     </>
   );
 }
