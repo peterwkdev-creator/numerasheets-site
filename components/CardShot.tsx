@@ -18,6 +18,10 @@ import { useState } from "react";
  * O `alt` da segunda é vazio de propósito: ela é decorativa, mostra o mesmo
  * produto que a primeira já descreveu, e anunciá-la duas vezes ao leitor de
  * tela seria ruído.
+ *
+ * **No celular ela é miniatura (8rem)**, ao lado do texto: com a imagem na
+ * largura toda o catálogo media 9.429 px de rolagem (revisão de 30/09/2026).
+ * O `sizes` acompanha, para o celular não baixar a imagem de 90vw.
  */
 export default function CardShot({
   src,
@@ -32,7 +36,7 @@ export default function CardShot({
 
   return (
     <div
-      className="relative aspect-square overflow-hidden bg-cool"
+      className="relative aspect-square w-32 shrink-0 self-start overflow-hidden rounded-lg bg-cool sm:w-auto sm:self-auto sm:rounded-none"
       onPointerEnter={(e) => {
         if (e.pointerType !== "touch") setMounted(true);
       }}
@@ -42,7 +46,7 @@ export default function CardShot({
         alt={alt}
         width={900}
         height={900}
-        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 90vw"
+        sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 8rem"
         className={[
           "h-full w-full object-cover transition-[transform,opacity] duration-300",
           hoverSrc
@@ -58,7 +62,7 @@ export default function CardShot({
           aria-hidden
           width={900}
           height={900}
-          sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 90vw"
+          sizes="(min-width: 1024px) 22rem, (min-width: 640px) 44vw, 8rem"
           className="absolute inset-0 h-full w-full scale-[1.028] object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100 motion-reduce:transition-none"
         />
       ) : null}

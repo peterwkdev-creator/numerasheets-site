@@ -318,13 +318,16 @@ export default function Home() {
                       style={{ backgroundColor: p.accent }}
                     />
 
+                    {/* No celular, miniatura ao lado do texto; da sm para cima, a
+                       imagem por cima, como sempre foi (ver CardShot). */}
+                    <div className="flex flex-1 gap-4 p-4 sm:flex-col sm:gap-0 sm:p-0">
                     <CardShot
                       src={p.shot}
                       hoverSrc={hoverShot(p)}
                       alt={`${p.name} — screenshot of the real thing`}
                     />
 
-                    <div className="flex flex-1 flex-col p-5">
+                    <div className="flex min-w-0 flex-1 flex-col sm:p-5">
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.015em]">
                           {p.name}
@@ -334,11 +337,11 @@ export default function Home() {
                         </span>
                       </div>
 
-                      <p className="mt-2.5 text-[14.5px] leading-relaxed text-ink-soft">
+                      <p className="mt-1.5 line-clamp-3 text-[14px] leading-relaxed text-ink-soft sm:mt-2.5 sm:line-clamp-none sm:text-[14.5px]">
                         {p.does}
                       </p>
 
-                      <div className="mt-4 flex flex-wrap items-center gap-1.5">
+                      <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
                         <span
                           className="rounded-chip px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
                           style={{
@@ -351,7 +354,7 @@ export default function Home() {
                         {p.tags.map((t) => (
                           <span
                             key={t}
-                            className="rounded-chip bg-cool px-2.5 py-1 text-[11.5px] text-slate"
+                            className="hidden rounded-chip bg-cool px-2.5 py-1 text-[11.5px] text-slate sm:inline-block"
                           >
                             {t}
                           </span>
@@ -359,7 +362,7 @@ export default function Home() {
                       </div>
 
                       <span
-                        className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium"
+                        className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium sm:mt-5"
                         style={{ color: acentoTexto(p) }}
                       >
                         View product
@@ -370,6 +373,7 @@ export default function Home() {
                           →
                         </span>
                       </span>
+                    </div>
                     </div>
                   </a>
                 </Reveal>
