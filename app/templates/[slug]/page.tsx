@@ -6,6 +6,7 @@ import {
   SHOP_NAME,
   SITE_URL,
   acentoTexto,
+  cardShot,
   hoverShot,
   listingUrl,
   porExtenso,
@@ -242,7 +243,7 @@ export default async function Page({ params }: Params) {
               style={{ backgroundColor: p.accent }}
             />
             <Image
-              src={p.shot}
+              src={cardShot(p)}
               alt={`${p.name} — a screenshot of the real file, not a mockup`}
               width={1200}
               height={900}

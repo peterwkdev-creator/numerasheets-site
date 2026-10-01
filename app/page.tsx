@@ -7,6 +7,7 @@ import heroSheet from "@/lib/previews/debt-hero.json";
 import {
   acentoTexto,
   faqs,
+  cardShot,
   hoverShot,
   maxPrice,
   ProductCountWord,
@@ -322,7 +323,7 @@ export default function Home() {
                        imagem por cima, como sempre foi (ver CardShot). */}
                     <div className="flex flex-1 gap-4 p-4 sm:flex-col sm:gap-0 sm:p-0">
                     <CardShot
-                      src={p.shot}
+                      src={cardShot(p)}
                       hoverSrc={hoverShot(p)}
                       alt={`${p.name} — screenshot of the real thing`}
                     />

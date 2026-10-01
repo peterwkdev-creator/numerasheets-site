@@ -21,7 +21,8 @@ import { useState } from "react";
  *
  * **No celular ela é miniatura (8rem)**, ao lado do texto: com a imagem na
  * largura toda o catálogo media 9.429 px de rolagem (revisão de 30/09/2026).
- * O `sizes` acompanha, para o celular não baixar a imagem de 90vw.
+ * (O `sizes` não muda o download: o export serve imagem sem otimizador, sem
+ * srcset. O que pesa menos é o arquivo, WebP desde 30/09/2026.)
  */
 export default function CardShot({
   src,

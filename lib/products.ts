@@ -105,7 +105,10 @@ export type Product = {
  * imagem de listagem de cada produto. Derivar em vez de escrever à mão
  * garante que nenhum produto fique com o par trocado.
  */
-export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.png");
+/** O que o visitante baixa é WebP (1,0 MB contra 4,5 MB em PNG, 30/09/2026);
+ *  `shot` continua PNG só para `og:image` e JSON-LD. Ver export_card_shots.py. */
+export const cardShot = (p: Product) => p.shot.replace(/\.png$/, ".webp");
+export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.webp");
 
 /**
  * A cor do texto que vai POR CIMA do acento solido (o botao de compra).
