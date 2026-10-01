@@ -51,7 +51,7 @@ export default function Calculator() {
   const cheaper = c.interestSaved > 0.5 ? "avalanche" : c.interestSaved < -0.5 ? "snowball" : "tie";
 
   const input =
-    "w-full rounded-lg border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
+    "min-h-11 w-full rounded-lg border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
     "focus:border-ink focus:outline-none";
 
   return (
@@ -139,7 +139,7 @@ export default function Calculator() {
           <button
             type="button"
             onClick={() => setRows((r) => [...r, { name: "", balance: "", apr: "", min: "" }])}
-            className="rounded-btn border border-ink px-4 py-2 text-[14px] font-medium transition-colors hover:bg-ink hover:text-white"
+            className="min-h-11 rounded-btn border border-ink px-4 text-[14px] font-medium transition-colors hover:bg-ink hover:text-white"
           >
             Add a debt
           </button>

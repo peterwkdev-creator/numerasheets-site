@@ -137,7 +137,7 @@ export default function Home() {
 
           <a
             href={SHOP_URL}
-            className="rounded-btn bg-ink px-4 py-2 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
+            className="inline-flex min-h-11 items-center rounded-btn bg-ink px-4 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
           >
             Visit the shop
           </a>
@@ -476,8 +476,8 @@ export default function Home() {
 
             <div className="faq divide-y divide-rule border-y border-rule">
               {faqs.map((f) => (
-                <details key={f.q} className="group py-4">
-                  <summary className="flex cursor-pointer items-center justify-between gap-6 text-[16px] font-medium leading-snug">
+                <details key={f.q} className="group py-2">
+                  <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-6 text-[16px] font-medium leading-snug">
                     {f.q}
                     <span
                       aria-hidden
@@ -486,7 +486,7 @@ export default function Home() {
                       +
                     </span>
                   </summary>
-                  <p className="mt-3 max-w-2xl pr-10 text-[14.5px] leading-relaxed text-ink-soft">
+                  <p className="mt-1 pb-2 max-w-2xl pr-10 text-[14.5px] leading-relaxed text-ink-soft">
                     {f.a}
                   </p>
                 </details>

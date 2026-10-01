@@ -73,7 +73,7 @@ function Planner({ inicio }: { inicio: Date }) {
   const cabe = s.slack === null ? null : s.slack >= 0;
 
   const input =
-    "w-full rounded-btn border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
+    "min-h-11 w-full rounded-btn border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
     "focus:border-ink focus:outline-none";
 
   return (

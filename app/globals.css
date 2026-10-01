@@ -68,10 +68,18 @@ body {
   color: var(--color-ink);
 }
 
+/* Era dourado em todo lugar: 2,4:1 sobre paper, abaixo dos 3:1 que a WCAG
+   pede para indicador de foco (revisao de 30/09/2026). Tinta no fundo claro;
+   dentro das secoes escuras (`bg-ink`) o dourado fica, porque ali da ~7:1 e a
+   tinta sumiria. */
 :focus-visible {
-  outline: 2px solid var(--color-gold);
+  outline: 2px solid var(--color-ink);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.bg-ink :focus-visible {
+  outline-color: var(--color-gold);
 }
 
 /* Fluid display type — no media queries needed for the headings. */

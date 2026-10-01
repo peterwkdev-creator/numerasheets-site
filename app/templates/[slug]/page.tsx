@@ -179,7 +179,7 @@ export default async function Page({ params }: Params) {
 
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
         <nav aria-label="Breadcrumb" className="text-[13px] text-slate">
-          <a className="transition-colors hover:text-ink" href="/#templates">
+          <a className="-my-[15px] inline-flex min-h-11 items-center transition-colors hover:text-ink" href="/#templates">
             All templates
           </a>
           <span aria-hidden className="px-1.5">
