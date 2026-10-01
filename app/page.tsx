@@ -319,16 +319,21 @@ export default function Home() {
                       style={{ backgroundColor: p.accent }}
                     />
 
-                    {/* No celular, miniatura ao lado do texto; da sm para cima, a
-                       imagem por cima, como sempre foi (ver CardShot). */}
-                    <div className="flex flex-1 gap-4 p-4 sm:flex-col sm:gap-0 sm:p-0">
+                    {/* No celular, grade: miniatura ao lado do titulo e da
+                       descricao, e chips + "View product" embaixo, na largura
+                       do card. Ao lado da miniatura sobravam 158 px e 9 dos 14
+                       chips quebravam em duas linhas (12 com o chip a 12 px,
+                       30/09/2026). O texto vira `contents` para os filhos
+                       entrarem na grade. Da sm para cima, a imagem por cima,
+                       como sempre foi (ver CardShot). */}
+                    <div className="grid flex-1 grid-cols-[8rem_minmax(0,1fr)] grid-rows-[auto_1fr] gap-x-4 p-4 sm:flex sm:flex-col sm:gap-0 sm:p-0">
                     <CardShot
                       src={cardShot(p)}
                       hoverSrc={hoverShot(p)}
                       alt={`${p.name} — screenshot of the real thing`}
                     />
 
-                    <div className="flex min-w-0 flex-1 flex-col sm:p-5">
+                    <div className="contents sm:flex sm:min-w-0 sm:flex-1 sm:flex-col sm:p-5">
                       <div className="flex items-start justify-between gap-3">
                         <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.015em]">
                           {p.name}
@@ -342,9 +347,9 @@ export default function Home() {
                         {p.does}
                       </p>
 
-                      <div className="mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
+                      <div className="col-span-2 mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
                         <span
-                          className="rounded-chip px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
+                          className="rounded-chip px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.08em]"
                           style={{
                             color: acentoTexto(p),
                             backgroundColor: `${p.accent}15`,
@@ -355,7 +360,7 @@ export default function Home() {
                         {p.tags.map((t) => (
                           <span
                             key={t}
-                            className="hidden rounded-chip bg-cool px-2.5 py-1 text-[11.5px] text-slate sm:inline-block"
+                            className="hidden rounded-chip bg-cool px-2.5 py-1 text-[12px] text-slate sm:inline-block"
                           >
                             {t}
                           </span>
@@ -363,7 +368,7 @@ export default function Home() {
                       </div>
 
                       <span
-                        className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium sm:mt-5"
+                        className="col-span-2 mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium sm:mt-5"
                         style={{ color: acentoTexto(p) }}
                       >
                         View product

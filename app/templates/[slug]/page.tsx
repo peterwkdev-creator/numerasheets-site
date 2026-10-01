@@ -192,7 +192,7 @@ export default async function Page({ params }: Params) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14">
           <div>
             <span
-              className="inline-block rounded-chip px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.09em]"
+              className="inline-block rounded-chip px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.08em]"
               style={{ color: acentoTexto(p), backgroundColor: `${p.accent}15` }}
             >
               {p.standout}

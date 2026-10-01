@@ -37,7 +37,7 @@ export default function CardShot({
 
   return (
     <div
-      className="relative aspect-square w-32 shrink-0 self-start overflow-hidden rounded-lg bg-cool sm:w-auto sm:self-auto sm:rounded-none"
+      className="relative row-span-2 aspect-square w-32 shrink-0 self-start overflow-hidden rounded-lg bg-cool sm:w-auto sm:self-auto sm:rounded-none"
       onPointerEnter={(e) => {
         if (e.pointerType !== "touch") setMounted(true);
       }}
