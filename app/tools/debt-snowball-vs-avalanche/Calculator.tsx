@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { deDia, useDia } from "@/lib/hoje";
 import { compare, monthLabel, type Debt } from "@/lib/payoff";
 
 const money = (n: number) =>
@@ -45,7 +46,7 @@ export default function Calculator() {
   const c = useMemo(() => compare(debts, num(extra)), [debts, extra]);
   const totalDebt = debts.reduce((a, d) => a + d.balance, 0);
   const totalMin = debts.reduce((a, d) => a + (d.balance > 0 ? d.min : 0), 0);
-  const now = new Date();
+  const now = deDia(useDia());
 
   const cheaper = c.interestSaved > 0.5 ? "avalanche" : c.interestSaved < -0.5 ? "snowball" : "tie";
 

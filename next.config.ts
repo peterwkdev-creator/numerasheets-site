@@ -24,9 +24,20 @@ import type { NextConfig } from "next";
  * `next/image` é um serviço de servidor, e não há servidor. As imagens são
  * PNGs já dimensionados que nós mesmos geramos, então não se perde nada.
  */
+const agora = new Date();
+const p2 = (n: number) => String(n).padStart(2, "0");
+
 const nextConfig: NextConfig = {
   output: "export",
   images: { unoptimized: true },
+  // O dia do build, para as calculadoras hidratarem sem divergir (`lib/hoje.ts`).
+  // `DIA_DO_BUILD=2026-08-15 npm run build` simula um build antigo: é como se
+  // prova que a página aberta noutro dia não dá o erro #418.
+  env: {
+    NEXT_PUBLIC_DIA_DO_BUILD:
+      process.env.DIA_DO_BUILD ??
+      `${agora.getFullYear()}-${p2(agora.getMonth() + 1)}-${p2(agora.getDate())}`,
+  },
 };
 
 export default nextConfig;

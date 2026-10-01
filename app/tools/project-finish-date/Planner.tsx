@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { deDia, useDia } from "@/lib/hoje";
 import { fmt, schedule, type Task } from "@/lib/schedule";
 
 type Row = { name: string; waitsFor: string; days: string };
@@ -21,10 +22,6 @@ const INICIAL: Row[] = [
   { name: "Launch", waitsFor: "7", days: "1" },
 ];
 
-const hoje = () => {
-  const d = new Date();
-  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
-};
 const iso = (d: Date) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
     d.getDate(),
@@ -40,8 +37,18 @@ const num = (s: string) => {
   return Number.isFinite(n) ? n : 0;
 };
 
-export default function Planner() {
-  const inicio = hoje();
+/**
+ * O dia vem de `useDia()`: na hidratação é o do build, logo depois o local.
+ * A `key` remonta o planejador quando ele troca, porque as datas de início e
+ * de meta moram em `useState` e não acompanhariam a troca sozinhas. A troca
+ * acontece antes de qualquer clique, então não se perde edição.
+ */
+export default function PlannerDeHoje() {
+  const dia = useDia();
+  return <Planner key={dia} inicio={deDia(dia)} />;
+}
+
+function Planner({ inicio }: { inicio: Date }) {
   const [rows, setRows] = useState<Row[]>(INICIAL);
   const [startStr, setStartStr] = useState(iso(inicio));
   const [targetStr, setTargetStr] = useState(iso(new Date(inicio.getTime() + 55 * 86_400_000)));
