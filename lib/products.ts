@@ -441,6 +441,12 @@ export const SpreadsheetCountWord = (() => {
 // enfraqueceria a frase descrevendo outra coisa.
 export const maxPrice = Math.max(...templates.map((p) => p.price));
 
+/** O mais barato, para a linha de preco do hero (30/09/2026). Mesma razao. */
+export const minPrice = Math.min(...templates.map((p) => p.price));
+
+/** Quantas planilhas o bundle leva, por extenso, para a prosa. */
+export const spreadsheetCountWord = porExtenso(spreadsheets.length);
+
 /**
  * Quanto as planilhas do bundle custam avulsas. Ate 30/09/2026 a home dizia
  * "USD 65.00 bought separately" digitado a mao -- certo com onze produtos, e
@@ -463,7 +469,7 @@ export const faqs: { q: string; a: string }[] = [
     // na Etsy desde 31/08, onde os quatro arquivos sobem soltos. Uma promessa
     // sobre o que chega ao comprador nao pode ficar presa a loja anterior.
     a:
-      "The shop releases them the moment the payment clears — there is nothing to wait for and nobody to message. " +
+      "The shop releases them the moment the payment clears. " +
       (BUY_ON === "payhip"
         ? "For the spreadsheets you download a zip containing the empty workbook, a worked example, a Start Here PDF and the licence."
         : "A spreadsheet arrives as four separate downloads: the empty workbook, a worked example, a Start Here PDF and the licence.") +

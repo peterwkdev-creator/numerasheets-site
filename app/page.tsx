@@ -10,6 +10,7 @@ import {
   cardShot,
   hoverShot,
   maxPrice,
+  minPrice,
   ProductCountWord,
   productCountWord,
   productUrl,
@@ -20,6 +21,7 @@ import {
   SHOP_URL,
   SITE_URL,
   SpreadsheetCountWord,
+  spreadsheetCountWord,
 } from "@/lib/products";
 
 const differences = [
@@ -41,8 +43,8 @@ const differences = [
 ];
 
 const steps = [
-  { n: "1", h: `Buy on ${SHOP_NAME}`, p: `Checkout is handled by ${SHOP_NAME}. No account to create with me, and nothing to wait for.` },
-  { n: "2", h: "Download instantly", p: "The files are released the moment payment clears. Nothing to wait for, nobody to message." },
+  { n: "1", h: `Buy on ${SHOP_NAME}`, p: `Checkout is handled by ${SHOP_NAME}. No account to create with me.` },
+  { n: "2", h: "Download instantly", p: "The files are released the moment payment clears, with nobody to message." },
   { n: "3", h: "Open and start", p: "Excel, Excel for Mac, or import into Google Sheets — or, for the Notion template, press Duplicate. Set a couple of cells and it runs." },
 ];
 
@@ -196,6 +198,15 @@ export default function Home() {
                 See all {productCountWord}
               </a>
             </div>
+
+            {/* O preco na primeira dobra (revisao de 30/09/2026): ate aqui so
+                aparecia nos cartoes, depois de rolar o hero inteiro. Os tres
+                numeros saem da lista, nao da mao -- ver maxPrice. */}
+            <p className="mt-5 font-mono text-[13px] text-paper/62">
+              ${minPrice.toFixed(2)}–${maxPrice.toFixed(2)} each
+              {bundle &&
+                `, or all ${spreadsheetCountWord} spreadsheets for $${bundle.price.toFixed(2)}`}
+            </p>
            </div>
 
            {/* A planilha, calculada de verdade. Nao e mockup nem captura: os
@@ -291,8 +302,8 @@ export default function Home() {
                 <h2 className="t-section mt-3">{ProductCountWord} templates</h2>
               </div>
               <p className="max-w-md text-[15px] leading-relaxed text-ink-soft">
-                Every one of them is delivered instantly, and none of them
-                costs more than ${maxPrice.toFixed(2)}.
+                None of them costs more than ${maxPrice.toFixed(2)}, and every
+                product page shows screenshots of the real file.
               </p>
             </div>
 
@@ -446,7 +457,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-5 sm:px-8">
             <p className="t-label text-slate">How it works</p>
             <h2 className="t-section mt-3 max-w-2xl text-balance">
-              Three steps, and none of them involve waiting for me.
+              Three steps from the shop to a working file.
             </h2>
 
             <ol className="mt-12 grid gap-8 sm:grid-cols-3">
@@ -509,11 +520,10 @@ export default function Home() {
         <section className="bg-ink py-20 text-paper sm:py-28">
           <div className="mx-auto max-w-6xl px-5 text-center sm:px-8">
             <h2 className="t-section mx-auto max-w-2xl text-balance">
-              Every one of them downloads the moment you pay.
+              Find the one that does your math.
             </h2>
             <p className="t-lede mx-auto mt-5 max-w-xl text-paper/70">
-              Buyer protection, instant delivery, and no account to create with
-              me.
+              Buyer protection, and no account to create with me.
             </p>
             <a
               href={SHOP_URL}
