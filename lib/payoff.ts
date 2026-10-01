@@ -114,8 +114,14 @@ export function compare(debts: Debt[], extra: number): Comparison {
   };
 }
 
-/** Mês 1 é o mês que vem. Rótulo curto, no fuso local de quem abre. */
+/**
+ * Mês 1 é o mês CORRENTE, como na planilha: o "First month of the plan"
+ * (`StartMonth`) nasce no mês de hoje e a data de quitação é
+ * `EDATE(StartMonth, meses-1)`. Até 30/09/2026 aqui o mês 1 era o que vem, e a
+ * calculadora dizia "Mar 2030" ao lado da prévia do arquivo dizendo "Feb 2030"
+ * para as mesmas cinco dívidas. Rótulo curto, no fuso local de quem abre.
+ */
 export function monthLabel(from: Date, monthsAhead: number) {
-  const d = new Date(from.getFullYear(), from.getMonth() + monthsAhead, 1);
+  const d = new Date(from.getFullYear(), from.getMonth() + monthsAhead - 1, 1);
   return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
 }

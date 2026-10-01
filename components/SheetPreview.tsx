@@ -1,4 +1,6 @@
 import type { CSSProperties } from "react";
+import DataViva from "./DataViva";
+import { pareceData } from "@/lib/datas";
 
 /**
  * Renderiza uma aba calculada de um dos workbooks como tabela HTML.
@@ -10,6 +12,10 @@ import type { CSSProperties } from "react";
  * A moldura (letra de coluna, número de linha, grade) é desenhada de propósito:
  * sem ela a tabela lê como "uma tabela bonita do site" e o ponto todo é mostrar
  * que existe uma planilha por trás.
+ *
+ * As DATAS são a única exceção ao "nada é escrito à mão": o exemplo é relativo
+ * ao dia da exportação, e cada célula com cara de data anda até o dia de quem
+ * abre (`DataViva`, regra em `lib/datas.ts`). O resto é o cache do arquivo.
  */
 
 export type PreviewCell = {
@@ -161,7 +167,11 @@ export default function SheetPreview({
                             cell.v
                           ) : (
                             <span className="relative z-[1] block w-max max-w-none">
-                              {cell.v}
+                              {pareceData(cell.v) ? (
+                                <DataViva v={cell.v} gerado={data.generated} />
+                              ) : (
+                                cell.v
+                              )}
                             </span>
                           )}
                         </td>
