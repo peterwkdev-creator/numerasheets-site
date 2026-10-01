@@ -9,3 +9,7 @@ next-env.d.ts
 
 # saida do export estatico (Cloudflare Pages)
 /out/
+
+# Precaucao (30/09/2026): pasta local da Vercel e guia interno de rebuild.
+.vercel
+REBUILD-GUIDE.md

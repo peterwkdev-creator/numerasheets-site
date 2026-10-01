@@ -13,6 +13,7 @@ import {
   productUrl,
   templates,
   bundle,
+  separately,
   SHOP_NAME,
   SHOP_URL,
   SITE_URL,
@@ -404,11 +405,12 @@ export default function Home() {
                       Sem riscado, de proposito. A regra da casa e nao usar
                       preco riscado (ver a memoria do projeto): riscado sugere
                       um preco que vigorou e caiu, e este nunca vigorou -- e a
-                      soma das onze avulsas, que continuam a esse preco. Dito
+                      soma das planilhas avulsas (`separately`, calculada do
+                      catalogo), que continuam a esse preco. Dito
                       por extenso, a comparacao fica mais forte e e verdade.
                     */}
                     <p className="font-mono text-[13px] text-paper/60">
-                      USD 65.00 bought separately
+                      USD {separately.toFixed(2)} bought separately
                     </p>
                     <p className="mt-1 font-mono text-[32px] font-medium leading-none text-gold">
                       ${bundle.price.toFixed(2)}

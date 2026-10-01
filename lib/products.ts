@@ -363,7 +363,7 @@ export const products: Product[] = [
     term: "small business spreadsheet bundle",
     name: "Complete Bundle, 13 Spreadsheets",
     does: "Puts every spreadsheet in the shop in one download, each in its own folder with the example file and the guide that comes with it.",
-    standout: "USD 72.60 of templates for 15",
+    standout: "USD 72.60 of templates for $15",
     price: 15,
     accent: "#1F6F4A",
     shot: "/shots/bundle.png",
@@ -437,6 +437,16 @@ export const SpreadsheetCountWord = (() => {
 // $X" sobre os templates. Somar o bundle aqui trocaria 8,50 por 15,00 e
 // enfraqueceria a frase descrevendo outra coisa.
 export const maxPrice = Math.max(...templates.map((p) => p.price));
+
+/**
+ * Quanto as planilhas do bundle custam avulsas. Ate 30/09/2026 a home dizia
+ * "USD 65.00 bought separately" digitado a mao -- certo com onze produtos, e
+ * 7,60 abaixo da verdade depois que entraram mais dois. O `standout` do bundle
+ * continua literal porque a Etsy e a Payhip leem o mesmo numero, e o
+ * `sincronizar.py` confere os tres contra esta mesma soma.
+ */
+export const separately =
+  Math.round(spreadsheets.reduce((t, p) => t + p.price, 0) * 100) / 100;
 
 export const faqs: { q: string; a: string }[] = [
   {

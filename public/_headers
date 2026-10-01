@@ -27,3 +27,23 @@ https://:version.:project.pages.dev/*
 # pages.dev. Nao toca o HTML, que continua revalidando a cada visita.
 /_next/static/*
   Cache-Control: public, max-age=31536000, immutable
+
+# SEGURANCA (30/09/2026, revisao geral). Antes so vinham `nosniff` e
+# `referrer-policy`, o padrao do Pages. HSTS fixa o HTTPS; frame-ancestors e
+# X-Frame-Options impedem embutir o site num iframe alheio; Permissions-Policy
+# desliga APIs que o site nao usa.
+#
+# A CSP entra em REPORT-ONLY: o navegador so avisa no console, nao bloqueia.
+# Motivo medido: o Cloudflare Web Analytics injeta na borda o script
+# `static.cloudflareinsights.com/beacon.min.js` (o `curl` nao o ve, so um
+# navegador ve -- ver `tooling-analitica.md`) e envia para
+# `cloudflareinsights.com`. Uma CSP so com 'self' zeraria a contagem de
+# visitas sem erro visivel. Trocar para `Content-Security-Policy` depois de
+# conferir no console de producao que nao ha violacao.
+# 'unsafe-inline' em script: o export do Next hidrata com scripts inline e o
+# JSON-LD e inline.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
