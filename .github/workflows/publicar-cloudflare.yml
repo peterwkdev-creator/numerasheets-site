@@ -1,6 +1,6 @@
 # Publica numerasheets.com na Cloudflare Pages por Direct Upload.
 #
-# Desenho do guia `GUIA-CLOUDFLARE-PAGES.md` (raiz de ClaudeProjects), caso B:
+# Desenho do guia `Coordenacao/normas/referencia/cloudflare-pages.md`, caso B:
 # o projeto `numerasheets-site` ja existia no Pages pela integracao Git. O build
 # passa a rodar aqui, e o build automatico do Pages fica DESLIGADO no painel
 # (Settings > Build > Branch control) -- sem isso cada push publica duas vezes.
