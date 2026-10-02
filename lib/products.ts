@@ -141,8 +141,14 @@ export const listingUrl = (p: Product) =>
     ? `https://payhip.com/b/${p.payhip}`
     : `${ETSY_SHOP}/listing/${p.id}`;
 
-/** The product's own page on this site. Built in one place, like listingUrl. */
-export const productUrl = (p: Product) => `${SITE_URL}/templates/${p.slug}`;
+/**
+ * The product's own page on this site. Built in one place, like listingUrl.
+ * `productPath` is for `<Link>`: the cards were plain `<a>` with the
+ * absolute URL, and every click reloaded the whole page (found 02/10/2026).
+ * `productUrl` stays absolute for canonical, JSON-LD and the sitemap.
+ */
+export const productPath = (p: Product) => `/templates/${p.slug}`;
+export const productUrl = (p: Product) => `${SITE_URL}${productPath(p)}`;
 
 export const products: Product[] = [
   {

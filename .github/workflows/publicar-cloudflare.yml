@@ -9,7 +9,8 @@
 # O `lint` ficou fora ate 02/10/2026 porque faltava o `eslint.config.mjs`; com
 # ele, acusou 7 erros reais (6 `<a>` internos no lugar de `<Link>` e um
 # setState dentro de efeito no `Reveal`). Script de verificacao fora do CI
-# apodrece sem ninguem ver.
+# apodrece sem ninguem ver. E o lint so ve `href` literal: outros 5 links
+# internos, com href montado, so apareceram clicando no ar (02/10/2026).
 #
 # Sem `workflow_run`: nao ha cron que faca commit neste repo.
 

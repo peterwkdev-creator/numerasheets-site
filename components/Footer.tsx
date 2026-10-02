@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SHOP_NAME, SHOP_URL } from "@/lib/products";
 import { tools } from "@/lib/tools";
 
@@ -25,13 +26,13 @@ export default function Footer() {
               Pagina orfa nao e indexada -- a calculadora de divida ficou
               assim ate 03/09/2026, no sitemap e sem link interno nenhum. */}
           {tools.map((t) => (
-            <a
+            <Link
               key={t.slug}
               className="inline-flex min-h-11 items-center transition-colors hover:text-ink"
               href={`/tools/${t.slug}`}
             >
               {t.label}
-            </a>
+            </Link>
           ))}
           <a
             className="inline-flex min-h-11 items-center transition-colors hover:text-ink"

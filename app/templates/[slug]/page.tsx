@@ -11,6 +11,7 @@ import {
   hoverShot,
   listingUrl,
   porExtenso,
+  productPath,
   productUrl,
   products,
   sobreAcento,
@@ -340,12 +341,12 @@ export default async function Page({ params }: Params) {
             </h2>
             <p className="mt-4 text-[15.5px] leading-relaxed text-ink-soft">
               {ferramenta.pergunta}{" "}
-              <a
+              <Link
                 className="underline underline-offset-4 hover:text-ink"
                 href={`/tools/${ferramenta.slug}`}
               >
                 {ferramenta.chamada}
-              </a>{" "}
+              </Link>{" "}
               — free, in the browser, nothing to install.
             </p>
           </section>
@@ -358,8 +359,8 @@ export default async function Page({ params }: Params) {
           <ul className="mt-4 grid gap-4 sm:grid-cols-3">
             {others.map((o: Product) => (
               <li key={o.slug}>
-                <a
-                  href={productUrl(o)}
+                <Link
+                  href={productPath(o)}
                   className="flex h-full flex-col rounded-card border border-rule bg-white p-4 transition-colors hover:border-ink/25"
                 >
                   <span className="text-[15px] font-semibold leading-snug tracking-[-0.015em]">
@@ -368,7 +369,7 @@ export default async function Page({ params }: Params) {
                   <span className="mt-1.5 text-[13.5px] leading-relaxed text-slate">
                     {o.standout}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

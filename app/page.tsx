@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import CardShot from "@/components/CardShot";
 import Footer from "@/components/Footer";
 import Reveal from "@/components/Reveal";
@@ -13,7 +14,7 @@ import {
   minPrice,
   ProductCountWord,
   productCountWord,
-  productUrl,
+  productPath,
   templates,
   bundle,
   separately,
@@ -320,8 +321,8 @@ export default function Home() {
                     quem chega a loja chega decidido -- e conversao e fator
                     documentado de ranqueamento na Etsy.
                   */}
-                  <a
-                    href={productUrl(p)}
+                  <Link
+                    href={productPath(p)}
                     className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
                   >
                     <span
@@ -392,7 +393,7 @@ export default function Home() {
                       </span>
                     </div>
                     </div>
-                  </a>
+                  </Link>
                 </Reveal>
               ))}
             </ul>
@@ -407,8 +408,8 @@ export default function Home() {
             */}
             {bundle && (
               <Reveal>
-                <a
-                  href={productUrl(bundle)}
+                <Link
+                  href={productPath(bundle)}
                   className="group mt-6 flex flex-col gap-6 overflow-hidden rounded-card border border-rule bg-ink p-6 text-paper transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.44)] sm:flex-row sm:items-center sm:p-8"
                 >
                   <div className="flex-1">
@@ -446,7 +447,7 @@ export default function Home() {
                       </span>
                     </span>
                   </div>
-                </a>
+                </Link>
               </Reveal>
             )}
           </div>
