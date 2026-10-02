@@ -1,8 +1,8 @@
 # NumeraSheets — shop window
 
 Marketing site for the [NumeraSheets](https://numerasheets.com) shop: a home
-page listing every spreadsheet template, one page per product, and a free
-calculator. It never takes a payment — buying happens on the shop, and every
+page listing every spreadsheet template, one page per product, and two free
+calculators. It never takes a payment — buying happens on the shop, and every
 outbound link is built in one place so it stays trackable.
 
 ## Stack
@@ -20,7 +20,7 @@ npm run dev
 ## Deploying
 
 A push to `main` that touches the site runs `.github/workflows/publicar-cloudflare.yml`:
-`npm ci` → `typecheck` → `build` → `wrangler pages deploy out` (Direct Upload) to the
+`npm ci` → `typecheck` → `lint` → `build` → `wrangler pages deploy out` (Direct Upload) to the
 existing Pages project `numerasheets-site`. The build runs on GitHub Actions, not on
 Cloudflare, and the Pages project's own automatic builds are switched off in the
 dashboard so each push publishes once. It needs two repository secrets,
@@ -31,7 +31,7 @@ To roll back: Pages dashboard → Deployments → *Rollback to this deployment*.
 ## Domains, and the duplicate-content trap
 
 Live on **numerasheets.com**, served by **Cloudflare Pages** (the site left
-Vercel on 2026-09-04 — see `MIGRACAO-VERCEL-CLOUDFLARE.md` in the workspace).
+Vercel on 2026-09-04).
 
 | Host | What happens | Why |
 |---|---|---|

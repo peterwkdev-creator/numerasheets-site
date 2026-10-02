@@ -15,9 +15,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
  * 1. **Sem JavaScript o conteúdo tem de aparecer.** O estado inicial é
  *    invisível, então o `<noscript>` que força a visibilidade fica no
  *    `layout.tsx` — uma vez só. Dentro do componente ele saía repetido por
- *    instância (dez vezes na home). Sem essa regra, um leitor sem JS veria a
- *    página vazia.
- * 2. **`prefers-reduced-motion` revela na hora**, sem observar nada.
+ *    instância (uma vez por `Reveal` da página). Sem essa regra, um leitor sem JS
+ *    veria a página vazia.
+ * 2. **`prefers-reduced-motion` revela na hora, pelo CSS**, sem observar nada.
  * 3. **Uma vez revelado, nunca esconde de novo.** Reaparecer ao rolar para
  *    cima é irritante e a pessoa perde o texto que estava lendo.
  */
@@ -38,10 +38,9 @@ export default function Reveal({
 
   useEffect(() => {
     const reduz = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduz) {
-      setVisivel(true);
-      return;
-    }
+    // Com movimento reduzido o CSS já mostra o filho (`motion-reduce:` abaixo);
+    // não há o que observar nem estado para trocar.
+    if (reduz) return;
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -66,7 +65,9 @@ export default function Reveal({
         style={{ transitionDelay: visivel ? `${delay}ms` : "0ms" }}
         className={[
           "transition-[opacity,transform] duration-[620ms] ease-[cubic-bezier(0.22,0.61,0.36,1)] motion-reduce:transition-none",
-          visivel ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
+          visivel
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-4 motion-reduce:opacity-100 motion-reduce:translate-y-0",
           className,
         ].join(" ")}
     >

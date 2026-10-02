@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Calculator from "./Calculator";
 import Footer from "@/components/Footer";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
@@ -72,7 +73,7 @@ export default function Page() {
 
       <header className="border-b border-rule/80">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-2.5 px-5 sm:px-8">
-          <a href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <Image
               src="/mark.png"
               alt=""
@@ -84,7 +85,7 @@ export default function Page() {
             <span className="text-[17px] font-semibold tracking-[-0.02em]">
               NumeraSheets
             </span>
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -185,9 +186,9 @@ export default function Page() {
         )}
 
         <p className="mt-14 text-[14px] text-slate">
-          <a className="underline underline-offset-4 hover:text-ink" href="/">
+          <Link className="underline underline-offset-4 hover:text-ink" href="/">
             ← All NumeraSheets templates
-          </a>
+          </Link>
         </p>
       </main>
       <Footer />

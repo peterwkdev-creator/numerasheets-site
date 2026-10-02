@@ -5,9 +5,11 @@
 # passa a rodar aqui, e o build automatico do Pages fica DESLIGADO no painel
 # (Settings > Build > Branch control) -- sem isso cada push publica duas vezes.
 #
-# Sem `npm test`: o repo nao tem testes. O portao e o `typecheck`. O `lint` nao
-# entra porque o repo nao tem configuracao de ESLint e ele falha por isso, nao
-# por defeito no codigo (medido em 27/09/2026).
+# Sem `npm test`: o repo nao tem testes. Os portoes sao `typecheck` e `lint`.
+# O `lint` ficou fora ate 02/10/2026 porque faltava o `eslint.config.mjs`; com
+# ele, acusou 7 erros reais (6 `<a>` internos no lugar de `<Link>` e um
+# setState dentro de efeito no `Reveal`). Script de verificacao fora do CI
+# apodrece sem ninguem ver.
 #
 # Sem `workflow_run`: nao ha cron que faca commit neste repo.
 
@@ -53,6 +55,7 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run lint
       - run: npm run build
       - name: O _headers chegou na saida
         run: |

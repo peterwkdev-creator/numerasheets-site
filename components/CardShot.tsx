@@ -10,9 +10,10 @@ import { useState } from "react";
  * viva é o próprio produto se mexendo — não vídeo (o Linear tem zero) nem
  * carrossel.
  *
- * **A segunda imagem só é baixada no primeiro hover.** São dez cartões a ~150 KB
- * cada; carregar todas de saída dobraria o peso da página (que hoje é 101 KB) e
- * gastaria banda de quem está no celular, onde hover nem existe. `mounted` só
+ * **A segunda imagem só é baixada no primeiro hover.** São 15 imagens de detalhe,
+ * ~440 KB somadas em WebP (medido em 02/10/2026); carregar todas de saída quase
+ * dobraria os ~580 KB das primeiras e gastaria banda de quem está no celular,
+ * onde hover nem existe. `mounted` só
  * vira `true` quando o cursor entra, e a partir daí a imagem fica.
  *
  * O `alt` da segunda é vazio de propósito: ela é decorativa, mostra o mesmo

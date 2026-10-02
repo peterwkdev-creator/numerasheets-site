@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import {
@@ -162,7 +163,7 @@ export default async function Page({ params }: Params) {
 
       <header className="border-b border-rule/80">
         <div className="mx-auto flex h-16 max-w-6xl items-center gap-2.5 px-5 sm:px-8">
-          <a href="/" className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5">
             <Image
               src="/mark.png"
               alt=""
@@ -174,15 +175,15 @@ export default async function Page({ params }: Params) {
             <span className="text-[17px] font-semibold tracking-[-0.02em]">
               NumeraSheets
             </span>
-          </a>
+          </Link>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
         <nav aria-label="Breadcrumb" className="text-[13px] text-slate">
-          <a className="-my-[15px] inline-flex min-h-11 items-center transition-colors hover:text-ink" href="/#templates">
+          <Link className="-my-[15px] inline-flex min-h-11 items-center transition-colors hover:text-ink" href="/#templates">
             All templates
-          </a>
+          </Link>
           <span aria-hidden className="px-1.5">
             /
           </span>

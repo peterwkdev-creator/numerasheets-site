@@ -5,12 +5,15 @@ import { toolUrl, tools } from "@/lib/tools";
 
 /**
  * Obrigatório com `output: "export"` (Cloudflare Pages): sem isto o Next trata
- * a rota como dinâmica e o build falha. O efeito é que `lastModified` passa a
- * ser a data do BUILD, não a da requisição — que é mais honesto de qualquer
- * jeito, porque é quando o conteúdo mudou de fato.
+ * a rota como dinâmica e o build falha.
+ *
+ * Sem `lastModified` de propósito (02/10/2026). Era `new Date()`, ou seja a data
+ * do build em TODAS as URLs: qualquer push, até um que só mexe numa página,
+ * declarava todas como alteradas. O Google só usa `lastmod` quando ele é
+ * "consistentemente e verificavelmente correto"; um valor que muda junto em
+ * tudo ensina o contrário. Sem data honesta por página, nenhuma data.
  */
 export const dynamic = "force-static";
-
 
 /**
  * Ate 01/09/2026 este arquivo listava DUAS URLs para um catalogo de dez
@@ -23,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: SITE_URL,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
@@ -32,13 +34,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // sitemap sem quebrar build nenhum.
     ...tools.map((t) => ({
       url: toolUrl(SITE_URL, t),
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...products.map((p) => ({
       url: productUrl(p),
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
     })),

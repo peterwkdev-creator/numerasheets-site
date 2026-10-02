@@ -114,7 +114,7 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "One-person cleaning rounds priced per visit, who want to know which clients actually pay well for the hours they take.",
   },
-"poshmark-reseller-spreadsheet": {
+  "poshmark-reseller-spreadsheet": {
     sheets: ["Dashboard", "Settings", "Inventory", "Sales", "Pricing helper",
              "Charts", "On your phone"],
     notDoes:
@@ -122,7 +122,7 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "For resellers who list under fifteen dollars often enough that the flat fee matters. That is where a percentage-based spreadsheet lies to you: $2.95 on a $5.00 sale is 59%, and listing at $12.00 leaves you less than listing at $15.00.",
   },
-"project-management-spreadsheet": {
+  "project-management-spreadsheet": {
     sheets: ["Dashboard", "Settings", "Tasks", "Timeline", "Workload",
              "Charts", "On your phone"],
     notDoes:
