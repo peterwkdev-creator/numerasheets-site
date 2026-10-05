@@ -74,7 +74,7 @@ function Planner({ inicio }: { inicio: Date }) {
 
   const input =
     "min-h-11 w-full rounded-btn border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
-    "focus:border-ink focus:outline-none";
+    "focus:border-ink";
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,400px)] lg:gap-12">
@@ -179,7 +179,9 @@ function Planner({ inicio }: { inicio: Date }) {
       </div>
 
       {/* ── resultado ────────────────────────────────────────── */}
-      <div className="rounded-card bg-cool p-6 sm:p-7">
+      {/* `aria-live`: o resultado muda a cada tecla e, sem isto, o leitor de
+          tela nao anuncia nada (achado 10 da revisao de 05/10/2026). */}
+      <div aria-live="polite" className="rounded-card bg-cool p-6 sm:p-7">
         <p className="text-[12px] uppercase tracking-[0.09em] text-slate">
           Project finishes
         </p>

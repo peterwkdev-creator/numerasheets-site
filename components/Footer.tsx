@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SHOP_NAME, SHOP_URL } from "@/lib/products";
-import { tools } from "@/lib/tools";
+import { freebiePath, freebies } from "@/lib/freebies";
+import { toolPath, tools } from "@/lib/tools";
 
 /**
  * O rodape do site inteiro.
@@ -29,9 +30,18 @@ export default function Footer() {
             <Link
               key={t.slug}
               className="inline-flex min-h-11 items-center transition-colors hover:text-ink"
-              href={`/tools/${t.slug}`}
+              href={toolPath(t)}
             >
               {t.label}
+            </Link>
+          ))}
+          {freebies.map((f) => (
+            <Link
+              key={f.slug}
+              className="inline-flex min-h-11 items-center transition-colors hover:text-ink"
+              href={freebiePath(f)}
+            >
+              {f.label}
             </Link>
           ))}
           <a

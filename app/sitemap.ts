@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { SITE_URL, products, productUrl } from "@/lib/products";
+import { freebiePath, freebies } from "@/lib/freebies";
 import { toolUrl, tools } from "@/lib/tools";
 
 /**
@@ -34,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // sitemap sem quebrar build nenhum.
     ...tools.map((t) => ({
       url: toolUrl(SITE_URL, t),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    // As planilhas gratuitas, derivadas de `lib/freebies.ts` pelo mesmo motivo.
+    ...freebies.map((f) => ({
+      url: `${SITE_URL}${freebiePath(f)}`,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

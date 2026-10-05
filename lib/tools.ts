@@ -51,7 +51,19 @@ export const tools: Tool[] = [
   },
 ];
 
-export const toolUrl = (siteUrl: string, t: Tool) => `${siteUrl}/tools/${t.slug}`;
+export const toolPath = (t: Tool) => `/tools/${t.slug}`;
+export const toolUrl = (siteUrl: string, t: Tool) => `${siteUrl}${toolPath(t)}`;
+
+/** Ferramenta pelo slug, ou o build quebra: a página não publica com o link errado. */
+export const toolBySlug = (slug: string) => {
+  const achado = tools.find((t) => t.slug === slug);
+  if (!achado) {
+    throw new Error(
+      `lib/tools: nao achei \`${slug}\`. Se o slug mudou, atualizar a pagina que o chama.`,
+    );
+  }
+  return achado;
+};
 
 /** A ferramenta vizinha de um produto, se houver. */
 export const toolForProduct = (productSlug: string) =>

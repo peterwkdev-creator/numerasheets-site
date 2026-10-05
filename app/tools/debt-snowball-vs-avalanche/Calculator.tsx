@@ -52,7 +52,7 @@ export default function Calculator() {
 
   const input =
     "min-h-11 w-full rounded-lg border border-rule bg-white px-3 py-2 text-[15px] tabular-nums " +
-    "focus:border-ink focus:outline-none";
+    "focus:border-ink";
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-12">
@@ -68,7 +68,7 @@ export default function Calculator() {
           className="overflow-x-auto"
           tabIndex={0}
           role="region"
-          aria-label="Month-by-month comparison — scroll sideways to see every column"
+          aria-label="Your debts — scroll sideways to see every column"
         >
           <table className="w-full min-w-[560px] border-collapse text-left">
             <thead>
@@ -151,7 +151,9 @@ export default function Calculator() {
       </div>
 
       {/* ── resultado ────────────────────────────────────────── */}
-      <div className="rounded-card bg-cool p-6 sm:p-7">
+      {/* `aria-live`: o resultado muda a cada tecla e, sem isto, o leitor de
+          tela nao anuncia nada (achado 10 da revisao de 05/10/2026). */}
+      <div aria-live="polite" className="rounded-card bg-cool p-6 sm:p-7">
         {c.neverClears ? (
           <>
             <h2 className="t-section text-[1.5rem]">This never clears.</h2>

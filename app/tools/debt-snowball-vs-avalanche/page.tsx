@@ -1,52 +1,41 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Calculator from "./Calculator";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import preview from "@/lib/previews/debt-payoff.json";
-import { SITE_URL, listingUrl, products } from "@/lib/products";
+import { SITE_URL, listingUrl, requireProduct } from "@/lib/products";
+import { toolBySlug, toolPath } from "@/lib/tools";
 
+const path = toolPath(toolBySlug("debt-snowball-vs-avalanche"));
 const title = "Debt snowball vs avalanche calculator";
 const description =
   "Put your debts in and see which payoff order actually costs less, in money and in months. Free, nothing to install, nothing to sign up for.";
 
+const debt = requireProduct("debt-payoff-tracker", "tools/debt-snowball-vs-avalanche");
+
+// A imagem do produto vizinho: sem `images` o card compartilhado saia
+// sem figura nenhuma (o `openGraph` da pagina substitui o do layout).
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: `${SITE_URL}/tools/debt-snowball-vs-avalanche` },
+  alternates: { canonical: `${SITE_URL}${path}` },
   openGraph: {
     title: `${title} — NumeraSheets`,
     description,
-    url: `${SITE_URL}/tools/debt-snowball-vs-avalanche`,
+    url: `${SITE_URL}${path}`,
     siteName: "NumeraSheets",
     type: "website",
+    images: [{ url: debt.shot }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} — NumeraSheets`,
+    description,
+    images: [debt.shot],
   },
 };
-
-/*
-  Buscar por SLUG, e explodir se nao achar.
-
-  Ate 08/09/2026 esta linha era `p.id === "4565130836"` -- que e o id do
-  WEDDING PLANNER. A pagina da calculadora de dividas fechava com "See the
-  Wedding Planner Spreadsheet — $8.50" e linkava para o anuncio errado, no ar,
-  na terceira pagina mais vista do site no Google.
-
-  O defeito era invisivel por duas razoes: id de dez digitos nao se le, e o
-  `debt ? ... : null` la embaixo faz a secao sumir em silencio quando o find
-  falha. Slug se le, e o `throw` quebra o build em vez de publicar errado.
-*/
-const debt = (() => {
-  const achado = products.find((p) => p.slug === "debt-payoff-tracker");
-  if (!achado) {
-    throw new Error(
-      "tools/debt-snowball-vs-avalanche: nao achei o produto " +
-        "`debt-payoff-tracker` no catalogo. Se o slug mudou, atualizar aqui -- " +
-        "a pagina nao pode fechar apontando para outro produto.",
-    );
-  }
-  return achado;
-})();
 
 export default function Page() {
   // WebApplication e o tipo certo para uma ferramenta que roda na pagina.
@@ -56,7 +45,7 @@ export default function Page() {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: title,
-    url: `${SITE_URL}/tools/debt-snowball-vs-avalanche`,
+    url: `${SITE_URL}${path}`,
     applicationCategory: "FinanceApplication",
     operatingSystem: "Any",
     description,
@@ -71,25 +60,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <header className="border-b border-rule/80">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-2.5 px-5 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/mark.png"
-              alt=""
-              aria-hidden
-              width={128}
-              height={128}
-              className="h-8 w-8 rounded-[7px]"
-            />
-            <span className="text-[17px] font-semibold tracking-[-0.02em]">
-              NumeraSheets
-            </span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="mx-auto max-w-6xl px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
+      <main id="main" className="mx-auto max-w-6xl px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
         <p className="text-[12px] uppercase tracking-[0.09em] text-slate">
           Free calculator
         </p>
@@ -186,7 +159,7 @@ export default function Page() {
         )}
 
         <p className="mt-14 text-[14px] text-slate">
-          <Link className="underline underline-offset-4 hover:text-ink" href="/">
+          <Link className="underline underline-offset-4 hover:text-ink" href="/#templates">
             ← All NumeraSheets templates
           </Link>
         </p>

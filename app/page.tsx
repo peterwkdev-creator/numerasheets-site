@@ -1,10 +1,12 @@
-import Image from "next/image";
 import Link from "next/link";
 import CardShot from "@/components/CardShot";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
+import { freebiePath, freebies } from "@/lib/freebies";
+import { toolPath, tools } from "@/lib/tools";
 import {
   acentoTexto,
   faqs,
@@ -99,56 +101,9 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <a
-        href="#templates"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-btn focus:bg-ink focus:px-5 focus:py-2.5 focus:text-sm focus:text-white"
-      >
-        Skip to the templates
-      </a>
+      <Header skip={{ href: "#templates", label: "Skip to the templates" }} priority />
 
-      {/* ── Header ─────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-40 border-b border-rule/80 bg-white/85 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
-          <a href="#top" className="flex items-center gap-2.5">
-            <Image
-              src="/mark.png"
-              alt=""
-              aria-hidden
-              width={128}
-              height={128}
-              priority
-              className="h-8 w-8 rounded-[7px]"
-            />
-            <span className="text-[17px] font-semibold tracking-[-0.02em]">
-              NumeraSheets
-            </span>
-          </a>
-
-          {/* `py-1` nao e estetica: medido em 03/09/2026, estes links tinham 22px
-              de altura e o minimo da WCAG 2.2 (2.5.8) e 24. Com o padding vao a
-              30px sem mudar o espacamento visual, porque a barra tem altura fixa. */}
-          <nav className="hidden items-center gap-8 text-[14.5px] text-ink-soft md:flex">
-            <a className="py-1 transition-colors hover:text-ink" href="#templates">
-              Templates
-            </a>
-            <a className="py-1 transition-colors hover:text-ink" href="#how">
-              How it works
-            </a>
-            <a className="py-1 transition-colors hover:text-ink" href="#faq">
-              FAQ
-            </a>
-          </nav>
-
-          <a
-            href={SHOP_URL}
-            className="inline-flex min-h-11 items-center rounded-btn bg-ink px-4 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
-          >
-            Visit the shop
-          </a>
-        </div>
-      </header>
-
-      <main id="top">
+      <main id="main">
         {/* ── Hero ─────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-ink text-paper">
           <div
@@ -450,6 +405,66 @@ export default function Home() {
                 </Link>
               </Reveal>
             )}
+          </div>
+        </section>
+
+        {/* ── Free tools ──────────────────────────────────────── */}
+        {/* O motivo de voltar sem comprar. Ate 05/10/2026 as calculadoras e a
+            planilha gratis so apareciam no rodape. Derivado de `tools` e
+            `freebies`, como o rodape: item novo entra aqui sozinho. */}
+        <section id="free" className="scroll-mt-16 border-b border-rule py-16 sm:py-20">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+            <p className="t-label text-slate">Free tools</p>
+            <h2 className="t-section mt-3 max-w-2xl text-balance">
+              Free, with nothing to sign up for.
+            </h2>
+
+            <ul className="mt-10 grid gap-5 md:grid-cols-3">
+              {[
+                ...tools.map((t) => ({
+                  key: t.slug,
+                  kind: "Calculator",
+                  name: t.name,
+                  text: t.pergunta,
+                  href: toolPath(t),
+                  cta: "Open the calculator",
+                })),
+                ...freebies.map((f) => ({
+                  key: f.slug,
+                  kind: "Spreadsheet",
+                  name: f.name,
+                  text: f.blurb,
+                  href: freebiePath(f),
+                  cta: "Get the free file",
+                })),
+              ].map((item) => (
+                <li key={item.key}>
+                  <Link
+                    href={item.href}
+                    className="group flex h-full flex-col rounded-card border border-rule bg-white p-6 transition-colors hover:border-ink/40"
+                  >
+                    <span className="font-mono text-[12px] uppercase tracking-[0.08em] text-slate">
+                      {item.kind}
+                    </span>
+                    <span className="mt-2 text-[17px] font-semibold tracking-[-0.015em]">
+                      {item.name}
+                    </span>
+                    <span className="mt-2 flex-1 text-[14.5px] leading-relaxed text-ink-soft">
+                      {item.text}
+                    </span>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-medium">
+                      {item.cta}
+                      <span
+                        aria-hidden
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

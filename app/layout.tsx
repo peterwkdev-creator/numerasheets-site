@@ -96,10 +96,6 @@ export default function RootLayout({
           <style>{`[data-reveal]{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         {children}
-        {/* Sem isto o projeto nao reporta visita nenhuma, e a medicao de
-            trafego do site fica cega -- era o caso ate 31/08/2026.
-            Desde 03/09/2026 e um wrapper que descarta as NOSSAS visitas: o
-            painel mostrava 88 visitantes e os 88 eramos nos. Ver o arquivo. */}
       </body>
     </html>
   );

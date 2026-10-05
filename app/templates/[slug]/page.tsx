@@ -18,8 +18,9 @@ import {
   type Product,
 } from "@/lib/products";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { productPages } from "@/lib/productPages";
-import { toolForProduct } from "@/lib/tools";
+import { toolForProduct, toolPath } from "@/lib/tools";
 
 /**
  * A pagina propria de cada produto.
@@ -162,25 +163,9 @@ export default async function Page({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <header className="border-b border-rule/80">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-2.5 px-5 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/mark.png"
-              alt=""
-              aria-hidden
-              width={128}
-              height={128}
-              className="h-8 w-8 rounded-[7px]"
-            />
-            <span className="text-[17px] font-semibold tracking-[-0.02em]">
-              NumeraSheets
-            </span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
+      <main id="main" className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8 sm:pt-14">
         <nav aria-label="Breadcrumb" className="text-[13px] text-slate">
           <Link className="-my-[15px] inline-flex min-h-11 items-center transition-colors hover:text-ink" href="/#templates">
             All templates
@@ -343,7 +328,7 @@ export default async function Page({ params }: Params) {
               {ferramenta.pergunta}{" "}
               <Link
                 className="underline underline-offset-4 hover:text-ink"
-                href={`/tools/${ferramenta.slug}`}
+                href={toolPath(ferramenta)}
               >
                 {ferramenta.chamada}
               </Link>{" "}

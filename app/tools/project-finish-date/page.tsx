@@ -1,17 +1,22 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Planner from "./Planner";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import preview from "@/lib/previews/project-management.json";
-import { SITE_URL, listingUrl, products } from "@/lib/products";
+import { SITE_URL, listingUrl, requireProduct } from "@/lib/products";
+import { toolBySlug, toolPath } from "@/lib/tools";
 
 const title = "Project finish date calculator";
 const description =
   "Type your tasks, say what waits for what, and see the day the plan actually lands — and how many days of slack are left against the date you promised. Free, nothing to install.";
-const path = "/tools/project-finish-date";
+const path = toolPath(toolBySlug("project-finish-date"));
 
+const pm = requireProduct("project-management-spreadsheet", "tools/project-finish-date");
+
+// A imagem do produto vizinho: sem `images` o card compartilhado saia
+// sem figura nenhuma (o `openGraph` da pagina substitui o do layout).
 export const metadata: Metadata = {
   title,
   description,
@@ -22,25 +27,15 @@ export const metadata: Metadata = {
     url: `${SITE_URL}${path}`,
     siteName: "NumeraSheets",
     type: "website",
+    images: [{ url: pm.shot }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${title} — NumeraSheets`,
+    description,
+    images: [pm.shot],
   },
 };
-
-/*
-  Busca por SLUG e explode se não achar — a lição de 08/09/2026, quando a
-  outra página desta pasta fechava apontando para o Wedding Planner porque o
-  `find` era por id de dez dígitos e o guard ternário escondia a falha.
-*/
-const pm = (() => {
-  const achado = products.find((p) => p.slug === "project-management-spreadsheet");
-  if (!achado) {
-    throw new Error(
-      "tools/project-finish-date: nao achei `project-management-spreadsheet` no " +
-        "catalogo. Se o slug mudou, atualizar aqui -- a pagina nao pode fechar " +
-        "apontando para outro produto.",
-    );
-  }
-  return achado;
-})();
 
 export default function Page() {
   const jsonLd = {
@@ -62,25 +57,9 @@ export default function Page() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <header className="border-b border-rule/80">
-        <div className="mx-auto flex h-16 max-w-6xl items-center gap-2.5 px-5 sm:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <Image
-              src="/mark.png"
-              alt=""
-              aria-hidden
-              width={128}
-              height={128}
-              className="h-8 w-8 rounded-[7px]"
-            />
-            <span className="text-[17px] font-semibold tracking-[-0.02em]">
-              NumeraSheets
-            </span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
-      <main className="mx-auto max-w-6xl px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
+      <main id="main" className="mx-auto max-w-6xl px-5 pb-24 pt-12 sm:px-8 sm:pt-16">
         <p className="text-[12px] uppercase tracking-[0.09em] text-slate">
           Free calculator
         </p>
@@ -186,7 +165,7 @@ export default function Page() {
         </section>
 
         <p className="mt-14 text-[14px] text-slate">
-          <Link className="underline underline-offset-4 hover:text-ink" href="/">
+          <Link className="underline underline-offset-4 hover:text-ink" href="/#templates">
             ← All NumeraSheets templates
           </Link>
         </p>

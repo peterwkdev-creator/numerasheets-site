@@ -393,6 +393,25 @@ export const templates = products.filter((p) => p.kind !== "bundle");
 export const bundle = products.find((p) => p.kind === "bundle");
 
 /**
+ * Produto pelo SLUG, ou o build quebra.
+ *
+ * Ate 08/09/2026 a calculadora de dividas buscava por `p.id === "4565130836"`,
+ * que e o id do WEDDING PLANNER: a pagina fechava com "See the Wedding Planner
+ * Spreadsheet" no ar, e um `debt ? ... : null` escondia a falha. Slug se le, e
+ * o `throw` impede publicar errado. Estava escrito quatro vezes ate 05/10/2026.
+ */
+export const requireProduct = (slug: string, quem: string) => {
+  const achado = products.find((p) => p.slug === slug);
+  if (!achado) {
+    throw new Error(
+      `${quem}: nao achei o produto \`${slug}\` no catalogo. Se o slug mudou, ` +
+        "atualizar ali -- a pagina nao pode fechar apontando para outro produto.",
+    );
+  }
+  return achado;
+};
+
+/**
  * Tamanho do catalogo por extenso, derivado do array.
  *
  * Estava escrito a mao em quatro lugares e ficou dizendo "eight" com nove
