@@ -1,0 +1,17 @@
+{
+  "summary": {
+    "src": "/free/homeschool-attendance-log-summary.webp",
+    "width": 1700,
+    "height": 200
+  },
+  "log": {
+    "src": "/free/homeschool-attendance-log-log.webp",
+    "width": 971,
+    "height": 833
+  },
+  "og": {
+    "src": "/free/homeschool-attendance-log-og.png",
+    "width": 1200,
+    "height": 630
+  }
+}

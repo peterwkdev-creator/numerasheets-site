@@ -1,9 +1,11 @@
 import { statSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import shots from "@/lib/free-shots.json";
 import { freebieBySlug, freebieFile, freebiePath } from "@/lib/freebies";
 import { SITE_URL, productPath, requireProduct } from "@/lib/products";
 
@@ -15,8 +17,11 @@ const description =
 
 const full = requireProduct(free.productSlug, `free/${free.slug}`);
 
-// A imagem do produto vizinho: sem `images` o card compartilhado saia
-// sem figura nenhuma (o `openGraph` da pagina substitui o do layout).
+// A imagem do proprio arquivo gratis, 1200x630, desde 06/10/2026: ate ali era
+// a do planner pago, que mostrava o que nao vem no arquivo. Sai, com os dois
+// recortes abaixo e as medidas do JSON, do `make_free_promo.py` do produto.
+const og = { url: shots.og.src, width: shots.og.width, height: shots.og.height, alt: "The free homeschool attendance and hours log: the Log tab with sample data" };
+
 export const metadata: Metadata = {
   title,
   description,
@@ -27,13 +32,13 @@ export const metadata: Metadata = {
     url: `${SITE_URL}${path}`,
     siteName: "NumeraSheets",
     type: "website",
-    images: [{ url: full.shot }],
+    images: [og],
   },
   twitter: {
     card: "summary_large_image",
     title: `${title} — NumeraSheets`,
     description,
-    images: [full.shot],
+    images: [og],
   },
 };
 
@@ -117,6 +122,45 @@ export default function Page() {
             In Google Sheets: File → Import → Upload.
           </p>
         </div>
+
+        {/* Os recortes vem do exemplo do arquivo, calculado pelo LibreOffice:
+            o que o comprador ve depois de digitar, nao um desenho. */}
+        <section className="mt-14">
+          <h2 className="sr-only">What the file looks like</h2>
+          <figure className="max-w-4xl">
+            <figcaption className="font-mono text-[13px] text-slate">
+              Summary tab · sample data
+            </figcaption>
+            <div
+              className="mt-3 overflow-x-auto rounded-card border border-rule bg-white p-2 sm:p-3"
+              tabIndex={0}
+              role="region"
+              aria-label="Summary tab — scroll sideways to see every column"
+            >
+              <Image
+                src={shots.summary.src}
+                alt="Summary tab: for Maya and Ben, school days and hours logged, the target for each, the percentage reached and the days to go"
+                width={shots.summary.width}
+                height={shots.summary.height}
+                className="h-auto w-full min-w-[720px]"
+              />
+            </div>
+          </figure>
+          <figure className="mt-10 max-w-xl">
+            <figcaption className="font-mono text-[13px] text-slate">
+              Log tab · one row per subject, per child, per day
+            </figcaption>
+            <div className="mt-3 rounded-card border border-rule bg-white p-2 sm:p-3">
+              <Image
+                src={shots.log.src}
+                alt="Log tab: rows of date, child, subject and hours, with several subjects on the same day"
+                width={shots.log.width}
+                height={shots.log.height}
+                className="h-auto w-full"
+              />
+            </div>
+          </figure>
+        </section>
 
         <section className="mt-20 border-t border-rule pt-12">
           <h2 className="sr-only">The three tabs</h2>
