@@ -6,6 +6,7 @@ import Reveal from "@/components/Reveal";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import heroSheet from "@/lib/previews/debt-hero.json";
 import { freebiePath, freebies } from "@/lib/freebies";
+import { grupos } from "@/lib/grupos";
 import { toolPath, tools } from "@/lib/tools";
 import {
   acentoTexto,
@@ -17,7 +18,6 @@ import {
   ProductCountWord,
   productCountWord,
   productPath,
-  templates,
   bundle,
   separately,
   SHOP_NAME,
@@ -271,95 +271,112 @@ export default function Home() {
               </p>
             </div>
 
-            <ul className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {templates.map((p, i) => (
-                <Reveal as="li" key={p.id} delay={(i % 3) * 90}>
-                  {/*
-                    O cartao aponta para a NOSSA pagina do produto, nao direto
-                    para a loja. O rotulo ja dizia "View product", e a pagina
-                    de produto e literalmente isso -- ate 01/09/2026 ela nao
-                    existia e o link tinha de pular para a loja.
-                    Custa um clique a mais antes da loja e paga em dois: as
-                    paginas deixam de ser orfas (sitemap sozinho nao basta), e
-                    quem chega a loja chega decidido -- e conversao e fator
-                    documentado de ranqueamento na Etsy.
-                  */}
-                  <Link
-                    href={productPath(p)}
-                    className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
-                  >
-                    <span
-                      aria-hidden
-                      className="h-1 w-full shrink-0"
-                      style={{ backgroundColor: p.accent }}
-                    />
+            {/* Atalhos para os grupos (lib/grupos.ts). Links de verdade: as
+                etiquetas antigas dos cartoes tinham cara de botao e nao
+                faziam nada (revisao de UX, 05/10/2026). */}
+            <nav aria-label="Template groups" className="mt-9 flex flex-wrap gap-2">
+              {grupos.map((g) => (
+                <a
+                  key={g.id}
+                  href={`#${g.id}`}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-chip border border-rule bg-white px-4 text-[14px] font-medium text-ink transition-colors hover:border-ink/40"
+                >
+                  {g.name}
+                  <span className="font-mono text-[12px] text-slate">
+                    {g.products.length}
+                  </span>
+                </a>
+              ))}
+            </nav>
 
-                    {/* No celular, grade: miniatura ao lado do titulo e da
-                       descricao, e chips + "View product" embaixo, na largura
-                       do card. Ao lado da miniatura sobravam 158 px e 9 dos 14
-                       chips quebravam em duas linhas (12 com o chip a 12 px,
-                       30/09/2026). O texto vira `contents` para os filhos
-                       entrarem na grade. Da sm para cima, a imagem por cima,
-                       como sempre foi (ver CardShot). */}
-                    <div className="grid flex-1 grid-cols-[8rem_minmax(0,1fr)] grid-rows-[auto_1fr] gap-x-4 p-4 sm:flex sm:flex-col sm:gap-0 sm:p-0">
-                    <CardShot
-                      src={cardShot(p)}
-                      hoverSrc={hoverShot(p)}
-                      alt={`${p.name} — screenshot of the real thing`}
-                    />
-
-                    <div className="contents sm:flex sm:min-w-0 sm:flex-1 sm:flex-col sm:p-5">
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="text-[17px] font-semibold leading-snug tracking-[-0.015em]">
-                          {p.name}
-                        </h3>
-                        <span className="shrink-0 font-mono text-[15px] font-medium">
-                          ${p.price.toFixed(2)}
-                        </span>
-                      </div>
-
-                      <p className="mt-1.5 line-clamp-3 text-[14px] leading-relaxed text-ink-soft sm:mt-2.5 sm:line-clamp-none sm:text-[14.5px]">
-                        {p.does}
-                      </p>
-
-                      <div className="col-span-2 mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
-                        <span
-                          className="rounded-chip px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.08em]"
-                          style={{
-                            color: acentoTexto(p),
-                            backgroundColor: `${p.accent}15`,
-                          }}
-                        >
-                          {p.standout}
-                        </span>
-                        {p.tags.map((t) => (
-                          <span
-                            key={t}
-                            className="hidden rounded-chip bg-cool px-2.5 py-1 text-[12px] text-slate sm:inline-block"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-                      <span
-                        className="col-span-2 mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium sm:mt-5"
-                        style={{ color: acentoTexto(p) }}
+            {grupos.map((g) => (
+              <div key={g.id} id={g.id} className="mt-14 scroll-mt-20">
+                <h3 className="text-[19px] font-semibold tracking-[-0.015em]">
+                  {g.name}
+                </h3>
+                <ul className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {g.products.map((p, i) => (
+                    <Reveal as="li" key={p.id} delay={(i % 3) * 90}>
+                      {/*
+                        O cartao aponta para a NOSSA pagina do produto, nao direto
+                        para a loja. O rotulo ja dizia "View product", e a pagina
+                        de produto e literalmente isso -- ate 01/09/2026 ela nao
+                        existia e o link tinha de pular para a loja.
+                        Custa um clique a mais antes da loja e paga em dois: as
+                        paginas deixam de ser orfas (sitemap sozinho nao basta), e
+                        quem chega a loja chega decidido -- e conversao e fator
+                        documentado de ranqueamento na Etsy.
+                      */}
+                      <Link
+                        href={productPath(p)}
+                        className="group flex h-full flex-col overflow-hidden rounded-card border border-rule bg-white transition-all duration-200 hover:-translate-y-1 hover:border-transparent hover:shadow-[0_18px_44px_-18px_rgba(27,35,51,0.34)]"
                       >
-                        View product
                         <span
                           aria-hidden
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                        >
-                          →
-                        </span>
-                      </span>
-                    </div>
-                    </div>
-                  </Link>
-                </Reveal>
-              ))}
-            </ul>
+                          className="h-1 w-full shrink-0"
+                          style={{ backgroundColor: p.accent }}
+                        />
+
+                        {/* No celular, grade: miniatura ao lado do titulo e da
+                           descricao, e o chip + "View product" embaixo, na largura
+                           do card. Ao lado da miniatura sobravam 158 px e 9 dos 14
+                           chips quebravam em duas linhas (12 com o chip a 12 px,
+                           30/09/2026). O texto vira `contents` para os filhos
+                           entrarem na grade. Da sm para cima, a imagem por cima,
+                           como sempre foi (ver CardShot). */}
+                        <div className="grid flex-1 grid-cols-[8rem_minmax(0,1fr)] grid-rows-[auto_1fr] gap-x-4 p-4 sm:flex sm:flex-col sm:gap-0 sm:p-0">
+                        <CardShot
+                          src={cardShot(p)}
+                          hoverSrc={hoverShot(p)}
+                          alt={`${p.name} — screenshot of the real thing`}
+                        />
+
+                        <div className="contents sm:flex sm:min-w-0 sm:flex-1 sm:flex-col sm:p-5">
+                          <div className="flex items-start justify-between gap-3">
+                            <h4 className="text-[17px] font-semibold leading-snug tracking-[-0.015em]">
+                              {p.name}
+                            </h4>
+                            <span className="shrink-0 font-mono text-[15px] font-medium">
+                              ${p.price.toFixed(2)}
+                            </span>
+                          </div>
+
+                          <p className="mt-1.5 line-clamp-3 self-start text-[14px] leading-relaxed text-ink-soft sm:mt-2.5 sm:line-clamp-none sm:self-auto sm:text-[14.5px]">
+                            {p.does}
+                          </p>
+
+                          <div className="col-span-2 mt-3 flex flex-wrap items-center gap-1.5 sm:mt-4">
+                            <span
+                              className="rounded-chip px-2.5 py-1 font-mono text-[12px] uppercase tracking-[0.08em]"
+                              style={{
+                                color: acentoTexto(p),
+                                backgroundColor: `${p.accent}15`,
+                              }}
+                            >
+                              {p.standout}
+                            </span>
+                          </div>
+
+                          <span
+                            className="col-span-2 mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium sm:mt-5"
+                            style={{ color: acentoTexto(p) }}
+                          >
+                            View product
+                            <span
+                              aria-hidden
+                              className="transition-transform duration-200 group-hover:translate-x-1"
+                            >
+                              →
+                            </span>
+                          </span>
+                        </div>
+                        </div>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </ul>
+              </div>
+            ))}
 
             {/*
               O conjunto NAO entra na grade acima. Duas razoes, e as duas

@@ -110,6 +110,11 @@ export type Product = {
 export const cardShot = (p: Product) => p.shot.replace(/\.png$/, ".webp");
 export const hoverShot = (p: Product) => p.shot.replace(/\.png$/, "-2.webp");
 
+/** As três imagens de detalhe da página de produto: 02 a 04 da listagem,
+ *  pelo mesmo `export_card_shots.py` (`DETALHES`). 05/10/2026. */
+export const galleryShots = (p: Product) =>
+  [2, 3, 4].map((n) => p.shot.replace(/\.png$/, `-${n}.webp`));
+
 /**
  * A cor do texto que vai POR CIMA do acento solido (o botao de compra).
  *

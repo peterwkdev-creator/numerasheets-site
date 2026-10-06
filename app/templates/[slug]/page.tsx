@@ -1,3 +1,5 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +10,7 @@ import {
   SITE_URL,
   acentoTexto,
   cardShot,
-  hoverShot,
+  galleryShots,
   listingUrl,
   porExtenso,
   productPath,
@@ -87,6 +89,12 @@ export default async function Page({ params }: Params) {
   const page = productPages[p.slug];
   const isNotion = p.tags.includes("Notion");
   const isBundle = p.kind === "bundle";
+  // Imagem que falta quebra o build, nao vira quadro vazio no ar: o gerador
+  // (export_card_shots.py) e o sincronizar.py tambem conferem.
+  const galeria = galleryShots(p);
+  for (const src of galeria)
+    if (!existsSync(join(process.cwd(), "public", src)))
+      throw new Error(`galeria: falta public${src}`);
 
   // Aqui o Product/Offer e honesto, ao contrario da home e da calculadora:
   // esta pagina e sobre UM produto, com um preco, e o `url` da oferta aponta
@@ -281,19 +289,32 @@ export default async function Page({ params }: Params) {
           </div>
         </section>
 
+        {/* Tres imagens da listagem, nao uma em largura cheia (revisao de UX,
+            05/10/2026): a "second look" mostrava so a 02, um quadrado de
+            ~1.100 px com ~40% de area vazia. No celular, uma faixa que rola
+            de lado com a proxima aparecendo; cada uma abre em tamanho cheio. */}
         <section className="mt-16">
           <h2 className="text-[13px] uppercase tracking-[0.09em] text-slate">
-            A second look
+            A closer look
           </h2>
-          <div className="mt-4 overflow-hidden rounded-card border border-rule bg-white">
-            <Image
-              src={hoverShot(p)}
-              alt={`${p.name} — a second screenshot of the real file`}
-              width={1200}
-              height={900}
-              className="h-auto w-full"
-            />
-          </div>
+          <ul className="-mx-5 mt-4 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pb-2 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0">
+            {galeria.map((src, i) => (
+              <li key={src} className="w-[80%] shrink-0 snap-start sm:w-auto">
+                <a
+                  href={src}
+                  className="block overflow-hidden rounded-card border border-rule bg-white transition-shadow hover:shadow-[0_14px_34px_-18px_rgba(27,35,51,0.34)]"
+                >
+                  <Image
+                    src={src}
+                    alt={`${p.name} — detail ${i + 1} of ${galeria.length}, rendered from the real file`}
+                    width={900}
+                    height={900}
+                    className="h-auto w-full"
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
         {/* O segundo botao de compra. Ate 30/09/2026 havia so o do topo: no
             celular ele ficava em y=499 de uma pagina de 2.425 px, e quem
             rolava ate a segunda captura -- o leitor mais interessado -- tinha
