@@ -123,8 +123,10 @@ export default function Home() {
           {/* Duas colunas a partir de lg. O produto tem de estar na PRIMEIRA
               dobra: o apelo visual de uma pagina e julgado em ~50 ms (Lindgaard
               et al., 2006), e ate 31/08/2026 o hero era so texto -- quem batia
-              o olho nao via planilha nenhuma. Ver Etsy/DESIGN-PESQUISA. */}
-          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 lg:py-28">
+              o olho nao via planilha nenhuma. Ver Etsy/DESIGN-PESQUISA.
+              31rem porque a previa mede 484px + borda: com 30rem a coluna F
+              passava da moldura (05/10/2026). */}
+          <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-20 sm:px-8 sm:py-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,31rem)] lg:gap-14 lg:py-28">
            <div className="min-w-0">
             <p className="t-label text-gold">Digital spreadsheet templates</p>
 
@@ -139,19 +141,22 @@ export default function Home() {
               means.
             </p>
 
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={SHOP_URL}
-                className="inline-flex items-center justify-center gap-2 rounded-btn bg-gold px-7 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
-              >
-                Browse the shop
-                <span aria-hidden>→</span>
-              </a>
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              {/* O catalogo primeiro, a Etsy depois (revisao de UX, 05/10/2026):
+                  o botao principal levava para fora do site antes de o
+                  visitante ver produto nenhum, e o cabecalho ja tem a loja. */}
               <a
                 href="#templates"
-                className="inline-flex items-center justify-center rounded-btn border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
+                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-btn bg-gold px-7 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
-                See all {productCountWord}
+                See all {productCountWord} templates
+                <span aria-hidden>↓</span>
+              </a>
+              <a
+                href={SHOP_URL}
+                className="inline-flex items-center justify-center whitespace-nowrap rounded-btn border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
+              >
+                Browse the shop on Etsy
               </a>
             </div>
 
@@ -177,9 +182,12 @@ export default function Home() {
                    "radial-gradient(58% 52% at 50% 44%, rgba(217,156,43,0.20), rgba(217,156,43,0) 70%)",
                }}
              />
+             {/* No celular saem "Months" e "Total paid", que repetem a data e
+                 a soma: com as cinco colunas a tabela rolava e cortava. */}
              <SheetPreview
                data={heroSheet as PreviewData}
                compact
+               narrowHide={["C", "F"]}
                caption={null}
                className="relative z-[1]"
              />
