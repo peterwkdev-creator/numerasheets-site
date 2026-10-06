@@ -2,7 +2,7 @@
  "product": "project-management",
  "sheet": "Dashboard",
  "range": "B2:I19",
- "generated": "2026-10-02",
+ "generated": "2026-10-06",
  "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
  "cols": [
   {
@@ -144,7 +144,7 @@
    "cells": [
     {
      "col": "B",
-     "v": "Oct 21, 2026",
+     "v": "Oct 28, 2026",
      "b": true,
      "sz": 20.0
     },
@@ -173,7 +173,7 @@
     },
     {
      "col": "H",
-     "v": "3",
+     "v": "2",
      "b": true,
      "sz": 20.0,
      "num": true
@@ -266,7 +266,7 @@
    "cells": [
     {
      "col": "B",
-     "v": "52.5%",
+     "v": "52%",
      "b": true,
      "sz": 20.0,
      "num": true
