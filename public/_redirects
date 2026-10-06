@@ -1,0 +1,14 @@
+# Redirecionamentos da Cloudflare Pages. Copiado de `public/` para a raiz do
+# build (`out/`), como o `_headers`. O `redirects` do next.config nao existe
+# com `output: "export"`; e por aqui
+# (https://developers.cloudflare.com/pages/configuration/redirects/).
+#
+# /free (06/10/2026): a imagem do arquivo gratis, a que foi ao Free Homeschool
+# Deals e ao pin, traz `numerasheets.com/free` no rodape, e o endereco dava
+# 404 -- so existia `/free/<slug>`. Quem digita o que esta na imagem cai na
+# pagina do arquivo. 302 e nao 301: com um segundo item em `lib/freebies.ts`,
+# este destino da lugar a uma pagina indice `app/free/page.tsx`, e um 301 ja
+# teria ficado no cache dos navegadores.
+
+/free   /free/homeschool-attendance-log   302
+/free/  /free/homeschool-attendance-log   302

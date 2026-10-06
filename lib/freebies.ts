@@ -2,7 +2,9 @@
  * As planilhas gratuitas do site: download direto, sem cadastro.
  *
  * Mesmo motivo do `lib/tools.ts`: o que se escreve à mão diverge sozinho.
- * Acrescentar um item aqui o põe no sitemap e no rodapé.
+ * Acrescentar um item aqui o põe no sitemap e no rodapé. Com o SEGUNDO item,
+ * o `/free` de `public/_redirects` (que leva ao único que existe) vira uma
+ * página índice `app/free/page.tsx`.
  *
  * O `.xlsx` em `public/free/` é CÓPIA do que o build gera em
  * `Products/<produto>/free/` (repositório pai). Cópia envelhece sozinha (a
