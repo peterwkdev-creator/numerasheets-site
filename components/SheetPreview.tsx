@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import DataViva from "./DataViva";
 import { pareceData } from "@/lib/datas";
 
@@ -132,7 +132,7 @@ export default function SheetPreview({
   /** Menos altura de linha e tipo menor, para caber no hero. */
   compact?: boolean;
   /** `null` esconde a legenda. Sem passar nada, usa a padrão. */
-  caption?: string | null;
+  caption?: ReactNode | null;
   /**
    * Colunas que somem abaixo de `sm` (640px). Para a prévia que precisa caber
    * inteira no celular, sem rolagem; as outras rolam de lado.

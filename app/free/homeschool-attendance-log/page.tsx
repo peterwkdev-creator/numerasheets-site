@@ -1,12 +1,13 @@
 import { statSync } from "node:fs";
 import { join } from "node:path";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import shots from "@/lib/free-shots.json";
+import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import { freebieBySlug, freebieFile, freebiePath } from "@/lib/freebies";
+import logRows from "@/lib/previews/free-attendance-log.json";
+import summary from "@/lib/previews/free-attendance-summary.json";
 import { SITE_URL, productPath, requireProduct } from "@/lib/products";
 
 const free = freebieBySlug("homeschool-attendance-log");
@@ -17,10 +18,15 @@ const description =
 
 const full = requireProduct(free.productSlug, `free/${free.slug}`);
 
-// A imagem do proprio arquivo gratis, 1200x630, desde 06/10/2026: ate ali era
-// a do planner pago, que mostrava o que nao vem no arquivo. Sai, com os dois
-// recortes abaixo e as medidas do JSON, do `make_free_promo.py` do produto.
-const og = { url: shots.og.src, width: shots.og.width, height: shots.og.height, alt: "The free homeschool attendance and hours log: the Log tab with sample data" };
+// A imagem do proprio arquivo gratis desde 06/10/2026: ate ali era a do
+// planner pago, que mostrava o que nao vem no arquivo. Gerada pelo
+// `make_free_promo.py` do produto, sempre em 1200x630.
+const og = {
+  url: "/free/homeschool-attendance-log-og.png",
+  width: 1200,
+  height: 630,
+  alt: "The free homeschool attendance and hours log: the Log tab with sample data",
+};
 
 export const metadata: Metadata = {
   title,
@@ -123,59 +129,58 @@ export default function Page() {
           </p>
         </div>
 
-        {/* Os recortes vem do exemplo do arquivo, calculado pelo LibreOffice:
-            o que o comprador ve depois de digitar, nao um desenho. */}
+        {/* As duas abas do exemplo, calculadas pelo LibreOffice
+            (`export_preview.py --free`): texto de verdade, legivel em qualquer
+            largura. Ate 06/10/2026 eram recortes PNG, e o do Log saia com 7px
+            de letra num celular de 320 px. Medido de 320 a 1440 px:
+            - o Summary (894px) rola de lado abaixo de `lg`, e a borda chega a
+              coincidir com o fim de uma coluna (360 e 430px), sem nada
+              cortado que avise; dai o aviso, so abaixo de `lg`;
+            - o Log, compacto, cabe inteiro a partir de 360px; em 320 rola 34px.
+            No celular as duas ganham 8px de cada lado (`-mx-3`). */}
         <section className="mt-14">
           <h2 className="sr-only">What the file looks like</h2>
-          <figure className="max-w-4xl">
-            <figcaption className="font-mono text-[13px] text-slate">
-              Summary tab · sample data
-            </figcaption>
-            <div
-              className="mt-3 overflow-x-auto rounded-card border border-rule bg-white p-2 sm:p-3"
-              tabIndex={0}
-              role="region"
-              aria-label="Summary tab — scroll sideways to see every column"
-            >
-              <Image
-                src={shots.summary.src}
-                alt="Summary tab: for Maya and Ben, school days and hours logged, the target for each, the percentage reached and the days to go"
-                width={shots.summary.width}
-                height={shots.summary.height}
-                className="h-auto w-full min-w-[720px]"
-              />
-            </div>
-          </figure>
-          <figure className="mt-10 max-w-xl">
-            <figcaption className="font-mono text-[13px] text-slate">
-              Log tab · one row per subject, per child, per day
-            </figcaption>
-            <div className="mt-3 rounded-card border border-rule bg-white p-2 sm:p-3">
-              <Image
-                src={shots.log.src}
-                alt="Log tab: rows of date, child, subject and hours, with several subjects on the same day"
-                width={shots.log.width}
-                height={shots.log.height}
-                className="h-auto w-full"
-              />
-            </div>
-          </figure>
+          <div className="-mx-3 sm:mx-0">
+            <SheetPreview
+              data={summary as PreviewData}
+              className="max-w-4xl"
+              caption={
+                <>
+                  The Summary tab, calculated from sample data. The file you
+                  download starts empty.
+                  <span className="lg:hidden"> Scroll the table sideways to see every column.</span>
+                </>
+              }
+            />
+          </div>
         </section>
 
-        <section className="mt-20 border-t border-rule pt-12">
-          <h2 className="sr-only">The three tabs</h2>
-          <ol className="grid gap-10 md:grid-cols-3">
-            {steps.map((s, i) => (
-              <li key={s.tab}>
-                <p className="font-mono text-[13px] text-slate">
-                  {i + 1}. {s.tab}
-                </p>
-                <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">
-                  {s.text}
-                </p>
-              </li>
-            ))}
-          </ol>
+        <section className="mt-14 grid gap-12 lg:grid-cols-[24rem_1fr] lg:gap-16">
+          {/* `min-w-0`: item de grid cresce ate a largura da tabela, e em 320px
+              a pagina inteira transbordava 26px em vez de a tabela rolar. */}
+          <div className="-mx-3 min-w-0 sm:mx-0">
+            <SheetPreview
+              data={logRows as PreviewData}
+              compact
+              className="max-w-sm"
+              caption="The first rows of the Log tab in the same example: one row per subject, per child, per day."
+            />
+          </div>
+          <div>
+            <h2 className="sr-only">The three tabs</h2>
+            <ol className="space-y-9">
+              {steps.map((s, i) => (
+                <li key={s.tab}>
+                  <p className="font-mono text-[13px] text-slate">
+                    {i + 1}. {s.tab}
+                  </p>
+                  <p className="mt-3 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">
+                    {s.text}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
         <section className="mt-20 grid gap-10 border-t border-rule pt-12 md:grid-cols-2">

@@ -8,6 +8,11 @@
  * 2030" para sempre, enquanto a calculadora ao lado contava a partir de hoje
  * -- dois números para a mesma dívida na mesma página (revisão de 30/09/2026).
  *
+ * O terceiro, o registro de frequência grátis (06/10/2026), tem datas FIXAS:
+ * começa em 17/08/2026, uma segunda-feira. Andar semanas inteiras vale para
+ * ele também, e pelo mesmo motivo: dias e horas são contagens de linhas, não
+ * de calendário. Sem andar, a prévia diria "Aug 2026" para sempre.
+ *
  * O deslocamento é EXATO, não aproximado: nenhum valor dos dois exemplos
  * depende do calendário, só da contagem a partir do início. Por isso:
  *

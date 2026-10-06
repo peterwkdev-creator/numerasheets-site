@@ -1,0 +1,426 @@
+{
+ "product": "homeschool-planner (free file)",
+ "sheet": "Log",
+ "range": "A1:D18",
+ "generated": "2026-10-06",
+ "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
+ "cols": [
+  {
+   "letter": "A",
+   "width": 14.0
+  },
+  {
+   "letter": "B",
+   "width": 14.0
+  },
+  {
+   "letter": "C",
+   "width": 20.0
+  },
+  {
+   "letter": "D",
+   "width": 9.0
+  }
+ ],
+ "rows": [
+  {
+   "n": 1,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Date",
+     "b": true
+    },
+    {
+     "col": "B",
+     "v": "Child",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "Subject",
+     "b": true
+    },
+    {
+     "col": "D",
+     "v": "Hours",
+     "b": true
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 17, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Maths"
+    },
+    {
+     "col": "D",
+     "v": "1.5",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 17, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Reading"
+    },
+    {
+     "col": "D",
+     "v": "1.0",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 17, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Science"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 17, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "Maths"
+    },
+    {
+     "col": "D",
+     "v": "1.8",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 17, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "History"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 18, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Reading"
+    },
+    {
+     "col": "D",
+     "v": "1.0",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 18, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Science"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 18, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Art"
+    },
+    {
+     "col": "D",
+     "v": "1.5",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 18, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "History"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 18, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "Writing"
+    },
+    {
+     "col": "D",
+     "v": "1.8",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 19, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Science"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 19, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Art"
+    },
+    {
+     "col": "D",
+     "v": "1.5",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 19, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Maths"
+    },
+    {
+     "col": "D",
+     "v": "1.0",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 19, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "Writing"
+    },
+    {
+     "col": "D",
+     "v": "1.8",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 19, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "Maths"
+    },
+    {
+     "col": "D",
+     "v": "1.3",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 20, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Art"
+    },
+    {
+     "col": "D",
+     "v": "1.5",
+     "num": true
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "cells": [
+    {
+     "col": "A",
+     "v": "Aug 20, 2026"
+    },
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "Maths"
+    },
+    {
+     "col": "D",
+     "v": "1.0",
+     "num": true
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,244 @@
+{
+ "product": "homeschool-planner (free file)",
+ "sheet": "Summary",
+ "range": "B5:J8",
+ "generated": "2026-10-06",
+ "note": "Valores lidos do .xlsx depois de o LibreOffice calcular. Nenhum numero foi digitado a mao.",
+ "cols": [
+  {
+   "letter": "B",
+   "width": 18.0
+  },
+  {
+   "letter": "C",
+   "width": 13.0
+  },
+  {
+   "letter": "D",
+   "width": 13.0
+  },
+  {
+   "letter": "E",
+   "width": 10.0
+  },
+  {
+   "letter": "F",
+   "width": 12.0
+  },
+  {
+   "letter": "G",
+   "width": 10.0
+  },
+  {
+   "letter": "H",
+   "width": 14.0
+  },
+  {
+   "letter": "I",
+   "width": 10.0
+  },
+  {
+   "letter": "J",
+   "width": 18.0
+  }
+ ],
+ "rows": [
+  {
+   "n": 5,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Child",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "School days",
+     "b": true
+    },
+    {
+     "col": "D",
+     "v": "Target days",
+     "b": true
+    },
+    {
+     "col": "E",
+     "v": "Days %",
+     "b": true
+    },
+    {
+     "col": "F",
+     "v": "Days to go",
+     "b": true
+    },
+    {
+     "col": "G",
+     "v": "Hours",
+     "b": true
+    },
+    {
+     "col": "H",
+     "v": "Target hours",
+     "b": true
+    },
+    {
+     "col": "I",
+     "v": "Hours %",
+     "b": true
+    },
+    {
+     "col": "J",
+     "v": "Last day logged",
+     "b": true
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Maya"
+    },
+    {
+     "col": "C",
+     "v": "30",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "180",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": "17%",
+     "num": true
+    },
+    {
+     "col": "F",
+     "v": "150",
+     "num": true
+    },
+    {
+     "col": "G",
+     "v": "113.0",
+     "num": true
+    },
+    {
+     "col": "H",
+     "v": "900",
+     "num": true
+    },
+    {
+     "col": "I",
+     "v": "13%",
+     "num": true
+    },
+    {
+     "col": "J",
+     "v": "Sep 25, 2026"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Ben"
+    },
+    {
+     "col": "C",
+     "v": "25",
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "180",
+     "num": true
+    },
+    {
+     "col": "E",
+     "v": "14%",
+     "num": true
+    },
+    {
+     "col": "F",
+     "v": "155",
+     "num": true
+    },
+    {
+     "col": "G",
+     "v": "75.0",
+     "num": true
+    },
+    {
+     "col": "H",
+     "v": ""
+    },
+    {
+     "col": "I",
+     "v": ""
+    },
+    {
+     "col": "J",
+     "v": "Sep 18, 2026"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "cells": [
+    {
+     "col": "B",
+     "v": "Total",
+     "b": true
+    },
+    {
+     "col": "C",
+     "v": "55",
+     "b": true,
+     "num": true
+    },
+    {
+     "col": "D",
+     "v": "",
+     "b": true
+    },
+    {
+     "col": "E",
+     "v": "",
+     "b": true
+    },
+    {
+     "col": "F",
+     "v": "305",
+     "b": true,
+     "num": true
+    },
+    {
+     "col": "G",
+     "v": "188.0",
+     "b": true,
+     "num": true
+    },
+    {
+     "col": "H",
+     "v": "",
+     "b": true
+    },
+    {
+     "col": "I",
+     "v": "",
+     "b": true
+    },
+    {
+     "col": "J",
+     "v": "Sep 25, 2026",
+     "b": true
+    }
+   ]
+  }
+ ]
+}
