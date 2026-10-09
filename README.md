@@ -94,3 +94,9 @@ browser: host-level routing is invisible to a normal page load.
   `Products/_shared/export_card_shots.py` in the workspace repo, never by hand.
 - `app/opengraph-image.png` must be captured from the deployed production URL,
   never from `next dev` — the dev server injects a floating indicator.
+
+## License
+
+None, on purpose. This repository is public so the deploy can be read, not so
+its parts can be reused: the code, the copy, the images and the NumeraSheets
+name are all rights reserved.
