@@ -27,9 +27,9 @@ const ESPERA = 1;
 type Params = { params: Promise<{ slug: string }> };
 
 const destino = (slug: string) => {
-  if (slug === SHOP_GO_SLUG) return { url: SHOP_URL, nome: "the NumeraSheets shop" };
+  if (slug === SHOP_GO_SLUG) return { url: SHOP_URL, nome: "The NumeraSheets shop" };
   const p = products.find((x) => x.slug === slug);
-  return p ? { url: listingUrl(p), nome: `the ${p.name}` } : undefined;
+  return p ? { url: listingUrl(p), nome: p.name } : undefined;
 };
 
 export function generateStaticParams() {
@@ -56,12 +56,18 @@ export default async function Go({ params }: Params) {
   return (
     <main className="flex min-h-screen items-center justify-center bg-paper px-6">
       <meta httpEquiv="refresh" content={`${ESPERA};url=${d.url}`} />
-      <p className="text-center text-[16px] leading-relaxed text-slate">
-        Opening {d.nome} on {SHOP_NAME}…{" "}
-        <a className="font-medium text-ink underline" href={d.url}>
+      {/* Tres linhas, nao uma frase: em 390 px a frase quebrava deixando
+          "Etsy…" sozinho, e o "Go now" tinha 20 px de altura para o dedo. */}
+      <div className="text-center">
+        <p className="text-[19px] font-medium text-ink">Opening {SHOP_NAME}…</p>
+        <p className="mt-1.5 text-[15px] leading-relaxed text-slate">{d.nome}</p>
+        <a
+          className="mt-4 inline-flex min-h-11 items-center px-3 text-[15px] font-medium text-ink underline"
+          href={d.url}
+        >
           Go now
         </a>
-      </p>
+      </div>
     </main>
   );
 }
