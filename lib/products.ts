@@ -161,6 +161,16 @@ export const listingUrl = (p: Product) =>
 export const productPath = (p: Product) => `/templates/${p.slug}`;
 export const productUrl = (p: Product) => `${SITE_URL}${productPath(p)}`;
 
+/**
+ * Where the buy buttons point: `/go/<slug>`, a page of its own that the
+ * analytics counts and that then sends the buyer on to `listingUrl` (see
+ * `app/go/[slug]/page.tsx`). The shop buttons use `SHOP_GO_SLUG`. Keep them
+ * plain `<a>`, not `<Link>`: the count needs a full page load.
+ */
+export const SHOP_GO_SLUG = "shop";
+export const goPath = (p: Product) => `/go/${p.slug}`;
+export const SHOP_GO_PATH = `/go/${SHOP_GO_SLUG}`;
+
 export const products: Product[] = [
   {
     id: "4564974686",

@@ -21,6 +21,7 @@ import {
   bundle,
   separately,
   SHOP_NAME,
+  SHOP_GO_PATH,
   SHOP_URL,
   SITE_URL,
   SpreadsheetCountWord,
@@ -153,7 +154,7 @@ export default function Home() {
                 <span aria-hidden>↓</span>
               </a>
               <a
-                href={SHOP_URL}
+                href={SHOP_GO_PATH}
                 className="inline-flex items-center justify-center whitespace-nowrap rounded-btn border border-white/22 px-7 py-3.5 text-[15px] font-medium text-paper transition-colors hover:bg-white/8"
               >
                 Browse the shop on Etsy
@@ -567,7 +568,7 @@ export default function Home() {
               Buyer protection, and no account to create with me.
             </p>
             <a
-              href={SHOP_URL}
+              href={SHOP_GO_PATH}
               className="mt-9 inline-flex items-center gap-2 rounded-btn bg-gold px-8 py-3.5 text-[15px] font-semibold text-ink transition-transform hover:-translate-y-0.5"
             >
               Open the NumeraSheets shop

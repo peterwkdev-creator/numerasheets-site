@@ -11,6 +11,7 @@ import {
   acentoTexto,
   cardShot,
   galleryShots,
+  goPath,
   listingUrl,
   porExtenso,
   productPath,
@@ -207,7 +208,7 @@ export default async function Page({ params }: Params) {
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href={listingUrl(p)}
+                href={goPath(p)}
                 className="inline-flex items-center gap-2 rounded-btn px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
                 style={{ backgroundColor: p.accent, color: sobreAcento(p) }}
               >
@@ -321,7 +322,7 @@ export default async function Page({ params }: Params) {
             de voltar ao topo para comprar. */}
         <div className="mt-8 flex flex-wrap items-center gap-4">
           <a
-            href={listingUrl(p)}
+            href={goPath(p)}
             className="inline-flex items-center gap-2 rounded-btn px-5 py-3 text-[15px] font-medium transition-transform duration-200 hover:-translate-y-0.5"
             style={{ backgroundColor: p.accent, color: sobreAcento(p) }}
           >

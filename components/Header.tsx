@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SHOP_URL } from "@/lib/products";
+import { SHOP_GO_PATH } from "@/lib/products";
 
 /**
  * O cabeçalho do site inteiro.
@@ -78,7 +78,7 @@ export default function Header({
           </nav>
 
           <a
-            href={SHOP_URL}
+            href={SHOP_GO_PATH}
             className="inline-flex min-h-11 items-center rounded-btn bg-ink px-4 text-[14px] font-medium text-white transition-colors hover:bg-ink-deep sm:px-5"
           >
             Visit the shop

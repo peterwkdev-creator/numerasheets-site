@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SheetPreview, { type PreviewData } from "@/components/SheetPreview";
 import preview from "@/lib/previews/project-management.json";
-import { SITE_URL, listingUrl, requireProduct } from "@/lib/products";
+import { SITE_URL, goPath, requireProduct } from "@/lib/products";
 import { toolBySlug, toolPath } from "@/lib/tools";
 
 const title = "Project finish date calculator";
@@ -156,7 +156,7 @@ export default function Page() {
               or Google Sheets.
             </p>
             <a
-              href={listingUrl(pm)}
+              href={goPath(pm)}
               className="mt-7 inline-flex rounded-btn bg-paper px-6 py-3 text-[15px] font-medium text-ink transition-colors hover:bg-white"
             >
               See the {pm.name} — ${pm.price.toFixed(2)}
