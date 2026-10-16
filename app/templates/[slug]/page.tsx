@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const description = `${p.does} ${page.forWho}`;
 
   return {
-    title: p.name,
+    title: p.searchTitle ?? p.name,
     description,
     alternates: { canonical: productUrl(p) },
     openGraph: {

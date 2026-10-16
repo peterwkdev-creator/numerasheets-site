@@ -66,6 +66,12 @@ export type Product = {
    */
   term: string;
   name: string;
+  /**
+   * The page's <title> when the Google search differs from `name`. The H1,
+   * the card and the social preview keep `name`, so the buyer still meets
+   * the shop's title on the other side; only the search result changes.
+   */
+  searchTitle?: string;
   /** What the workbook works out on its own — the reason it costs money. */
   does: string;
   /** The single column or behaviour that makes it worth the price. */
@@ -292,6 +298,11 @@ export const products: Product[] = [
     // catalogo fica menos ambiguo, porque a planilha ao lado tambem se chama
     // "Assignment Tracker".
     name: "Notion Student Planner",
+    // O Search Console de 16/09 a 13/10/2026 mostra a pagina para
+    // `notion assignment tracker template`, `notion assignment template` e
+    // `notion assignment tracker` (10 impressoes cada, posicao 45 a 54), e o
+    // <title> dizia so o `name`. Leitura em `Etsy/TRAFEGO-DE-FORA-2026-10-15.md`.
+    searchTitle: "Notion Assignment Tracker Template & Student Planner",
     // A frase carrega "assignment tracker" de proposito. O Search Console de
     // 08/09/2026 mostra que 4 das 9 consultas que nos dao impressao no Google
     // sao dessa familia (`notion assignment tracker`, `notion assignment
