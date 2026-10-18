@@ -105,7 +105,6 @@ browser: host-level routing is invisible to a normal page load.
 | [linguagem-simples-br](https://github.com/peterwkdev-creator/linguagem-simples-br) · [site](https://peterwkdev-creator.github.io/linguagem-simples-br/) | Open checker for Brazil's Plain Language Act (Law 15,263/2025): tests a text against its art. 5 |
 | [claude-context-cost](https://github.com/peterwkdev-creator/claude-context-cost) · [site](https://peterwkdev-creator.github.io/claude-context-cost/) | How much each source (CLAUDE.md, rules, skills, memory) costs in a Claude Code session's context |
 | [vra-anac](https://github.com/peterwkdev-creator/vra-anac) | On-time performance of Brazil's domestic flights from ANAC's VRA data |
-| [kerbo-releases](https://github.com/peterwkdev-creator/kerbo-releases) | Signed releases of Kerbo, a second opinion on security, network and disk for Windows |
 <!-- outros-projetos:fim -->
 
 ## License
