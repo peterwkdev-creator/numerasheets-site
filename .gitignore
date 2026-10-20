@@ -1,7 +1,6 @@
 node_modules
 .next
 out
-.env*
 .DS_Store
 *.tsbuildinfo
 next-env.d.ts
@@ -13,3 +12,12 @@ next-env.d.ts
 # Precaucao (30/09/2026): pasta local da Vercel e guia interno de rebuild.
 .vercel
 REBUILD-GUIDE.md
+
+# Segredo (bloco padrao)
+.env*
+!.env.example
+*backup_codes*
+*recovery*codes*
+*.pem
+*.key
+.claude/settings.local.json
