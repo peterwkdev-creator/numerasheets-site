@@ -105,6 +105,9 @@ browser: host-level routing is invisible to a normal page load.
 | [linguagem-simples-br](https://github.com/peterwkdev-creator/linguagem-simples-br) · [site](https://peterwkdev-creator.github.io/linguagem-simples-br/) | Open checker for Brazil's Plain Language Act (Law 15,263/2025): tests a text against its art. 5 |
 | [claude-context-cost](https://github.com/peterwkdev-creator/claude-context-cost) · [site](https://peterwkdev-creator.github.io/claude-context-cost/) | How much each source (CLAUDE.md, rules, skills, memory) costs in a Claude Code session's context |
 | [vra-anac](https://github.com/peterwkdev-creator/vra-anac) | On-time performance of Brazil's domestic flights from ANAC's VRA data |
+| [tts-ptbr](https://github.com/peterwkdev-creator/tts-ptbr) | Brazilian Portuguese text-to-speech with open models (Kokoro and Piper), measured by Whisper |
+| [carrossel-terminal](https://github.com/peterwkdev-creator/carrossel-terminal) | Terminal-style Instagram carousel: Markdown becomes PNG, checked before posting, and the post becomes a Reel |
+| [ia-testada](https://github.com/peterwkdev-creator/ia-testada) | The measurements behind the @peterwk.dev posts, with the script and how to redo them |
 <!-- outros-projetos:fim -->
 
 ## License
