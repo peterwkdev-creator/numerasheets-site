@@ -47,6 +47,7 @@ const definicao: Grupo[] = [
     id: "home",
     name: "Home and life",
     slugs: [
+      "personal-finance-spreadsheet",
       "debt-payoff-tracker",
       "wedding-planner-spreadsheet",
       "travel-itinerary-template",

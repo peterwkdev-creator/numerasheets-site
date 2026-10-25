@@ -167,7 +167,7 @@ export default function Home() {
             <p className="mt-5 font-mono text-[13px] text-paper/62">
               ${minPrice.toFixed(2)}–${maxPrice.toFixed(2)} each
               {bundle &&
-                `, or all ${spreadsheetCountWord} spreadsheets for $${bundle.price.toFixed(2)}`}
+                `, or ${spreadsheetCountWord} spreadsheets for $${bundle.price.toFixed(2)}`}
             </p>
            </div>
 

@@ -103,6 +103,16 @@ export type Product = {
    * Ausente = template normal.
    */
   kind?: "bundle";
+  /**
+   * `false` = planilha que NAO esta no ZIP do bundle (25/10/2026: o
+   * Dashboard financeiro, #16, entrou depois dele e o Peter decidiu deixa-lo
+   * fora). Sem esta marca a home prometia "fourteen spreadsheets" pelo preco
+   * do bundle e somava USD 80.50 avulsos, com treze no download. O `s17` do
+   * `sincronizar.py` le esta mesma marca.
+   *
+   * Ausente = esta no bundle (planilha) ou nao se aplica (Notion, o bundle).
+   */
+  inBundle?: false;
 };
 
 /**
@@ -392,12 +402,30 @@ export const products: Product[] = [
     tags: ["Project teams", "Planning"],
   },
   {
+    id: "4602917064",
+    payhip: "2l9GS",
+    slug: "personal-finance-spreadsheet",
+    // O termo ancora medido em 24/10/2026 (376 buscas/mes, conversao Very
+    // high, faixa paga USD 7,20-8,80); o titulo da Etsy abre com ele.
+    term: "personal finance spreadsheet",
+    name: "Personal and Business Finance Dashboard",
+    does: "Keeps your household and your small business apart and joins them at your owner pay, so one page says whether the business earned it and whether the house can live on it.",
+    standout: "Owner-pay bridge",
+    price: 7.9,
+    // O marinho da capa (#141C33) clareado para ler como acento; o amarelo
+    // da capa e claro e pediria `accentInk`, como o ouro do Invoice.
+    accent: "#26406E",
+    shot: "/shots/finance.png",
+    tags: ["Household", "Small business"],
+    inBundle: false,
+  },
+  {
     id: "4568054728",
     payhip: "stI8r",
     slug: "spreadsheet-bundle",
     term: "small business spreadsheet bundle",
     name: "Complete Bundle, 13 Spreadsheets",
-    does: "Puts every spreadsheet in the shop in one download, each in its own folder with the example file and the guide that comes with it.",
+    does: "Puts thirteen of the shop's spreadsheets in one download, each in its own folder with the example file and the guide that comes with it.",
     standout: "USD 72.60 of templates for $15",
     price: 15,
     accent: "#1F6F4A",
@@ -495,8 +523,11 @@ export const maxPrice = Math.max(...templates.map((p) => p.price));
 /** O mais barato, para a linha de preco do hero (30/09/2026). Mesma razao. */
 export const minPrice = Math.min(...templates.map((p) => p.price));
 
+/** As planilhas que o ZIP do bundle leva: nem toda planilha esta nele. */
+const bundled = spreadsheets.filter((p) => p.inBundle !== false);
+
 /** Quantas planilhas o bundle leva, por extenso, para a prosa. */
-export const spreadsheetCountWord = porExtenso(spreadsheets.length);
+export const spreadsheetCountWord = porExtenso(bundled.length);
 
 /**
  * Quanto as planilhas do bundle custam avulsas. Ate 30/09/2026 a home dizia
@@ -506,7 +537,7 @@ export const spreadsheetCountWord = porExtenso(spreadsheets.length);
  * `sincronizar.py` confere os tres contra esta mesma soma.
  */
 export const separately =
-  Math.round(spreadsheets.reduce((t, p) => t + p.price, 0) * 100) / 100;
+  Math.round(bundled.reduce((t, p) => t + p.price, 0) * 100) / 100;
 
 export const faqs: { q: string; a: string }[] = [
   {

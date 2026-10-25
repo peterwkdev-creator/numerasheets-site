@@ -67,6 +67,14 @@ export const productPages: Record<string, ProductPage> = {
     forWho:
       "Anyone paying down several debts who wants to see, in months and in dollars, which payoff order actually costs less.",
   },
+  "personal-finance-spreadsheet": {
+    sheets: ["Dashboard", "Transactions", "Budget", "Accounts", "Charts",
+             "On your phone", "Settings", "Checks"],
+    notDoes:
+      "It does not connect to your bank, and it is not tax advice. You enter or paste each transaction, and the tax reserve is a set-aside you choose, not a tax calculation.",
+    forWho:
+      "Self-employed people and small business owners who run the house and the business from the same pocket and want one page that keeps the two apart.",
+  },
   "wedding-planner-spreadsheet": {
     sheets: ["Dashboard", "Budget", "Settings", "Guests", "Checklist",
              "Charts", "On your phone"],
@@ -146,7 +154,7 @@ export const productPages: Record<string, ProductPage> = {
              "Debt Payoff Tracker", "Wedding Planner", "Travel Planner",
              "Homeschool Planner & Records", "Assignment Tracker"],
     notDoes:
-      "It does not include the Notion template, which is not a file. Bought separately these thirteen cost USD 72.60; the bundle does not add anything that is not already in one of them.",
+      "It does not include the Notion template, which is not a file, or the Personal and Business Finance Dashboard, which came out after it. Bought separately these thirteen cost USD 72.60; the bundle does not add anything that is not already in one of them.",
     forWho:
       "People who want the whole set at once rather than picking one now and paying full price for the next.",
   },
