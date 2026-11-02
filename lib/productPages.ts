@@ -24,6 +24,17 @@ export type ProductPage = {
   notDoes: string;
   /** Quem compra isto, em uma linha. Vira o primeiro parágrafo da página. */
   forWho: string;
+  /**
+   * Texto longo que responde à consulta do Google, com FAQ. Opcional: entrou
+   * em 02/11/2026 só em Etsy seller e Rental (consultas na posição 36 a 56,
+   * `Etsy/GOOGLE-CONSULTAS-2026-11-02.md`); o Notion fica de controle, sem
+   * guia. Os números vêm do EXAMPLE entregue, como na descrição da listagem.
+   */
+  guide?: {
+    heading: string;
+    body: string[];
+    faqs: { q: string; a: string }[];
+  };
 };
 
 export const productPages: Record<string, ProductPage> = {
@@ -42,6 +53,38 @@ export const productPages: Record<string, ProductPage> = {
       "It does not connect to a bank or a listing site. You enter what was paid, and the file works out the rest.",
     forWho:
       "Landlords with a few units who want rent status and what each property keeps after costs, without a monthly subscription.",
+    guide: {
+      heading: "Tracking rent in a spreadsheet, property by property",
+      body: [
+        "A rent tracking spreadsheet has to answer three questions every month: who has paid, who still owes and how much, and what each property keeps once its costs are paid. Most stop at the first one, with a column of ticked boxes.",
+        "This one keeps a rent ledger with one row per charge: period, due date, rent due, amount received and date received. From those it works out the outstanding balance and a status — Paid, Partial, Due or Late — with the days late counted against today's date every time you open the file. A tenant who pays half is not marked unpaid; the exact balance carries forward.",
+        "Each expense is tagged to the property that incurred it, which is what lets the Dashboard rank properties by what they keep rather than by what they collect. In the example file, Harbour View 7 collects the most rent of four properties and comes third on what it keeps, because its costs were nearly three times those of Maple Street 12B. A rent roll would have ranked it first.",
+        "Across the example: 34,080 charged, 31,830 collected, 2,250 still outstanding, 4,039.10 in costs and 27,790.90 actually kept. Cash flow by month is charted, expenses are split by category, and a phone tab stacks the headline numbers so you can check them without a laptop.",
+        "It holds 60 properties, 2,000 rent charges and 2,000 expenses, so a growing portfolio does not mean rebuilding the file.",
+      ],
+      faqs: [
+        {
+          q: "Does it collect rent or send reminders?",
+          a: "No. It records what was paid and tells you who is late and by how many days; collecting and reminding stay with you.",
+        },
+        {
+          q: "Can I use it for a single property?",
+          a: "Yes. Fill in one row on the Properties tab and the Dashboard reports on that one; there is room for up to 60.",
+        },
+        {
+          q: "Does it work in Google Sheets?",
+          a: "Yes. Import the .xlsx with File > Import > Upload and choose \"Replace spreadsheet\"; the formulas, dropdowns and colour rules carry over.",
+        },
+        {
+          q: "Can I use my own currency?",
+          a: "Dates and currency follow your own regional settings, and the START-HERE guide shows how to change the currency symbol.",
+        },
+        {
+          q: "Is it ready for my tax return?",
+          a: "It is a spreadsheet, not accounting or tax advice. The expense categories are ordinary bookkeeping labels, not any country's tax form, so check your figures before filing anything.",
+        },
+      ],
+    },
   },
   "etsy-seller-spreadsheet": {
     sheets: ["Dashboard", "Products", "Settings", "Sales", "Expenses",
@@ -50,6 +93,38 @@ export const productPages: Record<string, ProductPage> = {
       "It does not connect to Etsy or import your orders. You enter the sales, and it takes the fees off for you.",
     forWho:
       "Marketplace sellers who want to know the profit they actually keep after fees, shipping and cost of goods.",
+    guide: {
+      heading: "A spreadsheet to keep track of Etsy sales, fee by fee",
+      body: [
+        "The payout email tells you what landed in the bank. It does not tell you what each order made. Between the sale and the deposit come a listing fee, a transaction percentage, payment processing and, on some orders, an offsite ad commission. A spreadsheet that only records revenue minus cost of goods never sees that stack, so the profit it reports is higher than the one you keep.",
+        "This workbook keeps one row per order. You type what you already know about the sale, and it works out each fee from a rate table on the Settings tab, then cost of goods, net profit and margin. An order that loses money turns red on its own.",
+        "In the example file, two orders of the same tote bag — 32.50 each, same marketplace, same week — keep 17.46 and 12.59. The only difference is a Yes in the offsite-ad column. Across sixteen orders on two channels, fees take almost 12% of gross revenue: the number the payout email never separates out.",
+        "The rates sit in one row per place you sell, so the same item sold on Etsy and on your own site shows two different profit figures, and when a rate changes you correct one cell instead of every formula. The marketplace row comes prefilled from the published fee policy; check it against your own account, because rates vary by country.",
+        "The Dashboard adds revenue and profit month by month with a chart, profit by product — which item is worth making, not just which one sells most — and fees split by type. There is room for 60 products, 2,000 orders and 500 general business expenses.",
+      ],
+      faqs: [
+        {
+          q: "Does it import my Etsy orders?",
+          a: "No. You enter each sale yourself; nothing connects to your shop, which is also why there is no login and no subscription.",
+        },
+        {
+          q: "What happens when the fees change?",
+          a: "Change the rate in the Settings table and every order in the file recalculates from it.",
+        },
+        {
+          q: "Can I track sales from other channels too?",
+          a: "Yes. A second row is set up for selling direct on card payments, and blank rows are left for your other channels, each with its own rates.",
+        },
+        {
+          q: "Does it work in Google Sheets?",
+          a: "Yes. Import the .xlsx with File > Import > Upload and choose \"Replace spreadsheet\"; the formulas, dropdowns and colour rules carry over.",
+        },
+        {
+          q: "Is this enough for my taxes?",
+          a: "It is a spreadsheet, not accounting or tax advice. It gives you clean totals by month, product and fee type to take to whoever prepares your return.",
+        },
+      ],
+    },
   },
   "social-media-content-calendar": {
     sheets: ["Dashboard", "Calendar", "Settings", "Ideas", "Charts",

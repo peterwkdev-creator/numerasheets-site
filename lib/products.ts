@@ -205,6 +205,9 @@ export const products: Product[] = [
     slug: "rental-property-spreadsheet",
     term: "rental property spreadsheet",
     name: "Rental Property Tracker",
+    // GSC de 3 a 30/10/2026: `rent tracking spreadsheet` e `rental property
+    // tracker` na posicao 55 a 56 (`Etsy/GOOGLE-CONSULTAS-2026-11-02.md`).
+    searchTitle: "Rent Tracking Spreadsheet & Rental Property Tracker",
     does: "Reads each month's rent against what was paid and calls it Paid, Partial, Due or Late without you deciding.",
     standout: "Net per property",
     price: 7.5,
@@ -218,6 +221,10 @@ export const products: Product[] = [
     slug: "etsy-seller-spreadsheet",
     term: "etsy seller spreadsheet",
     name: "Seller Bookkeeping Spreadsheet",
+    // GSC de 3 a 30/10/2026: `spreadsheet to keep track of etsy sales` (43) e
+    // `etsy seller bookkeeping spreadsheet` (36). "Etsy" nunca a primeira
+    // palavra: a Trademark Policy chama isso de "most prominent".
+    searchTitle: "Seller Bookkeeping Spreadsheet to Track Etsy Sales & Fees",
     does: "Takes marketplace fees, shipping and cost of goods off each order, so profit is the number you actually keep.",
     standout: "Fee-by-fee breakdown",
     price: 6.5,

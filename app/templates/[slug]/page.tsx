@@ -290,6 +290,44 @@ export default async function Page({ params }: Params) {
           </div>
         </section>
 
+        {/* Guia + FAQ (02/11/2026): so nas paginas com consulta do Google na
+            posicao 20 a 60. O texto responde a consulta com o arquivo real;
+            o FAQ reusa o desenho do da home. */}
+        {page.guide && (
+          <section className="mt-16 max-w-3xl">
+            <h2 className="t-section">{page.guide.heading}</h2>
+            {page.guide.body.map((t) => (
+              <p
+                key={t.slice(0, 40)}
+                className="mt-4 text-[15.5px] leading-relaxed text-ink-soft"
+              >
+                {t}
+              </p>
+            ))}
+            <h3 className="mt-10 text-[13px] uppercase tracking-[0.09em] text-slate">
+              Questions
+            </h3>
+            <div className="faq mt-3 divide-y divide-rule border-y border-rule">
+              {page.guide.faqs.map((f) => (
+                <details key={f.q} className="group py-2">
+                  <summary className="flex min-h-11 cursor-pointer items-center justify-between gap-6 text-[16px] font-medium leading-snug">
+                    {f.q}
+                    <span
+                      aria-hidden
+                      className="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-rule text-[15px] leading-none text-slate transition-transform duration-200 group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-1 pb-2 max-w-2xl pr-10 text-[14.5px] leading-relaxed text-ink-soft">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Tres imagens da listagem, nao uma em largura cheia (revisao de UX,
             05/10/2026): a "second look" mostrava so a 02, um quadrado de
             ~1.100 px com ~40% de area vazia. No celular, uma faixa que rola
